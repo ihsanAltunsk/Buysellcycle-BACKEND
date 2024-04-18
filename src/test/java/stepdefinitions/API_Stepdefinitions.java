@@ -77,5 +77,28 @@ public class API_Stepdefinitions {
                 .body("updated_Id", equalTo(id));
     }
 
+    @Given("The api user prepares a POST request containing the {string} information to send to the api refundReasonAdd endpoint.")
+    public void the_api_user_prepares_a_post_request_containing_the_information_to_send_to_the_api_refund_reason_add_endpoint(String reason) {
+    reqBody=new HashMap<>();
+    reqBody.put("reason",reason);
+
+    }
+    @Given("The api user sends the POST request and saves the response returned from the api refundReasonAdd endpoint.")
+    public void the_api_user_sends_the_post_request_and_saves_the_response_returned_from_the_api_refund_reason_add_endpoint() {
+
+     API_Methods.postResponse(reqBody);
+
+    }
+    @Given("The api user prepares a GET request containing the refund reason {int} for which details are to be accessed, to send to the api refundReasonDetails endpoint.")
+    public void the_api_user_prepares_a_get_request_containing_the_refund_reason_for_which_details_are_to_be_accessed_to_send_to_the_api_refund_reason_details_endpoint(int id) {
+        requestBody = new JSONObject();
+        requestBody.put("id", id);
+    }
+    //Azim US19-TC01
+    @Given("The api user sends a GET request and saves the response returned from the api refundReasonDetails endpoint.")
+    public void the_api_user_sends_a_get_request_and_saves_the_response_returned_from_the_api_refund_reason_details_endpoint() {
+        API_Methods.getBodyResponse(requestBody.toString());
+    }
+
 
 }
