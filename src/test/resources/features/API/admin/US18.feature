@@ -7,8 +7,8 @@
 
       * The api user constructs the base url with the "admin" token.
       * The api user sets "api/refundReasonDetails" path parameters
-      * The api user prepares a GET request containing the refund&reason <id> for which details are to be accessed, to send to the api refundReasonDetails endpoint.
-      * The api user sends a GET request and saves the response returned from the api refundReasonDetails endpoint.
+      * The api user prepares a GETBODY request containing the id = 1 for which details are to be accessed, to send to the api endpoint.
+      * The API user sends a GETBODY request and records the response.
       * The api user verifies that the status code is 200
       * The api user verifies that the message information in the response body is "success"
       * The api user verifies the content of the data <id>, "<reason>","<created_at>","<updated_at>" in the response body.

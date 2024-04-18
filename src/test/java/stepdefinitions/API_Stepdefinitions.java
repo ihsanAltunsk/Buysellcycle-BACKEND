@@ -77,16 +77,6 @@ public class API_Stepdefinitions {
     public void the_apı_user_records_the_response_from_the_api_holiday_details_endpoint_confirming_that_the_status_code_is_and_the_reason_phrase_is_unauthorized(String string) {
         Assert.assertTrue(API_Methods.tryCatchGetBody(requestBody.toString()).equals(ConfigReader.getProperty("api", "unauthorizedExceptionMessage")));
     }
-    //Reyyan US18-TC01
-    @Given("The api user prepares a GET request containing the refund&reason {int} for which details are to be accessed, to send to the api refundReasonDetails endpoint.")
-    public void the_api_user_prepares_a_get_request_containing_the_refund_reason_for_which_details_are_to_be_accessed_to_send_to_the_api_refund_reason_details_endpoint(int id) {
-        requestBody = new JSONObject();
-        requestBody.put("id", id);
-    }
-    @Given("The api user sends a GET request and saves the response returned from the api refundReasonDetails endpoint.")
-    public void the_api_user_sends_a_get_request_and_saves_the_response_returned_from_the_api_refund_reason_details_endpoint() {
-        API_Methods.getBodyResponse(requestBody.toString());
-    }
 
     @Given("The api user verifies the content of the data {int}, {string},{string},{string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(int id, String reason, String created_at, String updated_at) {
@@ -295,16 +285,6 @@ public class API_Stepdefinitions {
 
      API_Methods.postResponse(reqBody);
 
-    }
-    @Given("The api user prepares a GET request containing the refund reason {int} for which details are to be accessed, to send to the api refundReasonDetails endpoint.")
-    public void the_api_user_prepares_a_get_request_containing_the_refund_reason_for_which_details_are_to_be_accessed_to_send_to_the_api_refund_reason_details_endpoint(int id) {
-        requestBody = new JSONObject();
-        requestBody.put("id", id);
-    }
-    //Azim US19-TC01
-    @Given("The api user sends a GET request and saves the response returned from the api refundReasonDetails endpoint.")
-    public void the_api_user_sends_a_get_request_and_saves_the_response_returned_from_the_api_refund_reason_details_endpoint() {
-        API_Methods.getBodyResponse(requestBody.toString());
     }
   
 //======================================================================================================================================================================================

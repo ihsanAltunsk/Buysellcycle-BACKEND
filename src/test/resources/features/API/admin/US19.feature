@@ -18,19 +18,16 @@ and the message information in the responsebody should be verified as "refundRea
 |     reason       |
 | product mismatch |
 
-Scenario Outline:TC-02 The creation of the new Refund&Reason record via the API should be verified.
+Scenario:TC-02 The creation of the new Refund&Reason record via the API should be verified.
 (The creation of the record can be verified by sending a GET request to the /api/refundReasonDetails
 endpoint with the added_item_id returned in the response body.)
 
   * The api user constructs the base url with the "admin" token.
   * The api user sets "api/refundReasonDetails" path parameters
-  * The api user prepares a GET request containing the refund reason <id> for which details are to be accessed, to send to the api refundReasonDetails endpoint.
-  * The api user sends a GET request and saves the response returned from the api refundReasonDetails endpoint.
+  * The api user prepares a GETBODY request containing the id = 50 for which details are to be accessed, to send to the api endpoint.
+  * The API user sends a GETBODY request and records the response.
   * The api user verifies that the message information in the response body is "success"
 
-    Examples:
-    | id |
-    | 50 |
 
   Scenario Outline:TC-03 When a POST body containing invalid authorization information and necessary data (reason) is sent to the
   /api/refundReasonAdd endpoint, the returned status code should be 401, and the message information in the
