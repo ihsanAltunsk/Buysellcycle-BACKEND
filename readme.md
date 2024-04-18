@@ -45,7 +45,7 @@
 > 
 > The API user records the response from the api endpoint, confirming that the status code is '401' and the reason phrase is Unauthorized.
 > 
-> 
+> The API user sends a POST request and records the response.
 > 
 > 
 
