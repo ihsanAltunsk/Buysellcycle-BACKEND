@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import config_Requirements.ConfigReader;
 import hooks.HooksAPI;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.restassured.path.json.JsonPath;
 import org.checkerframework.checker.units.qual.A;
@@ -11,6 +12,8 @@ import pojos.Pojo;
 import utilities.API_Utilities.API_Methods;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.nullValue;
@@ -240,4 +243,41 @@ public class API_Stepdefinitions {
      Assert.assertEquals(updated_at,jsonPath.getString("faqDetails[0].updated_at"));
     }
     //======================================================================================================================================================================
+    // Doruk US23 - TC01
+    @Given("The api user prepares a GET request containing the {int} information to send to the api departmanDetails endpoint.")
+    public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_departman_details_endpoint(int id) {
+        requestBody = new JSONObject();
+        requestBody.put("id", id);
+    }
+
+    @Given("The api user sends the GET request and saves the response returned from the api departmanDetails endpoint.")
+    public void the_api_user_sends_the_get_request_and_saves_the_response_returned_from_the_api_departman_details_endpoint() {
+        API_Methods.getBodyResponse(requestBody.toString());
+    }
+
+    @Given("The api user prepares a POST request containing the department information to send to the api departmanAdd endpoint.")
+    public void the_api_user_prepares_a_post_request_containing_the_department_information_to_send_to_the_api_departman_add_endpoint(DataTable table) {
+        List<List<String>> rows = table.asLists(String.class);
+        System.out.println(rows);
+
+        requestBody = new JSONObject();
+        requestBody.put(rows.get(0).get(0), rows.get(1).get(0));
+        requestBody.put(rows.get(0).get(1), rows.get(1).get(1));
+        requestBody.put(rows.get(0).get(2), rows.get(1).get(2));
+    }
+
+    @Given("The api user sends the POST request and saves the response returned from the api departmanDetails endpoint.")
+    public void the_api_user_sends_the_post_request_and_saves_the_response_returned_from_the_api_departman_details_endpoint() {
+        API_Methods.postResponse(requestBody.toString());
+    }
+
+    @Given("The api user prepares a GET request to send to the api couponList endpoint.")
+    public void the_api_user_prepares_a_get_request_to_send_to_the_api_coupon_list_endpoint() {
+        requestBody = new JSONObject();
+    }
+
+    @Given("The api user sends the GET request and saves the response returned from the api couponList endpoint.")
+    public void the_api_user_sends_the_get_request_and_saves_the_response_returned_from_the_api_coupon_list_endpoint() {
+        API_Methods.getResponse();
+    }
 }
