@@ -31,15 +31,23 @@
 - API
 > The api user constructs the base url with the "admin" token.  
 >
-> The api user sets "api/refundReasonAdd" path parameters
+> The api user sets " " path parameters
 > 
 > The api user verifies that the status code is 201
 > 
-> The api user verifies that the message information in the response body is "refundReason added successfully"
+> The api user verifies that the message information in the response body is " "
 > 
->   
+> The API user sends a GET request and records the response.
 > 
->   
+> The api user prepares a GETBODY request containing the id = 2 for which details are to be accessed, to send to the api endpoint.
+> 
+> The API user sends a GETBODY request and records the response.
+> 
+> The API user records the response from the api endpoint, confirming that the status code is '401' and the reason phrase is Unauthorized.
+> 
+> 
+> 
+> 
 
 - DB
 >

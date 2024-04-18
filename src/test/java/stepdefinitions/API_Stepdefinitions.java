@@ -1,7 +1,7 @@
 package stepdefinitions;
 
+import com.github.javafaker.Faker;
 import config_Requirements.ConfigReader;
-import hooks.HooksAPI;
 import io.cucumber.java.en.Given;
 import io.restassured.path.json.JsonPath;
 import org.json.JSONObject;
@@ -12,6 +12,7 @@ import utilities.API_Utilities.API_Methods;
 import java.util.HashMap;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertEquals;
 
 public class API_Stepdefinitions {
 
@@ -21,6 +22,7 @@ public class API_Stepdefinitions {
     JsonPath jsonPath;
     HashMap<String, Object> reqBody;
     Pojo requestPojo;
+    Faker faker;
 
     //Reyyan US08-TC01
     @Given("The api user prepares a GET request containing the holiday {int} for which details are to be accessed, to send to the api holidayDetails endpoint.")
@@ -39,25 +41,14 @@ public class API_Stepdefinitions {
 
 
     }
-  
+
 // ===============================================================================================================================================================================
-  
-    @Given("The API user sends a GET request and records the response from the api refundReasonList endpoint.")
-    public void the_apı_user_sends_a_get_request_and_records_the_response_from_the_api_refund_reason_list_endpoint() {
-            API_Methods.getResponse();
-    }
 
     @Given("The api user validates the {string} of the response body with index {int}.")
     public void the_api_user_validates_the_of_the_response_body_with_index(String reason, Integer dataIndex) {
        API_Methods.response.then()
                .assertThat()
                .body("refundReason["+ dataIndex+ "].reason",equalTo(reason));
-    }
-
-    @Given("The API user records the response from the api refundReasonList endpoint, confirming that the status code is '401' and the reason phrase is Unauthorized.")
-    public void the_apı_user_records_the_response_from_the_api_refund_reason_list_endpoint_confirming_that_the_status_code_is_and_the_reason_phrase_is_unauthorized() {
-        Assert.assertTrue(API_Methods.tryCatchGet().equals(ConfigReader.getProperty("api","unauthorizedExceptionMessage")));
-
     }
 
     @Given("The api user prepares a PATCH request containing the {string} data to send to the api refundReasonUpdate endpoint.")
@@ -76,6 +67,43 @@ public class API_Stepdefinitions {
                 .assertThat()
                 .body("updated_Id", equalTo(id));
     }
+// ===============================================================================================================================================================================
+    //ihsan
+    @Given("The api user verifies the content of the data {int}, {string}, {string}, {int}, {string}, {int}, {int}, {string}, {int}, {string}, {string} in the response body.")
+    public void the_api_user_verifies_the_content_of_the_data_id_in_the_response_body(int id , String first_name, String last_name, int role_id, String email, int is_verified, int is_active, String lang_code, int currency_id, String currency_code, String name) {
+        jsonPath = API_Methods.response.jsonPath();
 
+        assertEquals(id, jsonPath.getInt("user.id"));
+        assertEquals(first_name, jsonPath.getString("user.first_name"));
+        assertEquals(last_name, jsonPath.getString("user.last_name"));
+        assertEquals(role_id, jsonPath.getInt("user.role_id"));
+        assertEquals(email, jsonPath.getString("user.email"));
+        assertEquals(is_verified, jsonPath.getInt("user.is_verified"));
+        assertEquals(is_active, jsonPath.getInt("user.is_active"));
+        assertEquals(lang_code, jsonPath.getString("user.lang_code"));
+        assertEquals(currency_id, jsonPath.getInt("user.currency_id"));
+        assertEquals(currency_code, jsonPath.getString("user.currency_code"));
+        assertEquals(name, jsonPath.getString("user.name"));
+    }
+
+    @Given("In the response body for the FAQ with id = {int} should be validated, including the {string} information.")
+    public void in_the_response_body_for_the_faq_with_id_should_be_validated_including_the_information(Integer int1, String title) {
+       jsonPath = API_Methods.response.jsonPath();
+       assertEquals(title, jsonPath.getString("Faqs[0].title"));
+    }
+
+    @Given("The api user prepares a POST request body for address-store.")
+    public void the_api_user_prepares_a_post_request_body_for_address_store() {
+        requestBody.put("name", faker.name());
+        requestBody.put("email", faker.internet().emailAddress());
+        requestBody.put("address", faker.address());
+        requestBody.put("phone", faker.phoneNumber());
+        requestBody.put("city", faker.address().city());
+        requestBody.put("state", faker.address().state());
+        requestBody.put("country", faker.address().country());
+        requestBody.put("postal_code", faker.address().zipCode());
+        requestBody.put("address_type", "home");
+    }
+// ===============================================================================================================================================================================
 
 }
