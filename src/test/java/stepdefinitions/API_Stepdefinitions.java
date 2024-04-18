@@ -41,7 +41,7 @@ public class API_Stepdefinitions {
     }
   
 // ===============================================================================================================================================================================
-  
+    //Humeyra Tayfun
     @Given("The API user sends a GET request and records the response from the api refundReasonList endpoint.")
     public void the_apı_user_sends_a_get_request_and_records_the_response_from_the_api_refund_reason_list_endpoint() {
             API_Methods.getResponse();
@@ -76,12 +76,24 @@ public class API_Stepdefinitions {
                 .assertThat()
                 .body("updated_Id", equalTo(id));
     }
-    //===================================================================================================================
-// Senayda US05-TC02
-@Given("The api user verifies the content of the data {int}, {string}, {string}, {string}, {string} in the response body.")
-public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(Integer id, String first_name, String username, String email, String name) {
 
-}
+    @Given("The API user records the response from the api refundReasonUpdate endpoint, confirming that the status code is '404'and the reason phrase is Not Found.")
+    public void the_apı_user_records_the_response_from_the_api_refund_reason_update_endpoint_confirming_that_the_status_code_is_and_the_reason_phrase_is_not_found() {
+        Assert.assertTrue(API_Methods.tryCatchPatch(requestBody.toString()).equals(ConfigReader.getProperty("api","notFoundExceptionMessage")));
+
+    }
+
+    @Given("The API user records the response from the api refundReasonUpdate endpoint, confirming that the status code is '401' and the reason phrase is Unauthorized.")
+    public void the_apı_user_records_the_response_from_the_api_refund_reason_update_endpoint_confirming_that_the_status_code_is_and_the_reason_phrase_is_unauthorized() {
+        Assert.assertTrue(API_Methods.tryCatchPatch(requestBody.toString()).equals(ConfigReader.getProperty("api","unauthorizedExceptionMessage")));
+
+    }
+  //===================================================================================================================
+    // Senayda US05-TC02
+    @Given("The api user verifies the content of the data {int}, {string}, {string}, {string}, {string} in the response body.")
+    public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(Integer id, String first_name, String username, String email, String name) {
+    
+    }
 
     @Given("The API user sends a GET request {int} and records the response from the api faq details endpoint.")
     public void the_api_user_sends_a_get_request_and_records_the_response_from_the_api_faq_details_endpoint(int id) {
@@ -99,7 +111,5 @@ public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(I
      Assert.assertEquals(created_at,jsonPath.getString("faqDetails[0].created_at"));
      Assert.assertEquals(updated_at,jsonPath.getString("faqDetails[0].updated_at"));
     }
-
+    //======================================================================================================================================================================
 }
-//==========================================================================================================================
-
