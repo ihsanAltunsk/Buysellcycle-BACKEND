@@ -88,5 +88,28 @@ public class API_Stepdefinitions {
         Assert.assertTrue(API_Methods.tryCatchPatch(requestBody.toString()).equals(ConfigReader.getProperty("api","unauthorizedExceptionMessage")));
 
     }
+  //===================================================================================================================
+    // Senayda US05-TC02
+    @Given("The api user verifies the content of the data {int}, {string}, {string}, {string}, {string} in the response body.")
+    public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(Integer id, String first_name, String username, String email, String name) {
+    
+    }
+
+    @Given("The API user sends a GET request {int} and records the response from the api faq details endpoint.")
+    public void the_api_user_sends_a_get_request_and_records_the_response_from_the_api_faq_details_endpoint(int id) {
+        requestBody.put("id",id);
+        API_Methods.getBodyResponse(requestBody.toString());
+    }
+    @Given("The api user verifies the content of the data {int} {string}, {string}, {string} {int},{string},{string} in the response body.")
+    public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(int id, String user_id , String title , String description , int status, String created_at, String updated_at) {
+     jsonPath=API_Methods.response.jsonPath();
+     Assert.assertEquals(id,jsonPath.getInt("faqDetails[0].id"));
+     Assert.assertEquals(user_id,jsonPath.getString("faqDetails[0].user_id"));
+     Assert.assertEquals(title,jsonPath.getString("faqDetails[0].title"));
+     Assert.assertEquals(description,jsonPath.getString("faqDetails[0].description"));
+     Assert.assertEquals(status,jsonPath.getInt("faqDetails[0].status"));
+     Assert.assertEquals(created_at,jsonPath.getString("faqDetails[0].created_at"));
+     Assert.assertEquals(updated_at,jsonPath.getString("faqDetails[0].updated_at"));
+    }
     //======================================================================================================================================================================
 }
