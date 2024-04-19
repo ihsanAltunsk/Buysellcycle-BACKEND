@@ -25,7 +25,8 @@
         * The api user constructs the base url with the "invalid" token.
         * The api user sets "api/departmentList " path parameters
         * The api user prepares a GET request containing the department with <id> for which details are to be accessed, to send to the api departmentList endpoint.
-        * The API user records the response from the api departmentList  endpoint, confirming that the status code is '401' and the reason phrase is Unauthorized.
+        * The api user verifies that the status code is 401
+        * The api user verifies that the message information in the response body is "Unauthenticated."
 
         Examples:
         |id  |

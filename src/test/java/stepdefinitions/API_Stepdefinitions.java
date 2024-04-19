@@ -63,19 +63,12 @@ public class API_Stepdefinitions {
         requestBody.put("id", id);
 
     }
-    @Given("The API user records the response from the api holidayDetails endpoint, verifying that the status code is {string} and the holiday Not Found.")
-    public void the_apı_user_records_the_response_from_the_api_holiday_details_endpoint_verifying_that_the_status_code_is_and_the_holiday_not_found(String string) {
-        Assert.assertTrue(API_Methods.tryCatchGetBody(requestBody.toString()).equals(ConfigReader.getProperty("api", "notFoundExceptionMessage")));
-    }
+
     //Reyyan US08-TC03
     @Given("The api user prepares a GET request containing the holidayDetails {int} for which details are to be accessed, to send to the api holidayDetails endpoint.")
     public void the_api_user_prepares_a_get_request_containing_the_holiday_details_for_which_details_are_to_be_accessed_to_send_to_the_api_holiday_details_endpoint(Integer int1) {
         requestBody = new JSONObject();
         requestBody.put("id", id);
-    }
-    @Given("The API user records the response from the api holidayDetails endpoint, confirming that the status code is {string} and the reason phrase is Unauthorized.")
-    public void the_apı_user_records_the_response_from_the_api_holiday_details_endpoint_confirming_that_the_status_code_is_and_the_reason_phrase_is_unauthorized(String string) {
-        Assert.assertTrue(API_Methods.tryCatchGetBody(requestBody.toString()).equals(ConfigReader.getProperty("api", "unauthorizedExceptionMessage")));
     }
 
     @Given("The api user verifies the content of the data {int}, {string},{string},{string} in the response body.")
@@ -94,16 +87,7 @@ public class API_Stepdefinitions {
         requestBody.put("id", id);
 
     }
-    @Given("The API user records the response from the api refundReasonDetails  endpoint, verifying that the status code is {string} and the holiday Not Found.")
-    public void the_apı_user_records_the_response_from_the_api_refund_reason_details_endpoint_verifying_that_the_status_code_is_and_the_holiday_not_found(String message) {
-        Assert.assertTrue(API_Methods.tryCatchGetBody(requestBody.toString()).equals(ConfigReader.getProperty("api", "notFoundExceptionMessage")));
-    }
-    //Reyyan US18-TC03
-    @Given("The API user records the response from the api refundReasonDetails  endpoint, confirming that the status code is {string} and the reason phrase is Unauthorized.")
-    public void the_apı_user_records_the_response_from_the_api_refund_reason_details_endpoint_confirming_that_the_status_code_is_and_the_reason_phrase_is_unauthorized(String message) {
-        Assert.assertTrue(API_Methods.tryCatchGetBody(requestBody.toString()).equals(ConfigReader.getProperty("api", "unauthorizedExceptionMessage")));
 
-    }
     //Reyyan US22-TC01
     @Given("The api user prepares a GET request containing the department with {int} for which details are to be accessed, to send to the api departmentList  endpoint.")
     public void the_api_user_prepares_a_get_request_containing_the_department_with_id_for_which_details_are_to_be_accessed_to_send_to_the_api_department_list_endpoint(int id) {
@@ -128,14 +112,12 @@ public class API_Stepdefinitions {
         requestBody = new JSONObject();
         requestBody.put("id", id);
     }
-    @Given("The API user records the response from the api departmentList  endpoint, confirming that the status code is {string} and the reason phrase is Unauthorized.")
-    public void the_apı_user_records_the_response_from_the_api_department_list_endpoint_confirming_that_the_status_code_is_and_the_reason_phrase_is_unauthorized(String string) {
-        Assert.assertTrue(API_Methods.tryCatchGetBody(requestBody.toString()).equals(ConfigReader.getProperty("api", "unauthorizedExceptionMessage")));
-    }
+
     //Reyyan US29-TC01
 
     @Given("The api user prepares a POST request containing the {string}, {string}, {int}, {string}, {string}, {int}, {int}, {int}, null, {int}, {int} information to send to the api couponAdd endpoint.")
     public void the_api_user_prepares_a_post_request_containing_the_null_information_to_send_to_the_api_coupon_add_endpoint(String title, String coupon_code, int coupon_type, String start_date, String end_date, int discount, int discount_type, int minimum_shopping, int is_expire, int is_multiple_buy) {
+
         requestBody = new JSONObject();
         requestBody.put("title",title);
         requestBody.put("coupon_code",coupon_code);
@@ -152,10 +134,9 @@ public class API_Stepdefinitions {
     }
     @Given("The api user sends the POST request and saves the response returned from the api couponAdd endpoint.")
     public void the_api_user_sends_the_post_request_and_saves_the_response_returned_from_the_api_coupon_add_endpoint() {
-
         API_Methods.postResponse(requestBody.toString());
     }
-    //Reyyan SS29-TC02
+    //Reyyan US29-TC02
     @Given("The api user prepares a GET request containing the refund reason {int} for which details are to be accessed, to send to the api couponDetails endpoint.")
     public void the_api_user_prepares_a_get_request_containing_the_refund_reason_for_which_details_are_to_be_accessed_to_send_to_the_api_coupon_details_endpoint(int id) {
         requestBody = new JSONObject();
@@ -165,8 +146,87 @@ public class API_Stepdefinitions {
     public void the_api_user_sends_a_get_request_and_saves_the_response_returned_from_the_api_coupon_details_endpoint() {
         API_Methods.getBodyResponse(requestBody.toString());
     }
+    //Reyyan US43-TC01
+    @Given("The api user prepares a PATCH request containing the {int}, {string}, {string}, {string}, {string}, {string},{string}, {string}, {string}, {string} data to send to the api address Update endpoint.")
+    public void the_api_user_prepares_a_patch_request_containing_the_data_to_send_to_the_api_address_update_endpoint(int customer_id, String name, String email, String address, String phone, String city, String state, String country, String postal_code, String address_type) {
+        requestBody = new JSONObject();
+        requestBody.put("customer_id",customer_id);
+        requestBody.put("name",name);
+        requestBody.put("email",email);
+        requestBody.put("address",address);
+        requestBody.put("phone",phone);
+        requestBody.put("city",city);
+        requestBody.put("state",state);
+        requestBody.put("country",country);
+        requestBody.put("postal_code",postal_code);
+        requestBody.put("address_type",address_type);
+        System.out.println(requestBody);
+    }
+    @Given("The API user sends a PATCH request and records the response.")
+    public void the_apı_user_sends_a_patch_request_and_records_the_response() {
+        API_Methods.patchResponse(requestBody.toString());
 
-// ===============================================================================================================================================================================
+    }
+
+    @Given("The API user verifies that the updated {int} information in the returned response body is the same as the id path parameter written in the endpoint.")
+    public void the_apı_user_verifies_that_the_updated_ıd_information_in_the_returned_response_body_is_the_same_as_the_id_path_parameter_written_in_the_endpoint(int id) {
+     jsonPath = API_Methods.response.jsonPath();
+     int actualUpdateId = jsonPath.getInt("updated_Id");
+     assertEquals(actualUpdateId,id);
+    }
+    //Reyyan US43-TC04
+    @Given("The api user prepares a GET request containing the refund reason {int} for which details are to be accessed, to send to the api addressUpdate endpoint.")
+    public void the_api_user_prepares_a_get_request_containing_the_refund_reason_for_which_details_are_to_be_accessed_to_send_to_the_api_address_update_endpoint(int id) {
+        requestBody = new JSONObject();
+        requestBody.put("id", id);
+    }
+    @Given("The api user sends a GET request and saves the response returned from the api addressUpdate endpoint.")
+    public void the_api_user_sends_a_get_request_and_saves_the_response_returned_from_the_api_address_update_endpoint() {
+        API_Methods.getBodyResponse(requestBody.toString());
+    }
+    @Given("The api user verifies that the reason information in the response body is {int}, {string}, {string}, {string}, {string}, {string},{string}, {string}, {string}, {string}.")
+    public void the_api_user_verifies_that_the_reason_information_in_the_response_body_is(int customer_id, String name, String email, String address, String phone, String city, String state, String country, String postal_code, String address_type) {
+        jsonPath = API_Methods.response.jsonPath();
+
+        Assert.assertEquals(customer_id,jsonPath.getInt("addresses[0].customer_id"));
+        Assert.assertEquals(name,jsonPath.getString("addresses[0].name"));
+        Assert.assertEquals(email,jsonPath.getString("addresses[0].email"));
+        Assert.assertEquals(address,jsonPath.getString("addresses[0].address"));
+        Assert.assertEquals(phone,jsonPath.getString("addresses[0].phone"));
+        Assert.assertEquals(city,jsonPath.getString("addresses[0].city"));
+        Assert.assertEquals(state,jsonPath.getString("addresses[0].state"));
+        Assert.assertEquals(country,jsonPath.getString("addresses[0].country"));
+        Assert.assertEquals(postal_code,jsonPath.getString("addresses[0].postal_code"));
+        //Assert.assertEquals(address_type,jsonPath.getString("addresses[0].address_type"));
+
+    }
+    //Reyyan US44-TC01-04-02-03-
+    @Given("The api user prepares a DELETE request containing the refund reason {int} to be deleted to send to the api deleteAddress endpoint.")
+    public void the_api_user_prepares_a_delete_request_containing_the_refund_reason_to_be_deleted_to_send_to_the_api_delete_address_endpoint(int id) {
+        requestBody = new JSONObject();
+        requestBody.put("id", id);
+    }
+    @Given("The api user sends the DELETE request and saves the response returned from the api deleteAddress endpoint.")
+    public void the_api_user_sends_the_delete_request_and_saves_the_response_returned_from_the_api_delete_address_endpoint() {
+        API_Methods.deleteResponse(requestBody.toString());
+    }
+    @Given("The api user verifies that the Deleted {int} information in the response body is the same as the id information in the request body.")
+    public void the_api_user_verifies_that_the_deleted_information_in_the_response_body_is_the_same_as_the_id_information_in_the_request_body(int id) {
+        jsonPath = API_Methods.response.jsonPath();
+
+        Assert.assertEquals(requestBody.get("id"), jsonPath.getInt("Deleted_Id"));
+    }
+    @Given("The API user records the response from the api deleteAddress endpoint, confirming that the status code is '404' and the reason phrase is Not Found.")
+    public void the_apı_user_records_the_response_from_the_api_delete_address_endpoint_confirming_that_the_status_code_is_and_the_reason_phrase_is_not_found() {
+        Assert.assertTrue(API_Methods.tryCatchDelete(requestBody.toString()).equals(ConfigReader.getProperty("api","notFoundExceptionMessage")));
+    }
+    @Given("The API user saves the response from the api deleteAddress endpoint, verifying that the status code is '401' and the reason phrase is Unauthorized.")
+    public void the_apı_user_saves_the_response_from_the_api_delete_address_endpoint_verifying_that_the_status_code_is_and_the_reason_phrase_is_unauthorized() {
+        Assert.assertTrue(API_Methods.tryCatchDelete(requestBody.toString()).equals(ConfigReader.getProperty("api","unauthorizedExceptionMessage")));
+    }
+
+
+    // ===============================================================================================================================================================================
     //Humeyra Tayfun
     @Given("The API user sends a GET request and records the response from the api refundReasonList endpoint.")
     public void the_apı_user_sends_a_get_request_and_records_the_response_from_the_api_refund_reason_list_endpoint() {
