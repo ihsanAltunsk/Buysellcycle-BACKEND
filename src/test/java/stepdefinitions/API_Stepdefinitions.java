@@ -20,6 +20,7 @@ import java.util.Map;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertEquals;
 import static org.hamcrest.Matchers.nullValue;
+import static org.junit.Assert.assertNull;
 
 public class API_Stepdefinitions {
 
@@ -138,6 +139,7 @@ public class API_Stepdefinitions {
     }
     //Reyyan US29-TC02
     @Given("The api user prepares a GET request containing the refund reason {int} for which details are to be accessed, to send to the api couponDetails endpoint.")
+
     public void the_api_user_prepares_a_get_request_containing_the_refund_reason_for_which_details_are_to_be_accessed_to_send_to_the_api_coupon_details_endpoint(int id) {
         requestBody = new JSONObject();
         requestBody.put("id",id);
@@ -385,6 +387,92 @@ public class API_Stepdefinitions {
     public void the_api_user_sends_the_get_request_and_saves_the_response_returned_from_the_api_coupon_list_endpoint() {
         API_Methods.getResponse();
     }
+
+    // Doruk US28 - TC01
+    @Given("The api user verifies the content of the data {int}, {string}, {string}, {int}, {string}, {string}, {int}, {int}, {int}, {int}, {int}, {int}, {int}, {int}, {string}, {string}, {string} in the response body.")
+    public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(int id, String title, String coupon_code, int coupon_type, String start_date, String end_date, int discount, int discount_type, int minimum_shopping, int maximum_discount, int created_by, int updated_by, int is_expire, int is_multiple_buy, String multiple_buy_limit, String created_at, String updated_at) {
+        jsonPath = API_Methods.response.jsonPath();
+
+        assertEquals(id, jsonPath.getInt("couponDetails[0].id"));
+        assertEquals(title, jsonPath.getString("couponDetails[0].title"));
+        assertEquals(coupon_code, jsonPath.getString("couponDetails[0].coupon_code"));
+        assertEquals(coupon_type, jsonPath.getInt("couponDetails[0].coupon_type"));
+        assertEquals(start_date, jsonPath.getString("couponDetails[0].start_date"));
+        assertEquals(end_date, jsonPath.getString("couponDetails[0].end_date"));
+        assertEquals(discount, jsonPath.getInt("couponDetails[0].discount"));
+        assertEquals(discount_type, jsonPath.getInt("couponDetails[0].discount_type"));
+        assertEquals(minimum_shopping, jsonPath.getInt("couponDetails[0].minimum_shopping"));
+        assertEquals(maximum_discount, jsonPath.getInt("couponDetails[0].maximum_discount"));
+        assertEquals(created_by, jsonPath.getInt("couponDetails[0].created_by"));
+        assertEquals(updated_by, jsonPath.getInt("couponDetails[0].updated_by"));
+        assertEquals(is_expire, jsonPath.getInt("couponDetails[0].is_expire"));
+        assertEquals(is_multiple_buy, jsonPath.getInt("couponDetails[0].is_multiple_buy"));
+        assertNull(jsonPath.get("couponDetails[0].multiple_buy_limit"));
+        assertEquals(created_at, jsonPath.getString("couponDetails[0].created_at"));
+        assertEquals(updated_at, jsonPath.getString("couponDetails[0].updated_at"));
+    }
+
+    // Doruk US35 - TC01
+    @Given("The api user prepares a PATCH request containing the address information to send to the api customerAddressUpdate endpoint.")
+    public void the_api_user_prepares_a_patch_request_containing_the_address_information_to_send_to_the_api_customer_address_update_endpoint() {
+        faker = new Faker();
+        requestBody = new JSONObject();
+        requestBody.put("name", faker.name().firstName());
+        requestBody.put("email", faker.internet().emailAddress());
+        requestBody.put("address", faker.address().fullAddress());
+        requestBody.put("phone", faker.phoneNumber().cellPhone());
+        requestBody.put("city", faker.address().city());
+        requestBody.put("state", faker.address().state());
+        requestBody.put("country", faker.address().country());
+        requestBody.put("postal_code", faker.address().zipCode());
+        requestBody.put("address_type", "home");
+    }
+
+    @Given("The api user sends the PATCH request and saves the response returned from the api customerAddressUpdate endpoint.")
+    public void the_api_user_sends_the_patch_request_and_saves_the_response_returned_from_the_api_customer_address_update_endpoint() {
+        API_Methods.patchResponse(requestBody.toString());
+    }
+
+    @Given("The api user verifies that the updated id information in the response body is {int}")
+    public void the_api_user_verifies_that_the_id_information_in_the_response_body_is(int id) {
+        jsonPath = API_Methods.response.jsonPath();
+        assertEquals(id, jsonPath.getInt("updated_Id"));
+    }
+
+    // Doruk US35 - TC04
+    @Given("The api user prepares a PATCH request containing the address information with incorrect email format to send to the api customerAddressUpdate endpoint.")
+    public void the_api_user_prepares_a_patch_request_containing_the_address_information_with_incorrect_email_format_to_send_to_the_api_customer_address_update_endpoint() {
+        faker = new Faker();
+        requestBody = new JSONObject();
+        requestBody.put("name", faker.name().firstName());
+        requestBody.put("email", "incorrectEmailFormat");
+        requestBody.put("address", faker.address().fullAddress());
+        requestBody.put("phone", faker.phoneNumber().cellPhone());
+        requestBody.put("city", faker.address().city());
+        requestBody.put("state", faker.address().state());
+        requestBody.put("country", faker.address().country());
+        requestBody.put("postal_code", faker.address().zipCode());
+        requestBody.put("address_type", "home");
+    }
+
+    // Doruk US36 - TC01
+    @Given(" The api user prepares a DELETE request containing {int} address id to send to the api customerDeleteAddress endpoint.")
+    public void the_api_user_prepares_a_delete_request_containing_the_address_id_to_send_to_the_api_customer_delete_address_endpoint(int addressId) {
+        requestBody = new JSONObject();
+        requestBody.put("id", addressId);
+    }
+
+    @Given("The api user sends the DELETE request and saves the response returned from the api customerDeleteAddress endpoint.")
+    public void the_api_user_sends_the_delete_request_and_saves_the_response_returned_from_the_api_customer_delete_address_endpoint() {
+        API_Methods.deleteResponse(requestBody.toString());
+    }
+
+    @Given("The api user verifies that the deleted id information in the response body is {int}")
+    public void the_api_user_verifies_that_the_deleted_id_information_in_the_response_body_is(int addressId) {
+        jsonPath = API_Methods.response.jsonPath();
+        assertEquals(addressId, jsonPath.getInt("Deleted_Id"));
+    }
+
   
   //======================================================================================================================================================================
     // Azim Kaya
