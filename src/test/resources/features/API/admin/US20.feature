@@ -13,11 +13,11 @@
       * The api user sends the PATCH request and saves the response returned from the api refundReasonUpdate endpoint.
       * The api user verifies that the status code is 202
       * The api user verifies that the message information in the response body is "refundReason updated successfully"
-      * The api user verifies that the updated id information in the response body matches the id path parameter specified in the endpoint.
+      * The api user verifies that the updated id information in the response body matches the <id> path parameter specified in the endpoint.
 
       Examples:
-        | id | reason                 |
-        | 25 | Product arrived lately |
+        | id | reason   |
+        | 94 | Ankara Baskent |
 
     Scenario Outline: TC_02 When a PATCH request body containing valid authorization information and an incorrect (non-existent in the
     system) Refund&Reason ID, along with necessary data (reason), is sent to the /api/refundReasonUpdate/{id}
@@ -47,3 +47,17 @@
       Examples:
         | id | reason                 |
         | 25 | Product arrived lately |
+
+    Scenario Outline: TC_04 The update of the desired Refund&Reason record via the API should be validated from the API.
+    (The update of the record can be confirmed by sending a GET request to the /api/refundReasonDetails endpoint
+    with the updated_Id returned in the response body.)
+
+      * The api user constructs the base url with the "admin" token.
+      * The api user sets "api/refundReasonDetails" path parameters
+      * The api user prepares a GET request containing the refund reason <id> for which details are to be accessed, to send to the api refundReasonDetails endpoint.
+      * The api user sends a GET request and saves the response returned from the api refundReasonDetails endpoint.
+      * The api user verifies that the reason information in the response body is "<reasonValue>".
+
+      Examples:
+        | id | reasonValue    |
+        | 94 | Ankara Baskent |
