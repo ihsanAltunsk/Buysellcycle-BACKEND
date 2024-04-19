@@ -276,11 +276,6 @@ public class API_Stepdefinitions {
     
     }
 
-    @Given("The API user sends a GET request {int} and records the response from the api faq details endpoint.")
-    public void the_api_user_sends_a_get_request_and_records_the_response_from_the_api_faq_details_endpoint(int id) {
-        requestBody.put("id",id);
-        API_Methods.getBodyResponse(requestBody.toString());
-    }
     @Given("The api user verifies the content of the data {int} {string}, {string}, {string} {int},{string},{string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(int id, String user_id , String title , String description , int status, String created_at, String updated_at) {
      jsonPath=API_Methods.response.jsonPath();
