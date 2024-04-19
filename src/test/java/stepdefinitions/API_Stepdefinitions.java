@@ -292,7 +292,15 @@ public class API_Stepdefinitions {
      Assert.assertEquals(created_at,jsonPath.getString("faqDetails[0].created_at"));
      Assert.assertEquals(updated_at,jsonPath.getString("faqDetails[0].updated_at"));
     }
-  
+
+    @Given("The api user prepares a PATCH request body for holiday add {string} {string} {string}.")
+    public void the_api_user_prepares_a_post_request_body_for_holiday_add(String year, String name, String date) {
+        requestBody = new JSONObject();
+        requestBody.put("year",year);
+        requestBody.put("name",name);
+        requestBody.put("date",date);
+    }
+
     //======================================================================================================================================================================
     // Doruk US23 - TC01
     @Given("The api user prepares a GET request containing the {int} information to send to the api departmanDetails endpoint.")
