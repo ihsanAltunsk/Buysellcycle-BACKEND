@@ -3,11 +3,11 @@ package stepdefinitions;
 import com.github.javafaker.Faker;
 import config_Requirements.ConfigReader;
 
-import hooks.HooksAPI;
+import hooks.Base;
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.restassured.path.json.JsonPath;
-import org.checkerframework.checker.units.qual.A;
 import org.json.JSONObject;
 import org.junit.Assert;
 import pojos.Pojo;
@@ -15,21 +15,21 @@ import utilities.API_Utilities.API_Methods;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Random;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertEquals;
 import static org.hamcrest.Matchers.nullValue;
 
-public class API_Stepdefinitions {
+public class API_Stepdefinitions extends Base {
 
     public static int id;
     public static String fullPath;
-    JSONObject requestBody;
+    public static JSONObject requestBody;
+    public static Random random;
     JsonPath jsonPath;
     HashMap<String, Object> reqBody;
-    Pojo requestPojo;
-    Faker faker;
+    public static Faker faker;
 
     //Reyyan US08-TC01
     @Given("The api user prepares a GET request containing the holiday {int} for which details are to be accessed, to send to the api holidayDetails endpoint.")
@@ -317,11 +317,38 @@ public class API_Stepdefinitions {
         requestBody.put("name", faker.name());
         requestBody.put("email", faker.internet().emailAddress());
         requestBody.put("address", faker.address());
-        requestBody.put("phone", faker.phoneNumber());
+        requestBody.put("phone", "5555");
         requestBody.put("city", faker.address().city());
         requestBody.put("state", faker.address().state());
         requestBody.put("country", faker.address().country());
-        requestBody.put("postal_code", faker.address().zipCode());
+        requestBody.put("postal_code", "55555");
         requestBody.put("address_type", "home");
     }
+
+    @And("The api user prepares a invalid POST request body for address-store.")
+    public void theApiUserPreparesAInvalidPOSTRequestBodyForAddressStore() {
+        requestBody.put("name", faker.name());
+        requestBody.put("email", "wrong");
+        requestBody.put("address", faker.address());
+        requestBody.put("phone", "5555");
+        requestBody.put("city", faker.address().city());
+        requestBody.put("state", faker.address().state());
+        requestBody.put("country", faker.address().country());
+        requestBody.put("postal_code", "55555");
+        requestBody.put("address_type", "home");
+    }
+    @Given("The api user prepares a POST request body {int}{string}{string}{string}{string}{string}{string}{string}{string}{string} for addressAdd.")
+    public void the_api_user_prepares_a_post_request_body_for_address_add(int int01, String string01, String string02, String string03, String string04, String string05, String string06, String string07, String string08, String string09) {
+        requestBody.put("customer_id", int01);
+        requestBody.put("name", string01);
+        requestBody.put("email", string02);
+        requestBody.put("address", string03);
+        requestBody.put("phone", string04);
+        requestBody.put("city", string05);
+        requestBody.put("state", string06);
+        requestBody.put("country", string07);
+        requestBody.put("postal_code", string08);
+        requestBody.put("address_type", string09);
+    }
+
 }

@@ -17,7 +17,7 @@
 
       Examples:
         | id | reason                 |
-        | 25 | Product arrived lately |
+        | 24 | Product arrived lately |
 
     Scenario Outline: TC_02 When a PATCH request body containing valid authorization information and an incorrect (non-existent in the
     system) Refund&Reason ID, along with necessary data (reason), is sent to the /api/refundReasonUpdate/{id}
