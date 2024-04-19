@@ -26,7 +26,8 @@
         * The api user constructs the base url with the "admin" token.
         * The api user sets "api/holidayDetails" path parameters
         * The api user prepares a GET request containing the holiday <id> for which details are to be accessed, to send to the api holidayDetails endpoint.
-        * The API user records the response from the api holidayDetails endpoint, verifying that the status code is '404' and the holiday Not Found.
+        * The api user verifies that the status code is 404
+        * The api user verifies that the message information in the response body is "holiday not found"
 
         Examples:
           | id |
@@ -39,7 +40,8 @@
         * The api user constructs the base url with the "invalid" token.
         * The api user sets "api/holidayDetails" path parameters
         * The api user prepares a GET request containing the holidayDetails <id> for which details are to be accessed, to send to the api holidayDetails endpoint.
-        * The API user records the response from the api holidayDetails endpoint, confirming that the status code is '401' and the reason phrase is Unauthorized.
+        * The api user verifies that the status code is 401
+        * The api user verifies that the message information in the response body is "Unauthenticated."
 
         Examples:
           | id |

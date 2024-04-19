@@ -47,4 +47,7 @@ public class API_Common_Stepdefinitions {
     public void the_api_user_sends_a_post_request_and_records_the_response() {
         API_Methods.postResponse(requestBody.toString());
     }
+
+
+
 }

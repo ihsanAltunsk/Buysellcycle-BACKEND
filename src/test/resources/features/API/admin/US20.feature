@@ -19,6 +19,7 @@
         | id | reason   |
         | 94 | Ankara Baskent |
 
+
     Scenario Outline: TC_02 When a PATCH request body containing valid authorization information and an incorrect (non-existent in the
     system) Refund&Reason ID, along with necessary data (reason), is sent to the /api/refundReasonUpdate/{id}
     endpoint, the returned status code should be 404, and the message information in the response body should be
@@ -61,3 +62,4 @@
       Examples:
         | id | reasonValue    |
         | 94 | Ankara Baskent |
+        | 24 | Product arrived lately |
