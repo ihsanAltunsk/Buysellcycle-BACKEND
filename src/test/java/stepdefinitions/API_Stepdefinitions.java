@@ -346,15 +346,52 @@ public class API_Stepdefinitions {
     public void the_api_user_prepares_a_post_request_containing_the_information_to_send_to_the_api_refund_reason_add_endpoint(String reason) {
     reqBody=new HashMap<>();
     reqBody.put("reason",reason);
-
     }
     @Given("The api user sends the POST request and saves the response returned from the api refundReasonAdd endpoint.")
     public void the_api_user_sends_the_post_request_and_saves_the_response_returned_from_the_api_refund_reason_add_endpoint() {
-
      API_Methods.postResponse(reqBody);
-
     }
-  
+    @Given("The api user prepares a PATCH request body for couponUpdate.")
+    public void the_api_user_sends_the_post_request_and_sav() {
+        requestBody = new JSONObject();
+        requestBody.put("title","can");
+        requestBody.put("coupon_code","attemt");
+        requestBody.put("coupon_type",2);
+        requestBody.put("start_date","2021-11-17");
+        requestBody.put("end_date","2021-11-19");
+        requestBody.put("discount",10);
+        requestBody.put("discount_type",0);
+        requestBody.put("minimum_shopping",1);
+        requestBody.put("maximum_discount",nullValue());
+        requestBody.put("is_expire",0);
+        requestBody.put("is_multiple_buy",1);
+    }
+    @Given("The API user sends a PATCH request and records the response.")
+    public void the_apı_user_sends_a_patch_request_and_records_the_response() {
+        API_Methods.patchResponse(requestBody.toString());
+    }
+    @Given("The api user verifies that the updated id information in the response body matches the {int} path parameter specified in the endpoint.")
+    public void the_api_user_verifies_that_the_updated_id_information_in_the_response_body_matches_the_id_path_parameter_specified_in_the_endpoint(int id) {
+        API_Methods.response.then()
+                .assertThat()
+                .body("updated_Id", equalTo(id));
+    }
+    //US31 -TC01
+    @Given("The api user prepares a DELETE  request containing the id = {int} for which details are to be accessed, to send to the api endpoint.")
+    public void the_api_user_prepares_a_delete_request_containing_the_id_for_which_details_are_to_be_accessed_to_send_to_the_api_endpoint(int id) {
+        requestBody = new JSONObject();
+        requestBody.put("id", id);
+    }
+    @Given("The api user sends the DELETE request and saves the response returned from the api refundReasonDelete endpoint.")
+    public void the_api_user_sends_the_delete_request_and_saves_the_response_returned_from_the_api_refund_reason_delete_endpoint() {
+   API_Methods.deleteResponse(requestBody.toString());
+    }
+    @Given("The API user saves the response from the api couponDelete endpoint, verifying that the status code is {string} and the reason phrase is Unauthorized.")
+    public void the_apı_user_saves_the_response_from_the_api_coupon_delete_endpoint_verifying_that_the_status_code_is_and_the_reason_phrase_is_unauthorized(String string) {
+        Assert.assertTrue(API_Methods.tryCatchDelete(requestBody.toString()).equals(ConfigReader.getProperty("api","unauthorizedExceptionMessage")));
+    }
+
+
 //======================================================================================================================================================================================
 //ihsan
     @Given("The api user verifies the content of the data {int}, {string}, {string}, {int}, {string}, {int}, {int}, {string}, {int}, {string}, {string} in the response body.")
