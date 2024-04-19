@@ -1,5 +1,5 @@
 #Reporter : Reyyan Mert
-@reyyan
+
   Feature: As an administrator, I want to be able to create a new coupon record via the API connection.
 
     Scenario Outline: When a POST body containing valid authorization information and necessary data (title,
