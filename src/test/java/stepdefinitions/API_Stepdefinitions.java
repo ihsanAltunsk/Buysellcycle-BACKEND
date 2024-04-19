@@ -250,8 +250,8 @@ public class API_Stepdefinitions {
         API_Methods.patchResponse(requestBody.toString());
 
     }
-    @Given("The api user verifies that the updated id information in the response body matches the id path parameter specified in the endpoint.")
-    public void the_api_user_verifies_that_the_updated_id_information_in_the_response_body_matches_the_id_path_parameter_specified_in_the_endpoint() {
+    @Given("The api user verifies that the updated id information in the response body matches the {int} path parameter specified in the endpoint.")
+    public void the_api_user_verifies_that_the_updated_id_information_in_the_response_body_matches_the_id_path_parameter_specified_in_the_endpoint(int id) {
         API_Methods.response.then()
                 .assertThat()
                 .body("updated_Id", equalTo(id));
@@ -268,8 +268,59 @@ public class API_Stepdefinitions {
         Assert.assertTrue(API_Methods.tryCatchPatch(requestBody.toString()).equals(ConfigReader.getProperty("api","unauthorizedExceptionMessage")));
 
     }
-  
-  //===================================================================================================================
+
+    @Given("The api user prepares a GET request containing the refund reason {int} for which details are to be accessed, to send to the api refundReasonDetails endpoint.")
+    public void the_api_user_prepares_a_get_request_containing_the_refund_reason_for_which_details_are_to_be_accessed_to_send_to_the_api_refund_reason_details_endpoint(int id) {
+        requestBody = new JSONObject();
+        requestBody.put("id", id);
+    }
+    @Given("The api user sends a GET request and saves the response returned from the api refundReasonDetails endpoint.")
+    public void the_api_user_sends_a_get_request_and_saves_the_response_returned_from_the_api_refund_reason_details_endpoint() {
+        API_Methods.getBodyResponse(requestBody.toString());
+    }
+    @Given("The api user verifies that the reason information in the response body is {string}.")
+    public void the_api_user_verifies_that_the_reason_information_in_the_response_body_is(String reasonValue) {
+        jsonPath = API_Methods.response.jsonPath();
+
+        Assert.assertEquals(reasonValue, jsonPath.getString("refundReasonDetails[0].reason"));
+    }
+    @Given("The api user prepares a POST request body for holiday add {string} {string} {string}.")
+    public void the_api_user_prepares_a_post_request_body_for_holiday_add(String year, String name, String date) {
+        requestBody = new JSONObject();
+       requestBody.put("year",year);
+       requestBody.put("name",name);
+       requestBody.put("date",date);
+    }
+    @Given("The api user prepares a DELETE request containing the refund reason {int} to be deleted to send to the api refundReasonDelete endpoint.")
+    public void the_api_user_prepares_a_delete_request_containing_the_refund_reason_to_be_deleted_to_send_to_the_api_refund_reason_delete_endpoint(int id) {
+        requestBody = new JSONObject();
+        requestBody.put("id",id);
+    }
+    @Given("The api user sends the DELETE request and saves the response returned from the api refundReasonDelete endpoint.")
+    public void the_api_user_sends_the_delete_request_and_saves_the_response_returned_from_the_api_refund_reason_delete_endpoint() {
+        API_Methods.deleteResponse(requestBody.toString());
+    }
+
+    @Given("The api user verifies that the Deleted id information in the response body is the same as the id information in the request body.")
+    public void the_api_user_verifies_that_the_deleted_id_information_in_the_response_body_is_the_same_as_the_id_information_in_the_request_body() {
+        jsonPath = API_Methods.response.jsonPath();
+        Assert.assertEquals(requestBody.get("id"), jsonPath.getInt("Deleted_Id"));
+    }
+    @Given("The api user validates the {string} {string} of the response body with index {int}.")
+    public void the_api_user_validates_the_of_the_response_body_with_index(String year, String name, int dataIndex) {
+        jsonPath = API_Methods.response.jsonPath();
+
+
+        Assert.assertEquals(year, jsonPath.getString("holiday["+dataIndex+"].year"));
+        Assert.assertEquals(name, jsonPath.getString("holiday["+dataIndex+"].name"));
+    }
+
+
+
+
+
+
+    //===================================================================================================================
     // Senayda US05-TC02
     @Given("The api user verifies the content of the data {int}, {string}, {string}, {string}, {string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(Integer id, String first_name, String username, String email, String name) {
