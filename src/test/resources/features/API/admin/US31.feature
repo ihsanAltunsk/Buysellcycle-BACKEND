@@ -5,7 +5,7 @@ Scenario:TC-01 When a DELETE body containing valid authorization information and
   * The api user constructs the base url with the "admin" token.
   * The api user sets "api/coupon/couponDelete" path parameters
   * The api user prepares a DELETE  request containing the id = 57 for which details are to be accessed, to send to the api endpoint.
-  * The api user sends the DELETE request and saves the response returned from the api refundReasonDelete endpoint.
+  * The API user sends a "DELETE" request and records the response.
   * The api user verifies that the status code is 202
   * The api user verifies that the message information in the response body is "coupon deleted successfully"
   @AZ
@@ -13,7 +13,7 @@ Scenario:TC-02 When a DELETE body containing valid authorization information and
   * The api user constructs the base url with the "admin" token.
   * The api user sets "api/coupon/couponDelete" path parameters
   * The api user prepares a DELETE  request containing the id = 57777 for which details are to be accessed, to send to the api endpoint.
-  * The api user sends the DELETE request and saves the response returned from the api refundReasonDelete endpoint.
+  * The API user sends a "DELETE" request and records the response.
   * The api user verifies that the status code is 404
   * The api user verifies that the message information in the response body is "coupon not found"
 
@@ -21,7 +21,7 @@ Scenario:TC-03 When a DELETE body containing invalid authorization information a
   * The api user constructs the base url with the "invalidToken" token.
   * The api user sets "api/coupon/couponDelete" path parameters
   * The api user prepares a DELETE  request containing the id = 57 for which details are to be accessed, to send to the api endpoint.
-  * The api user sends the DELETE request and saves the response returned from the api refundReasonDelete endpoint.
+  * The API user sends a "DELETE" request and records the response.
 
 Scenario:TC-04 The Deleted_Id information in the response body returned from the /api/coupon/couponDelete endpoint should be verified to match the id information in the DELETE request body sent to the same /api/coupon/couponDelete endpoint.
   * The api user constructs the base url with the "admin" token.

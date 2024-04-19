@@ -24,8 +24,7 @@
 
         * The api user constructs the base url with the "admin" token.
         * The api user sets "api/coupon/couponDetails" path parameters
-        * The api user prepares a GET request containing the refund reason <id> for which details are to be accessed, to send to the api couponDetails endpoint.
-        * The api user sends a GET request and saves the response returned from the api couponDetails endpoint.
+        * The api user prepares a GETBODY request containing the id = <id> and records the response.
         * The api user verifies that the message information in the response body is "success"
 
         Examples:
@@ -40,7 +39,7 @@
           * The api user constructs the base url with the "invalid" token.
           * The api user sets "api/coupon/couponAdd " path parameters
           * The api user prepares a POST request containing the "<title>", "<coupon_code>", <coupon_type>, "<start_date>", "<end_date>", <discount>, <discount_type>, <minimum_shopping>, <maximum_discount>, <is_expire>, <is_multiple_buy> information to send to the api couponAdd endpoint.
-          * The api user sends the POST request and saves the response returned from the api couponAdd endpoint.
+          * The API user sends a "POST" request and records the response.
           * The api user verifies that the status code is 401
           * The api user verifies that the message information in the response body is "Unauthenticated."
 

@@ -55,8 +55,7 @@
 
           * The api user constructs the base url with the "admin" token.
           * The api user sets "api/profile/addressDetails" path parameters
-          * The api user prepares a GET request containing the refund reason <id> for which details are to be accessed, to send to the api addressUpdate endpoint.
-          * The api user sends a GET request and saves the response returned from the api addressUpdate endpoint.
+          * The api user prepares a GETBODY request containing the id = <id> and records the response.
           * The api user verifies that the reason information in the response body is <customer_id>, "<name>", "<email>", "<address>", "<phone>", "<city>","<state>", "<country>", "<postal_code>", "<address_type>".
 
           Examples:

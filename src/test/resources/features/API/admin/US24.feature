@@ -8,7 +8,7 @@ Feature: US24 As an administrator, I want to be able to add a new department rec
     * The api user prepares a POST request containing the department information to send to the api departmanAdd endpoint.
       | name | details | status |
       | Test Department | Test Department Details | 1 |
-    * The api user sends the POST request and saves the response returned from the api departmanDetails endpoint.
+    * The API user sends a "POST" request and records the response.
     * The api user verifies that the status code is 201
     * The api user verifies that the message information in the response body is "department added successfully"
 
@@ -18,6 +18,6 @@ Feature: US24 As an administrator, I want to be able to add a new department rec
     * The api user prepares a POST request containing the department information to send to the api departmanAdd endpoint.
       | name | details | status |
       | Test Department | Test Department Details | 1 |
-    * The api user sends the POST request and saves the response returned from the api departmanDetails endpoint.
+    * The API user sends a "POST" request and records the response.
     * The api user verifies that the status code is 401
     * The api user verifies that the message information in the response body is "Unauthenticated."

@@ -8,7 +8,7 @@
 
     * The api user constructs the base url with the "admin" token.
     * The api user sets "api/faqsDetails" path parameters
-    * The API user sends a GET request 2 and records the response from the api faq details endpoint.
+    * The api user prepares a GETBODY request containing the id = 2 and records the response.
     * The api user verifies that the status code is 200
     * The api user verifies that the message information in the response body is "success"
 
@@ -18,7 +18,7 @@ Scenario Outline: TC02 User sends a GET request to the /api/faqsDetails endpoint
 
   * The api user constructs the base url with the "admin" token.
   * The api user sets "api/faqsDetails" path parameters
-  * The API user sends a GET request and records the response from the api refundReasonList endpoint.
+  * The API user sends a "GET" request and records the response.
   * The api user verifies the content of the data 2 "null", "How do I know when my order is here?", "A representative will call you as soon as they are at your house to let you know about your delivery." 1,"2024-01-22T23:18:58.000000Z","2024-01-22T23:18:58.000000Z" in the response body.
 
   Examples:
@@ -30,13 +30,13 @@ Scenario Outline: TC02 User sends a GET request to the /api/faqsDetails endpoint
 
     * The api user constructs the base url with the "admin" token.
     * The api user sets "api/faqsDetails" path parameters
-    * The API user sends a GET request 500 and records the response from the api faq details endpoint.
+    * The API user sends a "GET" request and records the response.
     * The api user verifies that the status code is 404
     * The api user verifies that the message information in the response body is "Faqs not found"
 
     Scenario:
       * The api user constructs the base url with the "invalidToken" token.
       * The api user sets "api/faqsDetails" path parameters
-      * The API user sends a GET request and records the response from the api refundReasonList endpoint.
+      * The API user sends a "GET" request and records the response.
       * The api user verifies that the status code is 401
       * The api user verifies that the message information in the response body is "Unauthenticated."

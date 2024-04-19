@@ -9,7 +9,7 @@ body should confirm that it is "address deleted successfully".
   * The api user constructs the base url with the "admin" token.
   * The api user sets "api/profile/deleteAddress" path parameters
   * The api user prepares a DELETE request containing the refund reason <id> to be deleted to send to the api deleteAddress endpoint.
-  * The api user sends the DELETE request and saves the response returned from the api deleteAddress endpoint.
+  * The API user sends a "DELETE" request and records the response.
   * The api user verifies that the status code is 202
   * The api user verifies that the message information in the response body is "address deleted successfully"
   * The api user verifies that the Deleted <id> information in the response body is the same as the id information in the request body.

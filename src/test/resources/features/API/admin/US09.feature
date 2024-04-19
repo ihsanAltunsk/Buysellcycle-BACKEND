@@ -7,7 +7,7 @@
       * The api user constructs the base url with the "admin" token.
       * The api user sets "api/holidayAdd" path parameters
       * The api user prepares a POST request body for holiday add "2023" "Aylardan nisan" "2023-04-19".
-      * The API user sends a POST request and records the response.
+      * The API user sends a "POST" request and records the response.
       * The api user verifies that the status code is 201
       * The api user verifies that the message information in the response body is "holiday added successfully"
 
@@ -17,8 +17,7 @@
 
         * The api user constructs the base url with the "admin" token.
         * The api user sets "api/holidayDetails" path parameters
-        * The api user prepares a GETBODY request containing the id = 81 for which details are to be accessed, to send to the api endpoint.
-        * The API user sends a GETBODY request and records the response.
+        * The api user prepares a GETBODY request containing the id = 81 and records the response.
         * The api user verifies that the message information in the response body is "success"
 
         Scenario: TC_03 /api/holidayAdd endpoint'ine gecerli authorization bilgileri ve sisteme kayitli holiday verilerini (year, name, date) iceren bir POST body gönderildiginde dönen
@@ -27,7 +26,7 @@
           * The api user constructs the base url with the "admin" token.
           * The api user sets "api/holidayAdd" path parameters
           * The api user prepares a POST request body for holiday add "2023" "Aylardan nisan" "2023-04-19".
-          * The API user sends a POST request and records the response.
+          * The API user sends a "POST" request and records the response.
           * The api user verifies that the status code is 400
           * The api user verifies that the message information in the response body is "dublicate holiday request"
 
@@ -37,6 +36,6 @@
            * The api user constructs the base url with the "invalid" token.
            * The api user sets "api/holidayAdd" path parameters
            * The api user prepares a POST request body for holiday add "2023" "Aylardan nisan" "2023-04-19".
-           * The API user sends a POST request and records the response.
+           * The API user sends a "POST" request and records the response.
            * The api user verifies that the status code is 401
            * The api user verifies that the message information in the response body is "Unauthenticated."

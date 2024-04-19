@@ -4,7 +4,7 @@
       * The api user constructs the base url with the "<admin>" token.
       * The api user sets "api/profile/addressAdd" path parameters
       * The api user prepares a POST request body <customer_id>"<name>""<email>""<address>""<phone>""<city>""<state>""<country>""<postal_code>""<address_type>" for addressAdd.
-      * The API user sends a POST request and records the response.
+      * The API user sends a "POST" request and records the response.
       * The api user verifies that the status code is <id>
       * The api user verifies that the message information in the response body is "<message>"
       Examples:

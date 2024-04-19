@@ -7,7 +7,7 @@
 
     * The api user constructs the base url with the "admin" token.
     * The api user sets "api/get-users" path parameters
-    * The API user sends a GET request and records the response from the api refundReasonList endpoint.
+    * The API user sends a "GET" request and records the response.
     * The api user verifies that the status code is 200
     * The api user verifies that the message information in the response body is "success"
     @05
@@ -16,7 +16,7 @@
 
       * The api user constructs the base url with the "admin" token.
       * The api user sets "api/get-users" path parameters
-      * The API user sends a GET request and records the response from the api refundReasonList endpoint.
+      * The API user sends a "GET" request and records the response.
       * The api user verifies the content of the data <id>, "<first_name>", "<username>", "<email>", "<name>" in the response body.
 
       Examples:
@@ -29,7 +29,7 @@
 
         * The api user constructs the base url with the "invalidToken" token.
         * The api user sets "api/get-users" path parameters
-        * The API user sends a GET request and records the response from the api refundReasonList endpoint.
+        * The API user sends a "GET" request and records the response.
         * The api user verifies that the status code is 401
         * The api user verifies that the message information in the response body is "Unauthenticated."
 

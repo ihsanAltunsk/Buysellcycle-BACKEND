@@ -9,7 +9,7 @@
     * The api user constructs the base url with the "admin" token.
     * The api user sets "api/holidayUpdate/<id>" path parameters
     * The api user prepares a PATCH request body for holiday add "2025" "Spring" "2025-01-01".
-    * The api user sends the PATCH request and saves the response returned from the api refundReasonUpdate endpoint.
+    * The API user sends a "PATCH" request and records the response.
     * The api user verifies that the status code is 202
     * The api user verifies that the message information in the response body is "holiday updated successfully"
 
@@ -24,7 +24,7 @@
       * The api user constructs the base url with the "admin" token.
       * The api user sets "api/holidayUpdate/<id>" path parameters
       * The api user prepares a PATCH request body for holiday add "2025" "Spring" "2025-01-01".
-      * The api user sends the PATCH request and saves the response returned from the api refundReasonUpdate endpoint.
+      * The API user sends a "PATCH" request and records the response.
       * The api user verifies that the status code is 400
       * The api user verifies that the message information in the response body is "dublicate holiday request"
 
@@ -40,7 +40,7 @@
         * The api user constructs the base url with the "admin" token.
         * The api user sets "api/holidayUpdate/<id>" path parameters
         * The api user prepares a PATCH request body for holiday add "2025" "Spring" "2025-01-01".
-        * The api user sends the PATCH request and saves the response returned from the api refundReasonUpdate endpoint.
+        * The API user sends a "PATCH" request and records the response.
         * The api user verifies that the status code is 404
         * The api user verifies that the message information in the response body is "holiday not found"
 
@@ -55,7 +55,7 @@
           * The api user constructs the base url with the "invalid" token.
           * The api user sets "api/holidayUpdate/<id>" path parameters
           * The api user prepares a PATCH request body for holiday add "2025" "Spring" "2025-01-01".
-          * The api user sends the PATCH request and saves the response returned from the api refundReasonUpdate endpoint.
+          * The API user sends a "PATCH" request and records the response.
           * The api user verifies that the status code is 401
           * The api user verifies that the message information in the response body is "Unauthenticated."
 
@@ -70,7 +70,7 @@
       * The api user constructs the base url with the "admin" token.
       * The api user sets "api/holidayUpdate/<id>" path parameters
       * The api user prepares a PATCH request body for holiday add "2025" "Spring" "2025-01-01".
-      * The api user sends the PATCH request and saves the response returned from the api refundReasonUpdate endpoint.
+      * The API user sends a "PATCH" request and records the response.
       * The api user verifies that the updated id information in the response body matches the id path parameter specified in the endpoint.
 
       Examples:

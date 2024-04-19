@@ -9,8 +9,7 @@
 
     * The api user constructs the base url with the "admin" token.
     * The api user sets "api/holidayDetails" path parameters
-    * The api user prepares a GET request containing the holiday <id> for which details are to be accessed, to send to the api holidayDetails endpoint.
-    * The api user sends a GET request and saves the response returned from the api holidayDetails endpoint.
+    * The api user prepares a GETBODY request containing the id = <id> and records the response.
     * The api user verifies that the status code is 200
     * The api user verifies that the message information in the response body is "success"
     * The api user verifies the content of the data <id>, "<year>", "<name>", <type>, "<date>","<created_at>","<updated_at>" in the response body.
@@ -25,7 +24,7 @@
 
         * The api user constructs the base url with the "admin" token.
         * The api user sets "api/holidayDetails" path parameters
-        * The api user prepares a GET request containing the holiday <id> for which details are to be accessed, to send to the api holidayDetails endpoint.
+        * The api user prepares a GETBODY request containing the id = <id> and records the response.
         * The api user verifies that the status code is 404
         * The api user verifies that the message information in the response body is "holiday not found"
 
@@ -39,7 +38,7 @@
 
         * The api user constructs the base url with the "invalid" token.
         * The api user sets "api/holidayDetails" path parameters
-        * The api user prepares a GET request containing the holidayDetails <id> for which details are to be accessed, to send to the api holidayDetails endpoint.
+        * The api user prepares a GETBODY request containing the id = <id> and records the response.
         * The api user verifies that the status code is 401
         * The api user verifies that the message information in the response body is "Unauthenticated."
 

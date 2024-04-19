@@ -9,7 +9,7 @@
       * The api user constructs the base url with the "admin" token.
       * The api user sets "api/refundReasonDelete" path parameters
       * The api user prepares a DELETE request containing the refund reason 98 to be deleted to send to the api refundReasonDelete endpoint.
-      * The api user sends the DELETE request and saves the response returned from the api refundReasonDelete endpoint.
+      * The API user sends a "DELETE" request and records the response.
       * The api user verifies that the status code is 202
       * The api user verifies that the message information in the response body is "refundReason deleted successfully"
 
@@ -19,7 +19,7 @@
         * The api user constructs the base url with the "admin" token.
         * The api user sets "api/refundReasonDelete" path parameters
         * The api user prepares a DELETE request containing the refund reason 150 to be deleted to send to the api refundReasonDelete endpoint.
-        * The api user sends the DELETE request and saves the response returned from the api refundReasonDelete endpoint.
+        * The API user sends a "DELETE" request and records the response.
         * The api user verifies that the status code is 404
         * The api user verifies that the message information in the response body is "refundReason not found"
 
@@ -29,7 +29,7 @@
           * The api user constructs the base url with the "invalid" token.
           * The api user sets "api/refundReasonDelete" path parameters
           * The api user prepares a DELETE request containing the refund reason 98 to be deleted to send to the api refundReasonDelete endpoint.
-          * The api user sends the DELETE request and saves the response returned from the api refundReasonDelete endpoint.
+          * The API user sends a "DELETE" request and records the response.
           * The api user verifies that the status code is 401
           * The api user verifies that the message information in the response body is "Unauthenticated."
 
@@ -39,7 +39,7 @@
             * The api user constructs the base url with the "admin" token.
             * The api user sets "api/refundReasonDelete" path parameters
             * The api user prepares a DELETE request containing the refund reason 98 to be deleted to send to the api refundReasonDelete endpoint.
-            * The api user sends the DELETE request and saves the response returned from the api refundReasonDelete endpoint.
+            * The API user sends a "DELETE" request and records the response.
             * The api user verifies that the status code is 202
             * The api user verifies that the message information in the response body is "refundReason deleted successfully"
             * The api user verifies that the Deleted id information in the response body is the same as the id information in the request body.
@@ -50,7 +50,7 @@
 
               * The api user constructs the base url with the "admin" token.
               * The api user sets "api/refundReasonDetails" path parameters
-              * The api user prepares a GET request containing the refund reason 98 for which details are to be accessed, to send to the api refundReasonDetails endpoint.
+              * The API user sends a "DELETE" request and records the response.
               * The api user sends a GET request and saves the response returned from the api refundReasonDetails endpoint.
               * The api user verifies that the status code is 404
               * The api user verifies that the message information in the response body is "refund Reason  not found"

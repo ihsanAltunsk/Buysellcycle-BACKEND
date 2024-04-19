@@ -6,7 +6,7 @@
 
       * The api user constructs the base url with the "customer" token.
       * The api user sets "api/profile/address-list" path parameters
-      * The API user sends a GET request and records the response.
+      * The API user sends a "GET" request and records the response.
       * The api user verifies that the status code is 200
       * The api user verifies that the message information in the response body is "success"
 
@@ -15,7 +15,7 @@
       customer_id, name, email, phone, address, city, state, country, postal_code, is_shipping_default, is_billing_default, created_at, updated_at.
         * The api user constructs the base url with the "customer" token.
         * The api user sets "api/profile/address-list" path parameters
-        * The API user sends a GET request and records the response.
+        * The API user sends a "GET" request and records the response.
         * The api user validates the "<year>" "<name>" of the response body with index <dataIndex>.
 
         Examples:
@@ -27,7 +27,7 @@
         should be 401, and the message information in the response should be verified as "Unauthenticated.".
           * The api user constructs the base url with the "invalidToken" token.
           * The api user sets "api/profile/address-list" path parameters
-          * The API user sends a GET request and records the response.
+          * The API user sends a "GET" request and records the response.
           * The api user verifies that the status code is 401
           * The api user verifies that the message information in the response body is "Unauthenticated."
 

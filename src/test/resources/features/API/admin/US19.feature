@@ -24,8 +24,7 @@ endpoint with the added_item_id returned in the response body.)
 
   * The api user constructs the base url with the "admin" token.
   * The api user sets "api/refundReasonDetails" path parameters
-  * The api user prepares a GETBODY request containing the id = 50 for which details are to be accessed, to send to the api endpoint.
-  * The API user sends a GETBODY request and records the response.
+  * The api user prepares a GETBODY request containing the id = 50 and records the response.
   * The api user verifies that the message information in the response body is "success"
 
 
