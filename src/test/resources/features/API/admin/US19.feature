@@ -1,7 +1,7 @@
 #Reporter : Azim Kaya
 Feature: As an administrator, I want to be able to add a new Refund&Reason record to the system via the API connection.
 
-  @AZ
+
 Scenario Outline:TC-01 When a POST body containing valid authorization information and necessary data
 (reason) is sent to the /api/refundReasonAdd endpoint, the returned status code should be 201,
 and the message information in the responsebody should be verified as "refundReason added successfully".
