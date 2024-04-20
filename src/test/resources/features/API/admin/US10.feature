@@ -71,4 +71,3 @@ Feature: As an administrator, I want to be able to update holiday information fo
                 the /api/holidayDetails endpoint with the updated_Id returned in the response body.
    * The api user constructs the base url with the "admin" token.
    * The api user sets "api/holidayDetails" path parameters
-

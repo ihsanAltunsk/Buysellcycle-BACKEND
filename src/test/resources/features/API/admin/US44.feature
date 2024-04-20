@@ -8,11 +8,11 @@ body should confirm that it is "address deleted successfully".
 
   * The api user constructs the base url with the "admin" token.
   * The api user sets "api/profile/deleteAddress" path parameters
-  * The api user prepares a DELETE request containing the refund reason <id> to be deleted to send to the api deleteAddress endpoint.
+  * The api user prepares a DELETEBODY request containing the id = <id> and records the response.
   * The API user sends a "DELETE" request and records the response.
   * The api user verifies that the status code is 202
   * The api user verifies that the message information in the response body is "address deleted successfully"
-  * The api user verifies that the Deleted <id> information in the response body is the same as the id information in the request body.
+  * The api user verifies that Deleted_Id is same as the request body <id>
 
 
   Examples:
@@ -25,7 +25,7 @@ body should confirm that it is "address deleted successfully".
 
     * The api user constructs the base url with the "admin" token.
     * The api user sets "api/profile/deleteAddress" path parameters
-    * The api user prepares a DELETE request containing the refund reason <id> to be deleted to send to the api deleteAddress endpoint.
+    * The api user prepares a DELETEBODY request containing the id = <id> and records the response.
     * The API user records the response from the api deleteAddress endpoint, confirming that the status code is '404' and the reason phrase is Not Found.
 
     Examples:
@@ -38,11 +38,9 @@ body should confirm that it is "address deleted successfully".
 
       * The api user constructs the base url with the "invalid" token.
       * The api user sets "api/profile/deleteAddress" path parameters
-      * The api user prepares a DELETE request containing the refund reason <id> to be deleted to send to the api deleteAddress endpoint.
+      * The api user prepares a DELETEBODY request containing the id = <id> and records the response.
       * The API user saves the response from the api deleteAddress endpoint, verifying that the status code is '401' and the reason phrase is Unauthorized.
 
       Examples:
         |id |
         |257|
-
-

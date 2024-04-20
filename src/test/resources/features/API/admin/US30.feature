@@ -4,7 +4,7 @@
     * The api user constructs the base url with the "admin" token.
     * The api user sets "api/coupon/couponUpdate/45" path parameters
     * The api user prepares a PATCH request body for couponUpdate.
-    * The API user sends a PATCH request and records the response.
+    * The API user sends a "PATCH" request and records the response.
     * The api user verifies that the message information in the response body is "coupon updated successfully"
     * The api user verifies that the status code is 202
 
@@ -12,7 +12,7 @@
     * The api user constructs the base url with the "admin" token.
     * The api user sets "api/coupon/couponUpdate/47777" path parameters
     * The api user prepares a PATCH request body for couponUpdate.
-    * The API user sends a PATCH request and records the response.
+    * The API user sends a "PATCH" request and records the response.
     * The api user verifies that the status code is 404
     * The api user verifies that the message information in the response body is "coupon not found"
 
@@ -20,7 +20,7 @@
     * The api user constructs the base url with the "invalidToken" token.
     * The api user sets "api/coupon/couponUpdate/45" path parameters
     * The api user prepares a PATCH request body for couponUpdate.
-    * The API user sends a PATCH request and records the response.
+    * The API user sends a "PATCH" request and records the response.
     * The api user verifies that the status code is 401
     * The api user verifies that the message information in the response body is "Unauthenticated."
 
@@ -28,14 +28,14 @@
     * The api user constructs the base url with the "admin" token.
     * The api user sets "api/coupon/couponUpdate/45" path parameters
     * The api user prepares a PATCH request body for couponUpdate.
-    * The API user sends a PATCH request and records the response.
-    * The api user verifies that the updated id information in the response body matches the 45 path parameter specified in the endpoint.
+    * The API user sends a "PATCH" request and records the response.
+    * The api user verifies that updated_Id is same as the param 45
 
   Scenario Outline: TC-05 The update of the coupon record via the API should be verified from the API itself.
     * The api user constructs the base url with the "admin" token.
     * The api user sets "api/coupon/couponUpdate/45" path parameters
     * The API user sends a "PATCH" request and records the response.
-    * The api user verifies that the updated id information in the response body matches the <id> path parameter specified in the endpoint.
+    * The api user verifies that updated_Id is same as the param <id>
 
       Examples:
         | id |

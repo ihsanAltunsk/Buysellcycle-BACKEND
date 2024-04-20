@@ -46,4 +46,3 @@
           Examples:
             |title          |coupon_code|coupon_type|start_date  |end_date  |discount |discount_type|minimum_shopping|maximum_discount|is_expire|is_multiple_buy|
             |Attemt Coupon 2|attemt     |2          |2021-11-17  |2021-11-19|10       |0            |1               |null            |0        |1              |
-

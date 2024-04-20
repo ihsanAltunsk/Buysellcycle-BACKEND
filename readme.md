@@ -43,6 +43,10 @@
 > 
 > The api user prepares a DELETEBODY request containing the id = 2 and records the response.
 > 
+> The api user verifies that updated_Id is same as the param <id>
+> 
+> The api user verifies that Deleted_Id is same as the request body <id>
+> 
 > The API user records the response from the api endpoint, confirming that the status code is '401' and the reason phrase is Unauthorized.
 
 

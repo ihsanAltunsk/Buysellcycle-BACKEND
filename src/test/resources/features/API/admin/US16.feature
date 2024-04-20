@@ -7,7 +7,7 @@
       * The API user sends a "DELETE" request and records the response.
       * The api user verifies that the status code is 202
       * The api user verifies that the message information in the response body is "faqs deleted successfully"
-      * The api user verifies that deleted_Id is same as the request body <id>
+      * The api user verifies that Deleted_Id is same as the request body <id>
         Examples:
         |id|
         |70|

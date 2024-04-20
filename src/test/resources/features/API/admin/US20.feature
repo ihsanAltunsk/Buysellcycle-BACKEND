@@ -13,7 +13,7 @@
       * The API user sends a "PATCH" request and records the response.
       * The api user verifies that the status code is 202
       * The api user verifies that the message information in the response body is "refundReason updated successfully"
-      * The api user verifies that the updated id information in the response body matches the <id> path parameter specified in the endpoint.
+      * The api user verifies that updated_Id is same as the param <id>
 
       Examples:
         | id | reason   |
@@ -55,7 +55,6 @@
       * The api user constructs the base url with the "admin" token.
       * The api user sets "api/refundReasonDetails" path parameters
       * The api user prepares a GETBODY request containing the id = <id> and records the response.
-      * The api user sends a GET request and saves the response returned from the api refundReasonDetails endpoint.
       * The api user verifies that the reason information in the response body is "<reasonValue>".
 
       Examples:

@@ -48,7 +48,7 @@ public class API_Common_Stepdefinitions extends Base {
         jsonPath = API_Methods.response.jsonPath();
         assertEquals(id, jsonPath.getInt("updated_Id"));
     }
-    @Given("The api user verifies that deleted_Id is same as the request body {int}")
+    @Given("The api user verifies that Deleted_Id is same as the request body {int}")
     public void the_api_user_verifies_that_deleted_id_is_same_as_the_request_body(int id) {
         jsonPath = API_Methods.response.jsonPath();
         assertEquals(id, jsonPath.getInt("Deleted_Id"));
