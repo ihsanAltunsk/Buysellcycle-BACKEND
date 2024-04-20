@@ -7,15 +7,10 @@ import hooks.Base;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.restassured.path.json.JsonPath;
 import org.json.JSONObject;
 import org.junit.Assert;
-import pojos.Pojo;
 import utilities.API_Utilities.API_Methods;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertEquals;
@@ -23,14 +18,6 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertNull;
 
 public class API_Stepdefinitions extends Base {
-
-    public static int id;
-    public static String fullPath;
-    public static JSONObject requestBody;
-    public static Random random;
-    JsonPath jsonPath;
-    HashMap<String, Object> reqBody;
-    public static Faker faker;
 
     //Reyyan US08-TC01
     @Given("The api user verifies the content of the data {int}, {string}, {string}, {int}, {string},{string},{string} in the response body.")
@@ -328,12 +315,11 @@ public class API_Stepdefinitions extends Base {
     // Azim Kaya
     @Given("The api user prepares a POST request containing the {string} information to send to the api refundReasonAdd endpoint.")
     public void the_api_user_prepares_a_post_request_containing_the_information_to_send_to_the_api_refund_reason_add_endpoint(String reason) {
-    reqBody=new HashMap<>();
-    reqBody.put("reason",reason);
+    reqBodyMap.put("reason",reason);
     }
     @Given("The api user sends the POST request and saves the response returned from the api refundReasonAdd endpoint.")
     public void the_api_user_sends_the_post_request_and_saves_the_response_returned_from_the_api_refund_reason_add_endpoint() {
-     API_Methods.postResponse(reqBody);
+     API_Methods.postResponse(reqBodyMap);
     }
     @Given("The api user prepares a PATCH request body for couponUpdate.")
     public void the_api_user_sends_the_post_request_and_sav() {
@@ -413,7 +399,6 @@ id, customer_id, name, email, phone, address, city, state, country, postal_code,
     @Given("The api user verifies the content of the data {int}, {string}, {string}, {int}, {string}, {int}, {int}, {string}, {int}, {string}, {string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_id_in_the_response_body(int id , String first_name, String last_name, int role_id, String email, int is_verified, int is_active, String lang_code, int currency_id, String currency_code, String name) {
         jsonPath = API_Methods.response.jsonPath();
-
         assertEquals(id, jsonPath.getInt("user.id"));
         assertEquals(first_name, jsonPath.getString("user.first_name"));
         assertEquals(last_name, jsonPath.getString("user.last_name"));
@@ -459,17 +444,26 @@ id, customer_id, name, email, phone, address, city, state, country, postal_code,
         requestBody.put("address_type", "home");
     }
     @Given("The api user prepares a POST request body {int}{string}{string}{string}{string}{string}{string}{string}{string}{string} for addressAdd.")
-    public void the_api_user_prepares_a_post_request_body_for_address_add(int int01, String string01, String string02, String string03, String string04, String string05, String string06, String string07, String string08, String string09) {
-        requestBody.put("customer_id", int01);
-        requestBody.put("name", string01);
-        requestBody.put("email", string02);
-        requestBody.put("address", string03);
-        requestBody.put("phone", string04);
-        requestBody.put("city", string05);
-        requestBody.put("state", string06);
-        requestBody.put("country", string07);
-        requestBody.put("postal_code", string08);
-        requestBody.put("address_type", string09);
+    public void the_api_user_prepares_a_post_request_body_for_address_add(int customer_id, String name, String email, String address, String phone, String city, String state, String country, String postal_code, String address_type) {
+        requestBody.put("customer_id", customer_id);
+        requestBody.put("name", name);
+        requestBody.put("email", email);
+        requestBody.put("address", address);
+        requestBody.put("phone", phone);
+        requestBody.put("city", city);
+        requestBody.put("state", state);
+        requestBody.put("country", country);
+        requestBody.put("postal_code", postal_code);
+        requestBody.put("address_type", address_type);
     }
-
+    @Given("The api user prepares a PATCH request body for faq.")
+    public void the_api_user_prepares_a_post_request_body_for_faq() {
+        requestBody.put("title", "DENEME");
+        requestBody.put("description", "DENEEEE");
+    }
+    @Given("The api user verifies that updated id is same as the GET response body {int}")
+    public void the_api_user_verifies_that_updated_id_is_same_as_the_get_response_body(int id) {
+        jsonPath = API_Methods.response.jsonPath();
+        assertEquals(id, jsonPath.getInt("FaqsDetails[0].id"));
+    }
 }
