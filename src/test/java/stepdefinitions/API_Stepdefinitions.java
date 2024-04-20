@@ -359,11 +359,53 @@ public class API_Stepdefinitions extends Base {
         requestBody = new JSONObject();
         requestBody.put("id", id);
     }
-
     @Given("The API user saves the response from the api couponDelete endpoint, verifying that the status code is {string} and the reason phrase is Unauthorized.")
     public void the_apı_user_saves_the_response_from_the_api_coupon_delete_endpoint_verifying_that_the_status_code_is_and_the_reason_phrase_is_unauthorized(String string) {
         Assert.assertTrue(API_Methods.tryCatchDelete(requestBody.toString()).equals(ConfigReader.getProperty("api","unauthorizedExceptionMessage")));
     }
+    @And("The api user validates the {int} {int} {string},{string},{string},{string},{string},{string},{string},{string} of the response body.")
+    public void theApiUserValidatesTheOfTheResponseBody(int customer_id,int dataIndex,  String name, String email, String phone, String address, String city, String state, String country, String postal_code) {
+        jsonPath=API_Methods.response.jsonPath();
+        assertEquals(customer_id, jsonPath.getInt("addresses["+dataIndex+"].customer_id"));
+        assertEquals(name, jsonPath.getString("addresses["+dataIndex+"].name"));
+        assertEquals(email, jsonPath.getString("addresses["+dataIndex+"].email"));
+        assertEquals(phone, jsonPath.getString("addresses["+dataIndex+"].phone"));
+        assertEquals(address, jsonPath.getString("addresses["+dataIndex+"].address"));
+        assertEquals(city, jsonPath.getString("addresses["+dataIndex+"].city"));
+        assertEquals(state, jsonPath.getString("addresses["+dataIndex+"].state"));
+        assertEquals(country, jsonPath.getString("addresses["+dataIndex+"].country"));
+        assertEquals(postal_code, jsonPath.getString("addresses["+dataIndex+"].postal_code"));
+
+    }
+    @Given("The api user verifies the content of the data {int} {int},{string},{string},{string},{string},{string},{string},{string},{string}, {int} , {int} ,{string},{string},in the response body.")
+    public void the_api_user_verifies_the_content_of_the_data_in_the_response_body( int id, int customer_id, String name, String email, String phone, String address, String city, String state, String country, String postal_code, int is_shipping_default , int is_billing_default, String created_at ,String updated_at) {
+        jsonPath=API_Methods.response.jsonPath();
+        Assert.assertEquals(id,jsonPath.getInt("addresses[0].id"));
+        Assert.assertEquals(customer_id,jsonPath.getInt("addresses[0].customer_id"));
+        Assert.assertEquals(name,jsonPath.getString("addresses[0].name"));
+        Assert.assertEquals(email,jsonPath.getString("addresses[0].email"));
+        Assert.assertEquals(phone,jsonPath.getString("addresses[0].phone"));
+        Assert.assertEquals(address,jsonPath.getString("addresses[0].address"));
+        Assert.assertEquals(city,jsonPath.getString("addresses[0].city"));
+        Assert.assertEquals(state,jsonPath.getString("addresses[0].state"));
+        Assert.assertEquals(country,jsonPath.getString("addresses[0].country"));
+        Assert.assertEquals(postal_code,jsonPath.getString("addresses[0].postal_code"));
+        Assert.assertEquals(is_shipping_default,jsonPath.getInt("addresses[0].is_shipping_default"));
+        Assert.assertEquals(is_billing_default,jsonPath.getInt("addresses[0].is_billing_default"));
+        Assert.assertEquals(created_at,jsonPath.getString("addresses[0].created_at"));
+        Assert.assertEquals(updated_at,jsonPath.getString("addresses[0].updated_at"));
+
+    }
+
+    /*
+id, customer_id, name, email, phone, address, city, state, country, postal_code, is_shipping_default, is_billing_default, created_at, updated_at
+         Assert.assertEquals(id,jsonPath.getInt("refundReasonDetails[0].id"));
+        Assert.assertEquals(reason,jsonPath.getString("refundReasonDetails[0].reason"));
+        Assert.assertEquals(created_at,jsonPath.getString("refundReasonDetails[0].created_at"));
+        Assert.assertEquals(updated_at,jsonPath.getString("refundReasonDetails[0].updated_at"));
+
+        int id, int customer_id, String name, String email, String phone, String address, String city, String state, String country, String postal_code, int is_shipping_default , int is_billing_default, String created_at ,String updated_at
+     */
 
 
 //======================================================================================================================================================================================
