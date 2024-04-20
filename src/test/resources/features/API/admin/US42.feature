@@ -13,6 +13,7 @@
         |admin  |100        |New |2dsfsdbuysellcycle.com |gag    |55555|izmir|Aegean|Turkey |35000      |ev          |422|The email must be a valid email address.|
         |invalid|100        |New |2dsfsd@buysellcycle.com|gag    |55555|izmir|Aegean|Turkey |35000      |ev          |401|Unauthenticated.                        |
 
-    Scenario:
-      * The api user constructs the base url with the "<admin>" token.
+    Scenario: The user should perform a valid GET request
+      * The api user constructs the base url with the "admin" token.
       * The api user sets "api/profile/addressDetails" path parameters
+      * The api user prepares a GETBODY request containing the id = 100 and records the response.

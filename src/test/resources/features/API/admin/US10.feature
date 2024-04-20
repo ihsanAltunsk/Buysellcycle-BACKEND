@@ -60,7 +60,7 @@ Feature: As an administrator, I want to be able to update holiday information fo
       * The api user sets "api/holidayUpdate/<id>" path parameters
       * The api user prepares a PATCH request body for holiday add "2025" "Spring" "2025-01-01".
       * The API user sends a "PATCH" request and records the response.
-      * The api user verifies that the updated id information in the response body matches the id path parameter specified in the endpoint.
+      * The api user verifies that the updated id information in the response body matches the <id> path parameter specified in the endpoint.
 
       Examples:
         | id |

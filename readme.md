@@ -41,13 +41,15 @@
 > 
 > The api user prepares a GETBODY request containing the id = 2 and records the response.
 > 
+> The api user prepares a DELETEBODY request containing the id = 2 and records the response.
+> 
 > The API user records the response from the api endpoint, confirming that the status code is '401' and the reason phrase is Unauthorized.
 
 
 - DB
->
+> Establish a database connection.
 > 
->
+> Close the database connection.
 > 
 >
 > 
