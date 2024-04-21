@@ -1,4 +1,5 @@
 #Reporter : Hümeyra Tayfun
+#US Priority : HIGH
   Feature:As an administrator, I want to add a new holiday record for staff via API connection.
 
     Scenario: TC_01 When a valid authorization information and necessary holiday data (year, name, date)

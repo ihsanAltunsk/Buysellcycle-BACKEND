@@ -1,4 +1,5 @@
 #Reporter : İhsan Altunışık
+#US Priority : HIGH
   Feature: As an administrator, I want to be able to add a new address record for a customer specified by customer_id via the API connection.
     Scenario Outline: The user should perform a valid POST request
       * The api user constructs the base url with the "<admin>" token.

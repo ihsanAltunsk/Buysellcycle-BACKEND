@@ -1,4 +1,5 @@
 #Reporter : İhsan Altunışık
+#US Priority : HIGH
   Feature: As an administrator, I want to be able to delete the record specified by the FAQ's id via the API connection.
     Scenario Outline: The user should perform a valid DELETE request
       * The api user constructs the base url with the "admin" token.

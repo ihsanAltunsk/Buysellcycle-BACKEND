@@ -1,4 +1,5 @@
 #Reporter : Azim Kaya
+#US Priority : HIGH
 Feature:As an administrator, I want to be able to update coupon information with the specified
 Scenario:TC-01 When a DELETE body containing valid authorization information and the coupon ID to be
   * The api user constructs the base url with the "admin" token.

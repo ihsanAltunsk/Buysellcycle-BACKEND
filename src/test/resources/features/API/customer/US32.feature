@@ -1,4 +1,5 @@
 #Reporter : Hümeyra Tayfun
+#US Priority : LOW
   Feature: As a user, I want to view the addresses in my profile via the API connection.
 
     Scenario:TC_01 When a GET request body containing valid authorization information is sent to the /api/profile/address-list endpoint, the returned status code

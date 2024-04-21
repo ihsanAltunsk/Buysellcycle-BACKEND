@@ -1,4 +1,5 @@
 #Reporter : Doruk Özgen
+# US Priority : HIGH
 
 Feature: US24 As an administrator, I want to be able to add a new department record via the API connection.
 

@@ -1,4 +1,5 @@
 #Reporter : İhsan Altunışık
+#US Priority : HIGH
   Feature: As a user, I want to add a new address record to my profile via API connection.
     Scenario Outline: The user should perform a valid POST request.
       * The api user constructs the base url with the "<api>" token.

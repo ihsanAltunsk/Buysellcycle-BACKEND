@@ -1,4 +1,5 @@
 #Reporter : Senayda Akkaya
+#US Priority : HIGH
 
   Feature: As an administrator, I want to be able to delete holiday information for the specified id number via API connection.
 

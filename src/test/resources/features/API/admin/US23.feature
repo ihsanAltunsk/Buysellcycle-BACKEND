@@ -1,4 +1,5 @@
 #Reporter : Doruk Özgen
+#US Priority : MEDIUM
 
 Feature: US23 As an administrator, I want to be able to access detailed information about the
   department with the specified ID number via the API connection.

@@ -1,4 +1,5 @@
 #Reporter : Reyyan Mert
+#US Priority : MEDIUM
   Feature: As an administrator, I should be able to access detailed information about the holiday with the specified id number via
     API connection.
 

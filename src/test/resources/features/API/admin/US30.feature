@@ -1,4 +1,5 @@
 #Reporter : Azim Kaya
+#US Priority : HIGH
   Feature: As an administrator, I want to be able to updatecoupon information with the specified
     Scenario:TC-01 When a PATCH request body containing valid authorization information, thecoupon
     * The api user constructs the base url with the "admin" token.

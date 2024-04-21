@@ -1,4 +1,5 @@
 #Reporter : İhsan Altunışık
+#US Priority : LOW
   Feature: As an administrator, I want to be able to access the FAQ's list via API connection.
     Scenario: Detailed information of the customer data with valid authorization credentials should be accessible via the API connection.
       * The api user constructs the base url with the "admin" token.

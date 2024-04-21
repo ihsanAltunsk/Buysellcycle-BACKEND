@@ -1,4 +1,5 @@
 #Reporter : Azim Kaya
+#US Priority : LOW
 Feature:As an administrator, I want to be able to access all customer addresses registered in the.
  Scenario:TC-01 When a GET request body containing valid authorization credentials is sent to the.
    * The api user constructs the base url with the "admin" token.
