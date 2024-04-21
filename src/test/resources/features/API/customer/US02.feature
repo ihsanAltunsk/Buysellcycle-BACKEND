@@ -1,5 +1,5 @@
 #Reporter : Senayda Akkaya
-
+#US Priority : MEDIUM
   Feature: As a user, I should be able to access detailed information about the user who logged into the system via API connection.
 
     Scenario: TC01 When the user sends the given information, it should be verified that the status code returned is 200

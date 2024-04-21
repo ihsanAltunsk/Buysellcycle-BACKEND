@@ -1,4 +1,5 @@
 #Reporter : Hümeyra Tayfun
+#US Priority : HIGH
   Feature: As an administrator, I want to be able to delete Refund&Reason information
           with the specified ID number via the API connection.
 

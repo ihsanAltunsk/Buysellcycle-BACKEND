@@ -1,4 +1,5 @@
 #Reporter : Doruk Özgen
+#US Priority : MEDIUM
 
 Feature: US28 As an administrator, I want to be able to access the details of the coupon with the specified ID number via the API connection.
 

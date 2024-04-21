@@ -1,4 +1,5 @@
 #Reporter : Senayda Akkaya
+#US Priority : HIGH
 @US10
 Feature: As an administrator, I want to be able to update holiday information for the specified id number via API connection.
 

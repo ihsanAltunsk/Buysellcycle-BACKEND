@@ -1,4 +1,5 @@
 #Reporter : Doruk Özgen
+#US Priority : LOW
 
 Feature: US27 As an administrator, I want to be able to access coupon information via the API connection.
 

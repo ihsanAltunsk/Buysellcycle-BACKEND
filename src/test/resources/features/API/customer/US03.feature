@@ -1,4 +1,5 @@
 #Reporter : İhsan Altunışık
+#US Priority : MEDIUM
   Feature: As a user, I should be able to access the financial information of the customer via API connection.
     Scenario Outline: Detailed information of the customer data with valid authorization credentials should be accessible via the API connection.
       * The api user constructs the base url with the "<api>" token.

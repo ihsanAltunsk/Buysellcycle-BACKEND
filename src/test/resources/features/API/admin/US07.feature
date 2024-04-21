@@ -1,4 +1,5 @@
 #Reporter : Hümeyra Tayfun
+#US Priority : LOW
   Feature: As an administrator, I should be able to access holiday data for staff members via API connection.
 
     Scenario: TC_01 When a GET request is sent to the /api/holidayList endpoint with valid authorization credentials, the expected

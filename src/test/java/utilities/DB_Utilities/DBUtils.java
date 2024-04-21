@@ -1,26 +1,12 @@
 package utilities.DB_Utilities;
 
 import config_Requirements.ConfigReader;
+import hooks.Base;
 
 import java.sql.*;
 import java.util.*;
 
-public class DBUtils {
-    static Connection connection;
-    static Statement statement;
-    static ResultSet resultSet;
-
-    public static String query;
-
-    //BU METHOD COK KULLANACAGIZ
-    //createConnection database e baglanmak icin. Burda url, username, password u kullanarak database baglaniyoruz
-    //Database e ne zaman baglanmak isterse bu methodu cagrabiliriz
-    //Bu method u data cok BeforeMethod icinde setup icin kullanacagiz
-    String url = "jdbc:mysql://194.140.198.209/wonderworld_qa";
-    ;
-    String username = ConfigReader.getProperty("DBname","db");
-    String password = ConfigReader.getProperty("DBPassword","db");
-
+public class DBUtils extends Base {
 
     public static void createConnection() {
         String url = ConfigReader.getProperty("db","URL");
@@ -31,7 +17,6 @@ public class DBUtils {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public static void executeQuery(String query) {
@@ -49,7 +34,6 @@ public class DBUtils {
         }
     }
 
-    //Database baglantisini sonlandirmak icin. Bu Mehtod u test tamamladiktan sonra kullaniriz
     public static void closeConnection() {
         try {
             if (resultSet != null) {
@@ -82,7 +66,6 @@ public class DBUtils {
     }
 
     //getConnection method Connection object i olusturmak icin. Bu method create createConnectiondan farkli olarak connection objesi return ediyor
-
 
     //getResultset method Resultset object i olusturmak icin.
     public static ResultSet getResultset() {
@@ -234,7 +217,6 @@ public class DBUtils {
     }
 
     public static PreparedStatement getPraperedStatement(String sqlQuery) {
-
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(sqlQuery);
@@ -245,8 +227,6 @@ public class DBUtils {
     }
 
     public static Integer randomIdGenerate() {
-        // Random nesnesi oluştur
-        Random random = new Random();
         // ID uzunluğu
         int idLength = 4;
         // Rastgele ID oluştur
@@ -275,10 +255,6 @@ public class DBUtils {
     }
 
     public static int idOlustur() {
-
-        // Random nesnesi oluştur
-        Random random = new Random();
-
         // 30 ile 900 arasında rastgele sayı oluştur
         int randomNumber = generateRandomNumber(random, 30, 1200);
 

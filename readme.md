@@ -48,7 +48,8 @@
 > The api user verifies that Deleted_Id is same as the request body <id>
 > 
 > The API user records the response from the api endpoint, confirming that the status code is '401' and the reason phrase is Unauthorized.
-
+> 
+> The API user confirms the "unauthorizedExceptionMessage".
 
 - DB
 > Establish a database connection.

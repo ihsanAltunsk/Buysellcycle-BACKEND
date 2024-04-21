@@ -1,4 +1,5 @@
 #Reporter : Hümeyra Tayfun
+#US Priority : HIGH
   Feature: As an administrator, I want to be able to update the Refund&Reason information
     with the specified ID number via the API connection.
 
@@ -27,7 +28,7 @@
       * The api user constructs the base url with the "admin" token.
       * The api user sets "api/refundReasonUpdate/<id>" path parameters
       * The api user prepares a PATCH request containing the "<reason>" data to send to the api refundReasonUpdate endpoint.
-      * The API user records the response from the api refundReasonUpdate endpoint, confirming that the status code is '404'and the reason phrase is Not Found.
+      * The API user confirms the "unauthorizedExceptionMessage".
 
       Examples:
         | id | reason                 |

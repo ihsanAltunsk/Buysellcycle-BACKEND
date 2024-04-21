@@ -1,4 +1,5 @@
 #Reporter : İhsan Altunışık
+#US Priority : HIGH
 Feature:As an administrator, I want to be able to update the information of the FAQ record with the specified FAQ id via API connection.
   Scenario Outline: The user should perform a valid PATCH request
     * The api user constructs the base url with the "admin" token.

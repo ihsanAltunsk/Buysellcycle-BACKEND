@@ -1,4 +1,5 @@
 #Reporter : Azim Kaya
+#US Priority : HIGH
 Feature: As an administrator, I want to be able to add a new Refund&Reason record to the system via
 Scenario Outline:TC-01 When a POST body containing valid authorization information and necessary data
   * The api user constructs the base url with the "admin" token.

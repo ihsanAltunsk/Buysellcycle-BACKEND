@@ -1,4 +1,5 @@
 #Reporter : Azim Kaya
+#US Priority : MEDIUM
 Feature:As an administrator, I want to be able to access the address information of a customer with
 Scenario:TC-01 When a GET request body containing valid authorization credentials and the desired
   * The api user constructs the base url with the "admin" token.

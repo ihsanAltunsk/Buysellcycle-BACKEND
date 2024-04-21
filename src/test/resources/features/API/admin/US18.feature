@@ -1,4 +1,5 @@
 #Reporter : Reyyan Mert
+#US Priority : MEDIUM
   Feature: As an administrator, I want to access the details of the Refund&Reason with the specified ID number via the API connection.
 
     Scenario Outline: When a GET request body containing valid authorization information and the refund&reason ID to access

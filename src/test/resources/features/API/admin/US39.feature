@@ -1,4 +1,5 @@
 #Reporter : Azim Kaya
+#US Priority : MEDIUM
 @kaya
 Feature:As an administrator, I want to be able to access the city information registered in
 Scenario:TC-01 When a GET request body containing valid authorization credentials and the desired

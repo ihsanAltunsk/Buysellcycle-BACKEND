@@ -1,4 +1,5 @@
 #Reporter : Senayda Akkaya
+#US Priority : MEDIUM
 
   Feature: As an administrator, I want to be able to access the details of the FAQ with the specified id number
             via API connection.

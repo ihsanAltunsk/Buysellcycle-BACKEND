@@ -1,21 +1,18 @@
 package stepdefinitions;
 
-import com.github.javafaker.Faker;
 import config_Requirements.ConfigReader;
 
 import hooks.Base;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import org.json.JSONObject;
 import org.junit.Assert;
 import utilities.API_Utilities.API_Methods;
 import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertEquals;
 import static org.hamcrest.Matchers.nullValue;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class API_Stepdefinitions extends Base {
 
@@ -23,29 +20,29 @@ public class API_Stepdefinitions extends Base {
     @Given("The api user verifies the content of the data {int}, {string}, {string}, {int}, {string},{string},{string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(int id, String year, String name, int type, String date, String created_at , String updated_at ) {
         jsonPath = API_Methods.response.jsonPath();
-        Assert.assertEquals(id, jsonPath.getInt("holidayDetails[0].id"));
-        Assert.assertEquals(year, jsonPath.getString("holidayDetails[0].year"));
-        Assert.assertEquals(name, jsonPath.getString("holidayDetails[0].name"));
-        Assert.assertEquals(type, jsonPath.getInt("holidayDetails[0].type"));
-        Assert.assertEquals(date, jsonPath.getString("holidayDetails[0].date"));
-        Assert.assertEquals(created_at, jsonPath.getString("holidayDetails[0].created_at"));
-        Assert.assertEquals(updated_at, jsonPath.getString("holidayDetails[0].updated_at"));
+        assertEquals(id, jsonPath.getInt("holidayDetails[0].id"));
+        assertEquals(year, jsonPath.getString("holidayDetails[0].year"));
+        assertEquals(name, jsonPath.getString("holidayDetails[0].name"));
+        assertEquals(type, jsonPath.getInt("holidayDetails[0].type"));
+        assertEquals(date, jsonPath.getString("holidayDetails[0].date"));
+        assertEquals(created_at, jsonPath.getString("holidayDetails[0].created_at"));
+        assertEquals(updated_at, jsonPath.getString("holidayDetails[0].updated_at"));
     }
 
     @Given("The api user verifies the content of the data {int}, {string},{string},{string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(int id, String reason, String created_at, String updated_at) {
         jsonPath = API_Methods.response.jsonPath();
-        Assert.assertEquals(id,jsonPath.getInt("refundReasonDetails[0].id"));
-        Assert.assertEquals(reason,jsonPath.getString("refundReasonDetails[0].reason"));
-        Assert.assertEquals(created_at,jsonPath.getString("refundReasonDetails[0].created_at"));
-        Assert.assertEquals(updated_at,jsonPath.getString("refundReasonDetails[0].updated_at"));
+        assertEquals(id,jsonPath.getInt("refundReasonDetails[0].id"));
+        assertEquals(reason,jsonPath.getString("refundReasonDetails[0].reason"));
+        assertEquals(created_at,jsonPath.getString("refundReasonDetails[0].created_at"));
+        assertEquals(updated_at,jsonPath.getString("refundReasonDetails[0].updated_at"));
     }
 
     @Given("The api user verifies the content of the data {string},{string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(String name, String details) {
         jsonPath = API_Methods.response.jsonPath();
-        Assert.assertEquals(name,jsonPath.getString("departments[0].name"));
-        Assert.assertEquals(details,jsonPath.getString("departments[0].details"));
+        assertEquals(name,jsonPath.getString("departments[0].name"));
+        assertEquals(details,jsonPath.getString("departments[0].details"));
     }
 
     //Reyyan US29-TC01
@@ -82,26 +79,26 @@ public class API_Stepdefinitions extends Base {
     @Given("The api user verifies that the reason information in the response body is {int}, {string}, {string}, {string}, {string}, {string},{string}, {string}, {string}, {string}.")
     public void the_api_user_verifies_that_the_reason_information_in_the_response_body_is(int customer_id, String name, String email, String address, String phone, String city, String state, String country, String postal_code, String address_type) {
         jsonPath = API_Methods.response.jsonPath();
-        Assert.assertEquals(customer_id,jsonPath.getInt("addresses[0].customer_id"));
-        Assert.assertEquals(name,jsonPath.getString("addresses[0].name"));
-        Assert.assertEquals(email,jsonPath.getString("addresses[0].email"));
-        Assert.assertEquals(address,jsonPath.getString("addresses[0].address"));
-        Assert.assertEquals(phone,jsonPath.getString("addresses[0].phone"));
-        Assert.assertEquals(city,jsonPath.getString("addresses[0].city"));
-        Assert.assertEquals(state,jsonPath.getString("addresses[0].state"));
-        Assert.assertEquals(country,jsonPath.getString("addresses[0].country"));
-        Assert.assertEquals(postal_code,jsonPath.getString("addresses[0].postal_code"));
+        assertEquals(customer_id,jsonPath.getInt("addresses[0].customer_id"));
+        assertEquals(name,jsonPath.getString("addresses[0].name"));
+        assertEquals(email,jsonPath.getString("addresses[0].email"));
+        assertEquals(address,jsonPath.getString("addresses[0].address"));
+        assertEquals(phone,jsonPath.getString("addresses[0].phone"));
+        assertEquals(city,jsonPath.getString("addresses[0].city"));
+        assertEquals(state,jsonPath.getString("addresses[0].state"));
+        assertEquals(country,jsonPath.getString("addresses[0].country"));
+        assertEquals(postal_code,jsonPath.getString("addresses[0].postal_code"));
         //Assert.assertEquals(address_type,jsonPath.getString("addresses[0].address_type"));
 
     }
     //Reyyan US44-TC01-04-02-03-
     @Given("The API user records the response from the api deleteAddress endpoint, confirming that the status code is '404' and the reason phrase is Not Found.")
     public void the_apı_user_records_the_response_from_the_api_delete_address_endpoint_confirming_that_the_status_code_is_and_the_reason_phrase_is_not_found() {
-        Assert.assertTrue(API_Methods.tryCatchDelete(requestBody.toString()).equals(ConfigReader.getProperty("api","notFoundExceptionMessage")));
+        assertTrue(API_Methods.tryCatchDelete(requestBody.toString()).equals(ConfigReader.getProperty("api","notFoundExceptionMessage")));
     }
     @Given("The API user saves the response from the api deleteAddress endpoint, verifying that the status code is '401' and the reason phrase is Unauthorized.")
     public void the_apı_user_saves_the_response_from_the_api_delete_address_endpoint_verifying_that_the_status_code_is_and_the_reason_phrase_is_unauthorized() {
-        Assert.assertTrue(API_Methods.tryCatchDelete(requestBody.toString()).equals(ConfigReader.getProperty("api","unauthorizedExceptionMessage")));
+        assertTrue(API_Methods.tryCatchDelete(requestBody.toString()).equals(ConfigReader.getProperty("api","unauthorizedExceptionMessage")));
     }
 
     // ===============================================================================================================================================================================
@@ -117,15 +114,15 @@ public class API_Stepdefinitions extends Base {
     public void the_api_user_prepares_a_patch_request_containing_the_data_to_send_to_the_api_refund_reason_update_endpoint(String reason) {
         requestBody.put("reason",reason);
     }
-    
+
     @Given("The API user records the response from the api refundReasonUpdate endpoint, confirming that the status code is '404'and the reason phrase is Not Found.")
     public void the_apı_user_records_the_response_from_the_api_refund_reason_update_endpoint_confirming_that_the_status_code_is_and_the_reason_phrase_is_not_found() {
-        Assert.assertTrue(API_Methods.tryCatchPatch(requestBody.toString()).equals(ConfigReader.getProperty("api","notFoundExceptionMessage")));
+        assertTrue(API_Methods.tryCatchPatch(requestBody.toString()).equals(ConfigReader.getProperty("api","notFoundExceptionMessage")));
     }
 
     @Given("The API user records the response from the api refundReasonUpdate endpoint, confirming that the status code is '401' and the reason phrase is Unauthorized.")
     public void the_apı_user_records_the_response_from_the_api_refund_reason_update_endpoint_confirming_that_the_status_code_is_and_the_reason_phrase_is_unauthorized() {
-        Assert.assertTrue(API_Methods.tryCatchPatch(requestBody.toString()).equals(ConfigReader.getProperty("api","unauthorizedExceptionMessage")));
+        assertTrue(API_Methods.tryCatchPatch(requestBody.toString()).equals(ConfigReader.getProperty("api","unauthorizedExceptionMessage")));
     }
     @Given("The api user verifies that the reason information in the response body is {string}.")
     public void the_api_user_verifies_that_the_reason_information_in_the_response_body_is(String reasonValue) {
@@ -148,8 +145,8 @@ public class API_Stepdefinitions extends Base {
     @Given("The api user validates the {string} {string} of the response body with index {int}.")
     public void the_api_user_validates_the_of_the_response_body_with_index(String year, String name, int dataIndex) {
         jsonPath = API_Methods.response.jsonPath();
-        Assert.assertEquals(year, jsonPath.getString("holiday["+dataIndex+"].year"));
-        Assert.assertEquals(name, jsonPath.getString("holiday["+dataIndex+"].name"));
+        assertEquals(year, jsonPath.getString("holiday["+dataIndex+"].year"));
+        assertEquals(name, jsonPath.getString("holiday["+dataIndex+"].name"));
     }
 
     //===================================================================================================================
@@ -162,13 +159,13 @@ public class API_Stepdefinitions extends Base {
     @Given("The api user verifies the content of the data {int} {string}, {string}, {string} {int},{string},{string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(int id, String user_id , String title , String description , int status, String created_at, String updated_at) {
      jsonPath=API_Methods.response.jsonPath();
-     Assert.assertEquals(id,jsonPath.getInt("faqDetails[0].id"));
-     Assert.assertEquals(user_id,jsonPath.getString("faqDetails[0].user_id"));
-     Assert.assertEquals(title,jsonPath.getString("faqDetails[0].title"));
-     Assert.assertEquals(description,jsonPath.getString("faqDetails[0].description"));
-     Assert.assertEquals(status,jsonPath.getInt("faqDetails[0].status"));
-     Assert.assertEquals(created_at,jsonPath.getString("faqDetails[0].created_at"));
-     Assert.assertEquals(updated_at,jsonPath.getString("faqDetails[0].updated_at"));
+     assertEquals(id,jsonPath.getInt("faqDetails[0].id"));
+     assertEquals(user_id,jsonPath.getString("faqDetails[0].user_id"));
+     assertEquals(title,jsonPath.getString("faqDetails[0].title"));
+     assertEquals(description,jsonPath.getString("faqDetails[0].description"));
+     assertEquals(status,jsonPath.getInt("faqDetails[0].status"));
+     assertEquals(created_at,jsonPath.getString("faqDetails[0].created_at"));
+     assertEquals(updated_at,jsonPath.getString("faqDetails[0].updated_at"));
     }
 
     @Given("The api user prepares a PATCH request body for holiday add {string} {string} {string}.")
@@ -268,7 +265,7 @@ public class API_Stepdefinitions extends Base {
     //US31 -TC01
     @Given("The API user saves the response from the api couponDelete endpoint, verifying that the status code is {string} and the reason phrase is Unauthorized.")
     public void the_apı_user_saves_the_response_from_the_api_coupon_delete_endpoint_verifying_that_the_status_code_is_and_the_reason_phrase_is_unauthorized(String string) {
-        Assert.assertTrue(API_Methods.tryCatchDelete(requestBody.toString()).equals(ConfigReader.getProperty("api","unauthorizedExceptionMessage")));
+        assertTrue(API_Methods.tryCatchDelete(requestBody.toString()).equals(ConfigReader.getProperty("api","unauthorizedExceptionMessage")));
     }
     @And("The api user validates the {int} {int} {string},{string},{string},{string},{string},{string},{string},{string} of the response body.")
     public void theApiUserValidatesTheOfTheResponseBody(int customer_id,int dataIndex,  String name, String email, String phone, String address, String city, String state, String country, String postal_code) {
@@ -287,20 +284,20 @@ public class API_Stepdefinitions extends Base {
     @Given("The api user verifies the content of the data {int} {int},{string},{string},{string},{string},{string},{string},{string},{string}, {int} , {int} ,{string},{string},in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_in_the_response_body( int id, int customer_id, String name, String email, String phone, String address, String city, String state, String country, String postal_code, int is_shipping_default , int is_billing_default, String created_at ,String updated_at) {
         jsonPath=API_Methods.response.jsonPath();
-        Assert.assertEquals(id,jsonPath.getInt("addresses[0].id"));
-        Assert.assertEquals(customer_id,jsonPath.getInt("addresses[0].customer_id"));
-        Assert.assertEquals(name,jsonPath.getString("addresses[0].name"));
-        Assert.assertEquals(email,jsonPath.getString("addresses[0].email"));
-        Assert.assertEquals(phone,jsonPath.getString("addresses[0].phone"));
-        Assert.assertEquals(address,jsonPath.getString("addresses[0].address"));
-        Assert.assertEquals(city,jsonPath.getString("addresses[0].city"));
-        Assert.assertEquals(state,jsonPath.getString("addresses[0].state"));
-        Assert.assertEquals(country,jsonPath.getString("addresses[0].country"));
-        Assert.assertEquals(postal_code,jsonPath.getString("addresses[0].postal_code"));
-        Assert.assertEquals(is_shipping_default,jsonPath.getInt("addresses[0].is_shipping_default"));
-        Assert.assertEquals(is_billing_default,jsonPath.getInt("addresses[0].is_billing_default"));
-        Assert.assertEquals(created_at,jsonPath.getString("addresses[0].created_at"));
-        Assert.assertEquals(updated_at,jsonPath.getString("addresses[0].updated_at"));
+        assertEquals(id,jsonPath.getInt("addresses[0].id"));
+        assertEquals(customer_id,jsonPath.getInt("addresses[0].customer_id"));
+        assertEquals(name,jsonPath.getString("addresses[0].name"));
+        assertEquals(email,jsonPath.getString("addresses[0].email"));
+        assertEquals(phone,jsonPath.getString("addresses[0].phone"));
+        assertEquals(address,jsonPath.getString("addresses[0].address"));
+        assertEquals(city,jsonPath.getString("addresses[0].city"));
+        assertEquals(state,jsonPath.getString("addresses[0].state"));
+        assertEquals(country,jsonPath.getString("addresses[0].country"));
+        assertEquals(postal_code,jsonPath.getString("addresses[0].postal_code"));
+        assertEquals(is_shipping_default,jsonPath.getInt("addresses[0].is_shipping_default"));
+        assertEquals(is_billing_default,jsonPath.getInt("addresses[0].is_billing_default"));
+        assertEquals(created_at,jsonPath.getString("addresses[0].created_at"));
+        assertEquals(updated_at,jsonPath.getString("addresses[0].updated_at"));
 
     }
 

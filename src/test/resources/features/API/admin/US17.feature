@@ -1,4 +1,5 @@
 #Reporter : Hümeyra Tayfun
+#US Priority : LOW
   Feature: As an administrator, I want to access the Refund & Reason List through the API connection.
 
     Scenario: When a GET request with valid authorization information is sent to the /api/refundReasonList endpoint,
