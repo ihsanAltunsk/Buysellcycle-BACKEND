@@ -174,6 +174,26 @@ public class API_Stepdefinitions extends Base {
         requestBody.put("name",name);
         requestBody.put("date",date);
     }
+    @Given("The api user prepares a POST request body for register {string}, {string}, {string}, {string}, {string}, {string}, {string}.")
+    public void the_api_user_prepares_a_post_request_body_for_register(String firstname, String lastname, String email, String password, String password_confirmation, String user_type, String referral_code) {
+        requestBody.put("first_name", firstname);
+        requestBody.put("last_name", lastname);
+        requestBody.put("email", email);
+        requestBody.put("password",password);
+        requestBody.put("password_confirmation", password_confirmation);
+        requestBody.put("user_type",user_type);
+        requestBody.put("referral_code",referral_code);
+
+    }
+    @Given("The API user saves the response body id")
+    public void the_api_user_saves_the_response_body_id() {
+        jsonPath = API_Methods.response.jsonPath();
+        id = jsonPath.getInt("user.id");
+    }
+    @Given("The API users checks customer added's id")
+    public void the_api_users_checks_customer_added_s_id() {
+       assertEquals(id,jsonPath.getInt("user["+ (id-1)+"].id"));
+    }
 
     //======================================================================================================================================================================
     // Doruk US23 - TC01
