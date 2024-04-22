@@ -3,7 +3,8 @@ package manage;
 public class Manage {
 // ============================================QUERY LIST============================================
     private String queryUS01Q01 = "";
-    private String queryUS02Q01 = "";
+    private String queryUS02Q01 = "INSERT INTO cities (id, name, state_id, status, created_at) VALUES(?, ?, ?, ?, ?)";
+    private String queryUS02Q01ID = "SELECT id FROM cities";
     private String queryUS03Q01 = "";
     private String queryUS04Q01 = "";
     private String queryUS05Q01 = "";
@@ -48,6 +49,9 @@ public class Manage {
 
     public String getQueryUS02Q01() {
         return queryUS02Q01;
+    }
+    public String getQueryUS02Q01ID() {
+        return queryUS02Q01ID;
     }
 
     public String getQueryUS03Q01() {

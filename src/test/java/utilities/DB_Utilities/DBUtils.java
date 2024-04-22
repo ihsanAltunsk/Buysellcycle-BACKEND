@@ -6,7 +6,21 @@ import hooks.Base;
 import java.sql.*;
 import java.util.*;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 public class DBUtils extends Base {
+
+    public static void listElementsAssert(List<String> expected, String column) throws SQLException {
+        List<String> actual = new ArrayList<>();
+        while (resultSet.next()) {
+            String element = resultSet.getString(column);
+            actual.add(element);
+        }
+        for (String each : actual) {
+            assertTrue(expected.contains(each));
+        }
+    }
 
     public static void createConnection() {
         String url = ConfigReader.getProperty("db","URL");
@@ -17,6 +31,19 @@ public class DBUtils extends Base {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    public static Connection getConnection() {
+        String url=ConfigReader.getProperty("db","URL");
+        String username=ConfigReader.getProperty("db","USERNAME");
+        String password=ConfigReader.getProperty("db","PASSWORD");
+        try {
+            connection = DriverManager.getConnection(url, username, password);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return connection;
     }
 
     public static void executeQuery(String query) {
@@ -57,7 +84,7 @@ public class DBUtils extends Base {
     //getStatement method statement object i olusturmak icin
     public static Statement getStatement() {
         try {
-            statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
