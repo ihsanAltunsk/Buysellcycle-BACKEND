@@ -11,7 +11,7 @@ public class Manage {
     private String queryUS06Q01 = "";
     private String queryUS07Q01 = "";
     private String queryUS08Q01 = "";
-    private String queryUS09Q01 = "";
+    private String queryUS09Q01 = "SELECT COUNT(id) AS total_amount FROM log_activity WHERE ip = ? AND method = ?";
     private String queryUS10Q01 = "";
     private String queryUS11Q01 = "";
     private String queryUS12Q01 = "";

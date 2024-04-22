@@ -6,7 +6,9 @@ import utilities.DB_Utilities.DBUtils;
 
 import java.sql.SQLException;
 
-public class DB_Common_Stepdefinitions {
+import static org.junit.Assert.assertEquals;
+
+public class DB_Common_Stepdefinitions extends Base{
     @Given("Establish a database connection.")
     public void establish_a_database_connection() {
         Base.initialize();
@@ -15,5 +17,10 @@ public class DB_Common_Stepdefinitions {
     @Given("Close the database connection.")
     public void close_the_database_connection() throws SQLException {
         DBUtils.closeConnection();
+    }
+    @Given("Process the results for update.")
+    public void process_the_results_for_update() throws SQLException {
+        rowCount = preparedStatement.executeUpdate();
+        assertEquals(1, rowCount);
     }
 }
