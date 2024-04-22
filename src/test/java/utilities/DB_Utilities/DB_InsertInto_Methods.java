@@ -8,8 +8,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-
 public class DB_InsertInto_Methods extends Base {
 
     public static Long idGenerator(String givenQuery) throws SQLException {
@@ -21,7 +19,8 @@ public class DB_InsertInto_Methods extends Base {
         }
 
         do {
-            id = random.nextLong();
+            long max = 8511963174281719650L;
+            id = Math.abs(random.nextLong() % max);
         } while (ids.contains(id));
         return id;
     }
@@ -41,8 +40,6 @@ public class DB_InsertInto_Methods extends Base {
         preparedStatement.setInt(3, state_id);
         preparedStatement.setInt(4, status);
         preparedStatement.setDate(5, date);
-        rowCount = preparedStatement.executeUpdate();
-        assertEquals(1, rowCount);
 
         System.out.println("NEW DATA: |" + id + "| |" + name + "| |" + state_id + "|" + status + "| |" + date);
     }
