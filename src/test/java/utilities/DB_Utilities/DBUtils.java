@@ -11,6 +11,7 @@ import static org.junit.Assert.assertTrue;
 
 public class DBUtils extends Base {
 
+
     public static void listElementsAssert(List<String> expected, String column) throws SQLException {
         List<String> actual = new ArrayList<>();
         while (resultSet.next()) {
@@ -290,4 +291,76 @@ public class DBUtils extends Base {
 
         return randomNumber;
     }
+
+    public static void printFirstThreePhoneNumbers(String tableName) {
+
+        try {
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                String phone = resultSet.getString("phone");
+                System.out.println("phoneNumber: " + phone);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    public static void checkPhoneNumbersForFive(){
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+            int count = 1;
+            while (resultSet.next()) {
+                String phone = resultSet.getString("phone");
+                if (phone.contains("5")) {
+                    System.out.println("Satır " + count + ": Telefon numarası '5' içeriyor -> " + phone);
+                } else {
+                    System.out.println("Satır " + count + ": Telefon numarası '5' içermiyor -> " + phone);
+                }
+                count++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public static void checkAndPrintReasonValues(Integer[] query, Integer[] expectedResult) {
+
+        for (int i = 0; i < query.length; i++) {
+            if (query[i] == null) {
+                expectedResult[i] = query[i];
+                System.out.println("Reason değerleri Null içerir");
+            } else {
+                System.out.println("Reason değerleri Null içermez");
+            }
+        }
+    }
+    public static void getOrderCounts(){
+        int[] orderIds = {2, 23, 62, 78, 91, 92, 115, 116, 118, 129, 139, 149, 181};
+        int toplam = 0;
+
+        for (int each: orderIds
+        ){
+            toplam += each;
+        }
+        System.out.println("order_ID toplam: " + toplam);
+    }
+    public static void updateShippingName() throws SQLException {
+        preparedStatement = DBUtils.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1,78);
+        preparedStatement.setString(2,"Reyyan");
+        resultSet = preparedStatement.executeQuery();
+
+    }
 }
+
+
+
+
+

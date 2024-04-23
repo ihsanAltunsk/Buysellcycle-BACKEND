@@ -2,10 +2,16 @@ package stepdefinitions;
 
 import hooks.Base;
 import io.cucumber.java.en.Given;
+import org.checkerframework.checker.units.qual.A;
+import org.junit.Assert;
 import utilities.DB_Utilities.DBUtils;
 import utilities.DB_Utilities.DB_InsertInto_Methods;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -32,5 +38,45 @@ public class DB_Stepdefinitions extends Base {
         System.out.println("Total amount: " + resultSet.getLong("total_amount"));
     }
 // ====================================================================================================================================================================
+    @Given("Query07 Prepare and execute the query.")
+    public void query07_prepare_and_execute_the_query() throws SQLException {
+        query = queryManage.getQueryUS07Q01();
+        DBUtils.executeQuery(query);
+        DBUtils.printFirstThreePhoneNumbers("customer_addresses");
+
+}
+
+    @Given("Check if each phone number has the number {string}")
+    public void check_if_each_phone_number_has_the_number(String string) {
+        DBUtils.checkPhoneNumbersForFive();
+
+    }
+    @Given("Query14 Prepare and execute the query")
+    public void query14_prepare_and_execute_the_query() {
+        query = queryManage.getQueryUS14Q01();
+        DBUtils.executeQuery(query);
+        System.out.println(DBUtils.getColumnData(query,"reason"));
+    }
+    @Given("Check if there is {string} data with null value.")
+    public void check_if_there_is_data_with_null_value(String string) throws SQLException {
+        Integer[] query = {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null};
+        Integer[] expectedResult = {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null};
+        DBUtils.checkAndPrintReasonValues(query,expectedResult);
+
+    }
+    @Given("Calculate the number of orders placed according to order_id in the guest_order_details table.")
+    public void calculate_the_number_of_orders_placed_according_to_order_id_in_the_guest_order_details_table() {
+        query = queryManage.getQueryUS21Q01();
+        DBUtils.executeQuery(query);
+        DBUtils.getOrderCounts();
+
+    }
+    @Given("Update shipping_name based on order number")
+    public void update_shipping_name_based_on_order_number() throws SQLException {
+        query = queryManage.getQueryUS21Q02();
+        DBUtils.executeQuery(query);
+        DBUtils.updateShippingName();
+
+    }
 
 }
