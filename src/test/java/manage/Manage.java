@@ -9,21 +9,25 @@ public class Manage {
     private String queryUS04Q01 = "";
     private String queryUS05Q01 = "";
     private String queryUS06Q01 = "";
-    private String queryUS07Q01 = "";
+    private String queryUS07Q01 = "select phone from customer_addresses limit 3";
     private String queryUS08Q01 = "";
     private String queryUS09Q01 = "SELECT COUNT(id) AS total_amount FROM log_activity WHERE ip = ? AND method = ?";
     private String queryUS10Q01 = "";
     private String queryUS11Q01 = "";
     private String queryUS12Q01 = "";
     private String queryUS13Q01 = "";
-    private String queryUS14Q01 = "";
+    private String queryUS14Q01 = "SELECT * FROM refund_reasons WHERE reason IS NULL";
     private String queryUS15Q01 = "";
     private String queryUS16Q01 = "";
     private String queryUS17Q01 = "";
     private String queryUS18Q01 = "";
     private String queryUS19Q01 = "";
     private String queryUS20Q01 = "";
-    private String queryUS21Q01 = "";
+    private String queryUS21Q01 = "SELECT sum(order_id) FROM guest_order_details";
+
+
+
+    private String queryUS21Q02 = "UPDATE guest_order_details SET shipping_name = 'Reyyan' WHERE order_id = 78";
     private String queryUS22Q01 = "";
     private String queryUS23Q01 = "";
     private String queryUS24Q01 = "";
@@ -120,6 +124,9 @@ public class Manage {
 
     public String getQueryUS21Q01() {
         return queryUS21Q01;
+    }
+    public String getQueryUS21Q02() {
+        return queryUS21Q02;
     }
 
     public String getQueryUS22Q01() {

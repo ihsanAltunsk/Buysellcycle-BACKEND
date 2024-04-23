@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import java.sql.*;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 public abstract class Base {
@@ -32,4 +33,7 @@ public abstract class Base {
         reqBodyMap=new HashMap<>();
         queryManage = new Manage();
     }
+
+
+
 }
