@@ -11,11 +11,9 @@ import java.util.List;
 import java.util.Random;
 
 public abstract class Base {
-    public static String fullPath, query, name, description;
-    public static String customer_email;
+    public static String fullPath, query, name, description, customer_email;
+    public static int id, apiId,rowCount, state_id, status;
     public static double sub_total;
-    public static int rowCount, state_id, status;
-    public static long id;
     public static Date date;
     public static JSONObject requestBody;
     public static Random random;

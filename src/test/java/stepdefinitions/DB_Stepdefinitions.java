@@ -7,9 +7,9 @@ import utilities.DB_Utilities.DBUtils;
 import utilities.DB_Utilities.DB_InsertInto_Methods;
 
 import java.sql.SQLException;
+import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.Assert.*;
 
 public class DB_Stepdefinitions extends Base {

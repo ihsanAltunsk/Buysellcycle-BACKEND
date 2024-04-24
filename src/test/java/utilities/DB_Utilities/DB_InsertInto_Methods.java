@@ -10,17 +10,16 @@ import java.util.List;
 
 public class DB_InsertInto_Methods extends Base {
 
-    public static Long idGenerator(String givenQuery) throws SQLException {
+    public static int idGenerator(String givenQuery) throws SQLException {
         resultSet = DBUtils.getStatement().executeQuery(givenQuery);
 
-        List<Long> ids = new ArrayList<>();
+        List<Integer> ids = new ArrayList<>();
         while (resultSet.next()){
-            ids.add(resultSet.getLong("id"));
+            ids.add(resultSet.getInt("id"));
         }
 
         do {
-            long max = 8511963174281719650L;
-            id = Math.abs(random.nextLong() % max);
+            id = random.nextInt(10001) + 50000;
         } while (ids.contains(id));
         return id;
     }

@@ -192,7 +192,7 @@ public class API_Stepdefinitions extends Base {
     }
     @Given("The API users checks customer added's id")
     public void the_api_users_checks_customer_added_s_id() {
-       assertEquals(id,jsonPath.getInt("user["+ (id-1)+"].id"));
+       assertEquals(apiId,jsonPath.getInt("user["+ (apiId-1)+"].id"));
     }
 
     //======================================================================================================================================================================
@@ -395,7 +395,7 @@ id, customer_id, name, email, phone, address, city, state, country, postal_code,
         requestBody.put("address_type", address_type);
     }
     @Given("The api user prepares a PATCH request body for faq.")
-    public void the_api_user_prepares_a_post_request_body_for_faq() {
+    public void the_api_user_prepares_a_patch_request_body_for_faq() {
         requestBody.put("title", "UPDATE");
         requestBody.put("description", "UPDATE2");
     }
@@ -403,5 +403,13 @@ id, customer_id, name, email, phone, address, city, state, country, postal_code,
     public void the_api_user_verifies_that_updated_id_is_same_as_the_get_response_body(int id) {
         jsonPath = API_Methods.response.jsonPath();
         assertEquals(id, jsonPath.getInt("FaqsDetails[0].id"));
+    }
+    //==============================================================================================================
+
+    //Murat
+    @Given("The api user prepares a POST request body for faq.")
+    public void the_api_user_prepares_a_post_request_body_for_faq() {
+        requestBody.put("title", faker.lorem().character());
+        requestBody.put("description",faker.lorem());
     }
 }

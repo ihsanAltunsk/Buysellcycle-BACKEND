@@ -4,11 +4,15 @@ import config_Requirements.ConfigReader;
 import hooks.Base;
 import hooks.HooksAPI;
 import io.cucumber.java.en.Given;
+import org.apiguardian.api.API;
 import org.junit.Assert;
 import utilities.API_Utilities.API_Methods;
 
+import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static utilities.API_Utilities.API_Methods.response;
 
 public class API_Common_Stepdefinitions extends Base {
     @Given("The API user sends a {string} request and records the response.")
@@ -19,7 +23,11 @@ public class API_Common_Stepdefinitions extends Base {
                 break;
             case "POST":
                 API_Methods.postResponse(requestBody.toString());
-                break;
+                jsonPath = response.jsonPath();
+                if (jsonPath.getString("message").contains("success")) {
+                    apiId = jsonPath.get("added_item_id");
+                }else {
+                    break;}
             case "PATCH":
                 API_Methods.patchResponse(requestBody.toString());
                 break;
@@ -50,12 +58,12 @@ public class API_Common_Stepdefinitions extends Base {
     }
     @Given("The api user verifies that updated_Id is same as the param {int}")
     public void the_api_user_verifies_that_updated_id_is_same_as_the_param_id(int id) {
-        jsonPath = API_Methods.response.jsonPath();
+        jsonPath = response.jsonPath();
         assertEquals(id, jsonPath.getInt("updated_Id"));
     }
     @Given("The api user verifies that Deleted_Id is same as the request body {int}")
     public void the_api_user_verifies_that_deleted_id_is_same_as_the_request_body(int id) {
-        jsonPath = API_Methods.response.jsonPath();
+        jsonPath = response.jsonPath();
         assertEquals(id, jsonPath.getInt("Deleted_Id"));
     }
     @Given("The api user sets {string} path parameters")
@@ -69,5 +77,11 @@ public class API_Common_Stepdefinitions extends Base {
     @Given("The api user verifies that the message information in the response body is {string}")
     public void the_api_user_verifies_that_the_message_information_in_the_response_body_is(String message) {
         API_Methods.messageAssert(message);
+    }
+    @Given("The api user prepares a GETBODY request containing the added_item_id and records the response.")
+    public void the_api_user_prepares_a_getbody_request_containing_the_added_item_id_and_records_the_response() {
+        System.out.println("eklenen:" + apiId);
+        requestBody.put("id", apiId);
+        API_Methods.getBodyResponse(requestBody.toString());
     }
 }
