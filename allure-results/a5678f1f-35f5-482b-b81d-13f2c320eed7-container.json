@@ -1,0 +1,1 @@
+{"uuid":"a5678f1f-35f5-482b-b81d-13f2c320eed7","name":"Scenario: Verify whether there is data in the refund_reasons table with a 'reason' value of Null.","children":["a00bf49f-15da-4e68-83aa-bc33f6c4aa25"],"befores":[],"afters":[],"start":1713963242659,"stop":1713963244071}

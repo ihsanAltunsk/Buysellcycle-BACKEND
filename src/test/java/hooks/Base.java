@@ -33,7 +33,11 @@ public abstract class Base {
         reqBodyMap=new HashMap<>();
         queryManage = new Manage();
     }
+    public static String phone;
+    public static String shippingName;
 
+    public static int orderId;
+    public static String containsNull;
 
 
 }
