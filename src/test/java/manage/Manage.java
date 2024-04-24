@@ -2,32 +2,32 @@ package manage;
 
 public class Manage {
 // ============================================QUERY LIST============================================
-    private String queryUS01Q01 = "";
+    private String queryUS01Q01 = "select name from categories where slug=?";
     private String queryUS02Q01 = "INSERT INTO cities (id, name, state_id, status, created_at) VALUES(?, ?, ?, ?, ?)";
-    private String queryUS02Q01ID = "SELECT id FROM cities";
+    private String queryUS02Q02 = "SELECT id FROM cities";
     private String queryUS03Q01 ="delete from cities where id=? and name=?";
     private String queryUS04Q01 = "";
     private String queryUS05Q01 = "INSERT INTO contacts (id,name,email,query_type,message) VALUES(?, ?, ?, ?, ?)";
     private String queryUS05Q02 = "DELETE FROM contacts WHERE email =?";
     private String queryUS06Q01 = "";
     private String queryUS07Q01 = "select phone from customer_addresses limit 3";
-    private String queryUS08Q01 = "";
+    private String queryUS08Q01 = "SELECT name FROM delivery_processes ORDER BY id DESC LIMIT ?";
     private String queryUS09Q01 = "SELECT COUNT(id) AS total_amount FROM log_activity WHERE ip = ? AND method = ?";
     private String queryUS10Q01 = "select customer_id from order_address_details where shipping_address != billing_address";
     private String queryUS11Q01 = "";
     private String queryUS12Q01 = "";
     private String queryUS13Q01 = "";
     private String queryUS14Q01 = "SELECT * FROM refund_reasons WHERE reason IS NULL";
-    private String queryUS15Q01 = "";
+    private String queryUS15Q01 = "select * from customer_coupon_stores limit ?";
     private String queryUS16Q01 = "";
     private String queryUS17Q01 = "select attendances.year,users.email from attendances join users on attendances.id=users.id where attendances.year<? and users.id=?";
     private String queryUS18Q01 = "";
     private String queryUS19Q01 = "UPDATE bank_accounts  SET opening_balance=? WHERE bank_name=?";
     private String queryUS20Q01 = "";
     private String queryUS21Q01 = "select * from guest_order_details";
-    private String queryUS21Q03 = "UPDATE guest_order_details SET shipping_name = 'Reyyan' WHERE order_id = 118";
     private String queryUS21Q01 = "SELECT sum(order_id) FROM guest_order_details";
     private String queryUS21Q02 = "UPDATE guest_order_details SET shipping_name = 'Reyyan' WHERE order_id = 78";
+    private String queryUS21Q03 = "UPDATE guest_order_details SET shipping_name = 'Reyyan' WHERE order_id = 118";
     private String queryUS22Q01 = "";
     private String queryUS23Q01 = "";
     private String queryUS24Q01 = "select order_number from orders where not customer_email=? and sub_total<? order by order_number desc";
@@ -47,7 +47,8 @@ public class Manage {
         return queryUS05Q01;
     }
 
-    public String getQueryUS05Q02() {return queryUS05Q02;
+    public String getQueryUS05Q02() {
+        return queryUS05Q02;
     }
     public String getQueryUS01Q01() {
         return queryUS01Q01;
