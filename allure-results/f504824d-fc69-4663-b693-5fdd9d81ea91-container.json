@@ -1,1 +1,0 @@
-{"uuid":"f504824d-fc69-4663-b693-5fdd9d81ea91","name":"Scenario Outline: When a PATCH request body, containing the address ID and the correct customer_id, along with valid authorization","children":["2b85ed16-24fd-44fa-aeac-579bf911f3c2"],"befores":[],"afters":[],"start":1713866796994,"stop":1713866800471}

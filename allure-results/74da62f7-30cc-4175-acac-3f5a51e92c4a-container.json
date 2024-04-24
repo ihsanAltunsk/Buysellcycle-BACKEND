@@ -1,1 +1,0 @@
-{"uuid":"74da62f7-30cc-4175-acac-3f5a51e92c4a","name":"Scenario: Calculate the number of orders placed according to the order_id in the guest_order_details table.","children":["12171f7f-638d-414a-a76a-e9fd02772f85"],"befores":[],"afters":[],"start":1713979707686,"stop":1713979709152}

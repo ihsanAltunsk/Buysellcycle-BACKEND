@@ -28,7 +28,7 @@ public class DB_InsertInto_Methods extends Base {
         query = queryManage.getQueryUS02Q01();
         preparedStatement = DBUtils.getConnection().prepareStatement(query);
 
-        id = idGenerator(queryManage.getQueryUS02Q01ID());
+        id = idGenerator(queryManage.getQueryUS02Q02());
         name = faker.name().fullName();
         state_id = random.nextInt(2);
         status = random.nextInt(2);

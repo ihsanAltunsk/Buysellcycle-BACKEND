@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {
-                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
+                //"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "pretty",
                 "html:target/default-cucumber-reports.html",
                 "json:target/json-reports/cucumber.json",

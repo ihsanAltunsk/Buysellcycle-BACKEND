@@ -1,1 +1,0 @@
-{"uuid":"3fa2a4c9-7373-4e3d-86b3-cbf3c9516a28","name":"Scenario Outline: /api/profile/addressUpdate/{id} endpoint'ine gecerli authorization bilgileri ve yanlis (sistemde olmayan)","children":["f7a6e229-7e17-4f4b-898b-4291466937f0"],"befores":[],"afters":[],"start":1713866800521,"stop":1713866802272}

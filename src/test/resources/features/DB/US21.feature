@@ -7,4 +7,5 @@
       * Establish a database connection.
       * Calculate the number of orders placed according to order_id in the guest_order_details table.
       * Update shipping_name based on order number
+      * Process the results for update 1.
       * Close the database connection.
