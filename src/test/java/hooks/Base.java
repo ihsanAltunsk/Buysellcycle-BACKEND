@@ -7,10 +7,13 @@ import org.json.JSONObject;
 
 import java.sql.*;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 public abstract class Base {
     public static String fullPath, query, name, description;
+    public static String customer_email;
+    public static double sub_total;
     public static int rowCount, state_id, status;
     public static long id;
     public static Date date;
@@ -32,4 +35,11 @@ public abstract class Base {
         reqBodyMap=new HashMap<>();
         queryManage = new Manage();
     }
+    public static String phone;
+    public static String shippingName;
+
+    public static int orderId;
+    public static String containsNull;
+
+
 }

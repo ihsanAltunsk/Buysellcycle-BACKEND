@@ -1,0 +1,1 @@
+{"uuid":"7fbab5c3-afa7-4530-b542-ffb6364c7d62","name":"Scenario: Check whether the phone data contains 5 according to the first 3 address information in the customer_addresses table","children":["2e091933-a931-4015-ae38-2ba25d8a6e24"],"befores":[],"afters":[],"start":1713866805625,"stop":1713866806931}

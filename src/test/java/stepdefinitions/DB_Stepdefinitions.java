@@ -10,8 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static utilities.DB_Utilities.DBUtils.getStatement;
+import static org.junit.Assert.*;
 
 public class DB_Stepdefinitions extends Base {
     //ihsan
@@ -36,7 +35,42 @@ public class DB_Stepdefinitions extends Base {
         System.out.println("Total amount: " + resultSet.getLong("total_amount"));
     }
 // ====================================================================================================================================================================
+    @Given("Query07 Prepare and execute the query.")
+    public void query07_prepare_and_execute_the_query() throws SQLException {
+        DBUtils.printFirstThreePhoneNumbers("phone");
 
+    }
+    @Given("Check if each {string} number has the number {string}")
+    public void check_if_each_number_has_the_number(String phone, String number) {
+        DBUtils.checkPhoneNumbersForFive();
+        String expectedPhone = "5";
+        String actualPhone = DBUtils.phone;
+        assertTrue(actualPhone.contains("5"));
+    }
+    @Given("Query14 Prepare and execute the query")
+    public void query14_prepare_and_execute_the_query() throws SQLException {
+        query = queryManage.getQueryUS14Q01();
+        DBUtils.getStatement().executeQuery(query);
+        List<Object> reason = DBUtils.getColumnData(query,"reason");
+        assertFalse(reason.isEmpty());
+
+    }
+
+    @Given("Calculate the number of orders placed according to order_id in the guest_order_details table.")
+    public void calculate_the_number_of_orders_placed_according_to_order_id_in_the_guest_order_details_table() throws SQLException {
+        DBUtils.getOrderCounts();
+    }
+    @Given("Update shipping_name based on order number")
+    public void update_shipping_name_based_on_order_number() throws SQLException {
+        query = queryManage.getQueryUS21Q03();
+        preparedStatement = DBUtils.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1, 118);
+        preparedStatement.setString(2, "Reyyan");
+        rowCount = preparedStatement.executeUpdate();
+        assertEquals(1, rowCount);
+
+    }
+//================================================================================================================================================
     // senayda
 
     @Given("Query01 Prepare and execute the query.")
@@ -44,7 +78,7 @@ public class DB_Stepdefinitions extends Base {
         query = queryManage.getQueryUS01Q01();
         preparedStatement = DBUtils.getConnection().prepareStatement(query);
         preparedStatement.setString(1,ConfigReader.getProperty("db", "categoryName"));
-       resultSet= preparedStatement.executeQuery();
+        resultSet= preparedStatement.executeQuery();
 
 
     }
@@ -61,11 +95,11 @@ public class DB_Stepdefinitions extends Base {
     public void query08_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getQueryUS08Q01();
         preparedStatement = DBUtils.getConnection().prepareStatement(query);
+
     }
 
     @Given("Process the results for verify.")
     public void process_the_results_for_verify() throws SQLException {
-
         List<String> expectedDelivery_Process = new ArrayList<>(5);
         preparedStatement.setInt(1,5);
         resultSet= preparedStatement.executeQuery();
@@ -80,8 +114,8 @@ public class DB_Stepdefinitions extends Base {
             resultSet.next();
             assertEquals(expectedDelivery_Process.get(i),resultSet.getString("name"));
         }
-
     }
+  
     @Given("Query015 Prepare and execute the query.")
     public void query015_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getQueryUS15Q01();
@@ -89,6 +123,106 @@ public class DB_Stepdefinitions extends Base {
         preparedStatement.setInt(1,3);
         resultSet= preparedStatement.executeQuery();
     }
+    // ======================================================================================
+//Azim Kaya US-05
+    @Given("Query05 Prepare and execute the query.")
+    public void query05_prepare_and_execute_the_query() throws SQLException {
+        query=queryManage.getQueryUS05Q01();
+        preparedStatement=DBUtils.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1,43);
+        preparedStatement.setString(2,"Ömer");
+        preparedStatement.setString(3,"azimli@buysellcycle.com");
+        preparedStatement.setInt(4,1);
+        preparedStatement.setString(5,"Herkese kolay gelsin");
+        preparedStatement.executeUpdate();
+    }
+    @Given("Delete the added data by entering email information in the contacts table.")
+    public void delete_the_added_data_by_entering_email_information_in_the_contacts_table() throws SQLException {
+    query=queryManage.getQueryUS05Q02();
+    preparedStatement=DBUtils.getConnection().prepareStatement(query);
+    preparedStatement.setString(1,"azimli@buysellcycle.com");
+    }
+    //Azim Kaya US-19
+    @Given("Query19 Prepare and execute the query.")
+    public void query19_prepare_and_execute_the_query() throws SQLException {
+        query=queryManage.getQueryUS19Q01();
+        preparedStatement=DBUtils.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1,-1);
+        preparedStatement.setString(2,"Weissnat-Stanton");
+    }
 
     // ======================================================================================
+
+    // humeyra tayfun
+
+    @Given("Query10 Prepare and execute the query.")
+    public void query10_prepare_and_execute_the_query() throws SQLException {
+        query = queryManage.getQueryUS10Q01();
+        resultSet= DBUtils.getStatement().executeQuery(query);
+
+    }
+    @Given("Process the results")
+    public void process_the_results() throws Exception {
+     rowCount=DBUtils.getRowCount();
+     assertEquals(2,rowCount);
+    }
+
+    @Given("Query24 Prepare and execute the query.")
+    public void query24_prepare_and_execute_the_query() throws SQLException {
+        query = queryManage.getQueryUS24Q01();
+        preparedStatement = DBUtils.getConnection().prepareStatement(query);
+        customer_email="customer";
+        sub_total=2000;
+        preparedStatement.setString(1,customer_email);
+        preparedStatement.setDouble(2,sub_total);
+        resultSet=preparedStatement.executeQuery();
+
+    }
+    @Given("Process the results for listing")
+    public void process_the_results_for_listing() {
+        System.out.println(DBUtils.getQueryResultList(query));
+
+/*
+20240416000570
+20240416000569
+20240414000568
+20240405000567
+20240405000565
+ */
+    }
+    @Given("Query17 Prepare and execute the query.")
+    public void query17_prepare_and_execute_the_query() throws SQLException {
+        query = queryManage.getQueryUS17Q01();
+        preparedStatement = DBUtils.getConnection().prepareStatement(query);
+        preparedStatement.setString(1,"2022");
+        preparedStatement.setInt(2,5);
+        resultSet = preparedStatement.executeQuery();
+
+    }
+
+    @Given("Verify the {string} information Results are obtained from user table")
+    public void verify_the_information_results_are_obtained_from_user_table(String email) throws SQLException {
+
+        resultSet.next();
+        email=resultSet.getString(email);
+        String expectedEmail = ConfigReader.getProperty("db","email");
+        assertEquals(expectedEmail, email);
+
+    }
+    @Given("Query03 insert Prepare and execute the query.")
+    public void query03_insert_prepare_and_execute_the_query() throws SQLException {
+        DB_InsertInto_Methods.citiesInsert();
+
+    }
+    @Given("delete  inserted query03")
+    public void delete_inserted_query03() throws SQLException {
+        query=queryManage.getQueryUS03Q01();
+        preparedStatement= preparedStatement = DBUtils.getConnection().prepareStatement(query);
+        preparedStatement.setLong(1, id);
+        preparedStatement.setString(2,name);
+    }
+
+
+
+//=================================================================================================
 }
