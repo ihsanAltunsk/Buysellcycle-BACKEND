@@ -7,7 +7,8 @@ public class Manage {
     private String queryUS02Q01ID = "SELECT id FROM cities";
     private String queryUS03Q01 = "";
     private String queryUS04Q01 = "";
-    private String queryUS05Q01 = "";
+    private String queryUS05Q01 = "INSERT INTO contacts (id,name,email,query_type,message) VALUES(?, ?, ?, ?, ?)";
+    private String queryUS05Q02 = "DELETE FROM contacts WHERE email =?";
     private String queryUS06Q01 = "";
     private String queryUS07Q01 = "select phone from customer_addresses limit 3";
     private String queryUS08Q01 = "";
@@ -21,12 +22,9 @@ public class Manage {
     private String queryUS16Q01 = "";
     private String queryUS17Q01 = "";
     private String queryUS18Q01 = "";
-    private String queryUS19Q01 = "";
+    private String queryUS19Q01 = "UPDATE bank_accounts  SET opening_balance=? WHERE bank_name=?";
     private String queryUS20Q01 = "";
     private String queryUS21Q01 = "SELECT sum(order_id) FROM guest_order_details";
-
-
-
     private String queryUS21Q02 = "UPDATE guest_order_details SET shipping_name = 'Reyyan' WHERE order_id = 78";
     private String queryUS22Q01 = "";
     private String queryUS23Q01 = "";
@@ -47,6 +45,8 @@ public class Manage {
         return queryUS05Q01;
     }
 
+    public String getQueryUS05Q02() {return queryUS05Q02;
+    }
     public String getQueryUS01Q01() {
         return queryUS01Q01;
     }
@@ -164,4 +164,5 @@ public class Manage {
     public String getQueryUS30Q01() {
         return queryUS30Q01;
     }
+
 }

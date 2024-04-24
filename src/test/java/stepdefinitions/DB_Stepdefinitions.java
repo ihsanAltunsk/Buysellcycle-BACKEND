@@ -110,9 +110,34 @@ public class DB_Stepdefinitions extends Base {
     @Given("Process the results for verify.")
     public void process_the_results_for_verify() {
 
-
     }
-
+    // ======================================================================================
+//Azim Kaya US-05
+    @Given("Query05 Prepare and execute the query.")
+    public void query05_prepare_and_execute_the_query() throws SQLException {
+        query=queryManage.getQueryUS05Q01();
+        preparedStatement=DBUtils.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1,43);
+        preparedStatement.setString(2,"Ömer");
+        preparedStatement.setString(3,"azimli@buysellcycle.com");
+        preparedStatement.setInt(4,1);
+        preparedStatement.setString(5,"Herkese kolay gelsin");
+        preparedStatement.executeUpdate();
+    }
+    @Given("Delete the added data by entering email information in the contacts table.")
+    public void delete_the_added_data_by_entering_email_information_in_the_contacts_table() throws SQLException {
+    query=queryManage.getQueryUS05Q02();
+    preparedStatement=DBUtils.getConnection().prepareStatement(query);
+    preparedStatement.setString(1,"azimli@buysellcycle.com");
+    }
+    //Azim Kaya US-19
+    @Given("Query19 Prepare and execute the query.")
+    public void query19_prepare_and_execute_the_query() throws SQLException {
+        query=queryManage.getQueryUS19Q01();
+        preparedStatement=DBUtils.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1,-1);
+        preparedStatement.setString(2,"Weissnat-Stanton");
+    }
 
     // ======================================================================================
 }
