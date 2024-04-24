@@ -8,14 +8,9 @@ import org.junit.Assert;
 import utilities.DB_Utilities.DBUtils;
 import utilities.DB_Utilities.DB_InsertInto_Methods;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static utilities.DB_Utilities.DBUtils.getStatement;
 
 public class DB_Stepdefinitions extends Base {
     //ihsan

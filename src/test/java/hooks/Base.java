@@ -12,8 +12,7 @@ import java.util.Random;
 
 public abstract class Base {
     public static String fullPath, query, name, description;
-    public static int rowCount, state_id, status;
-    public static long id;
+    public static int id, apiId,rowCount, state_id, status;
     public static Date date;
     public static JSONObject requestBody;
     public static Random random;
