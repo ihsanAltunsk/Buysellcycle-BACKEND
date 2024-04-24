@@ -24,19 +24,20 @@ public class DBUtils extends Base {
     }
 
     public static void createConnection() {
-        String url = ConfigReader.getProperty("db","URL");
-        String username = ConfigReader.getProperty("db","USERNAME");
-        String password = ConfigReader.getProperty("db","PASSWORD");
+        String url = ConfigReader.getProperty("db", "URL");
+        String username = ConfigReader.getProperty("db", "USERNAME");
+        String password = ConfigReader.getProperty("db", "PASSWORD");
         try {
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
     public static Connection getConnection() {
-        String url=ConfigReader.getProperty("db","URL");
-        String username=ConfigReader.getProperty("db","USERNAME");
-        String password=ConfigReader.getProperty("db","PASSWORD");
+        String url = ConfigReader.getProperty("db", "URL");
+        String username = ConfigReader.getProperty("db", "USERNAME");
+        String password = ConfigReader.getProperty("db", "PASSWORD");
         try {
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
@@ -295,6 +296,8 @@ public class DBUtils extends Base {
     public static void printFirstThreePhoneNumbers(String tableName) {
 
         try {
+            query = queryManage.getQueryUS07Q01();
+            DBUtils.getStatement().executeQuery(query);
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 String phone = resultSet.getString("phone");
@@ -312,52 +315,62 @@ public class DBUtils extends Base {
             }
         }
     }
-    public static void checkPhoneNumbersForFive(){
-        try (Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
-            int count = 1;
-            while (resultSet.next()) {
-                String phone = resultSet.getString("phone");
+
+    public static void checkPhoneNumbersForFive() {
+        try {
+            query = queryManage.getQueryUS07Q01();
+            PreparedStatement US07Q01 = connection.prepareStatement(query);
+            resultSet = US07Q01.executeQuery(query);
+            for (int i = 0; i <= 2 && resultSet.next(); i++) {
+                phone = resultSet.getString("phone");
                 if (phone.contains("5")) {
-                    System.out.println("Satır " + count + ": Telefon numarası '5' içeriyor -> " + phone);
+                    System.out.println("Phone: " + phone + "   5 sayısı içeriyor");
                 } else {
-                    System.out.println("Satır " + count + ": Telefon numarası '5' içermiyor -> " + phone);
+                    System.out.println("Phone: " + phone + "   5 sayısı içermiyor");
                 }
-                count++;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public static double getOrderCounts() throws SQLException {
+
+        query = queryManage.getQueryUS21Q01();
+        DBUtils.getStatement().executeQuery(query);
+        List<Object> orderIdList = DBUtils.getColumnData(query,"order_id");
+
+        double sum = 0;
+        for (Object obj : orderIdList) {
+            if (obj instanceof Number) {
+                sum += ((Number) obj).doubleValue();
+            }
+        }
+        System.out.println(sum);
+        return sum;
+    }
+/*
+    public static void updateShippingName() throws SQLException {
+        query = queryManage.getQueryUS21Q03();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, "Reyyan"); // Güncellenecek yeni shipping adını buraya yazın
+            preparedStatement.setInt(2, 115); // Güncellenecek siparişin order_id'sini buraya yazın
+            resultSet = preparedStatement.executeQuery();
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected >0) {
+                System.out.println("Güncelleme başarılı!");
+            } else {
+                System.out.println("Güncelleme yapılamadı.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-    }
-    public static void checkAndPrintReasonValues(Integer[] query, Integer[] expectedResult) {
-
-        for (int i = 0; i < query.length; i++) {
-            if (query[i] == null) {
-                expectedResult[i] = query[i];
-                System.out.println("Reason değerleri Null içerir");
-            } else {
-                System.out.println("Reason değerleri Null içermez");
-            }
-        }
-    }
-    public static void getOrderCounts(){
-        int[] orderIds = {2, 23, 62, 78, 91, 92, 115, 116, 118, 129, 139, 149, 181};
-        int toplam = 0;
-
-        for (int each: orderIds
-        ){
-            toplam += each;
-        }
-        System.out.println("order_ID toplam: " + toplam);
-    }
-    public static void updateShippingName() throws SQLException {
-        preparedStatement = DBUtils.getConnection().prepareStatement(query);
-        preparedStatement.setInt(1,78);
-        preparedStatement.setString(2,"Reyyan");
-        resultSet = preparedStatement.executeQuery();
 
     }
+
+ */
 }
 
 
