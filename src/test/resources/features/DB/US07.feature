@@ -5,6 +5,6 @@
     Scenario: Check whether the phone data contains 5 according to the first 3 address information in the customer_addresses table
       * Establish a database connection.
       * Query07 Prepare and execute the query.
-      * Check if each phone number has the number "<5>"
+      * Check if each 'phone' number has the number "<5>"
       * Close the database connection.
 
