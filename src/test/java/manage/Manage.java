@@ -2,7 +2,7 @@ package manage;
 
 public class Manage {
 // ============================================QUERY LIST============================================
-    private String queryUS01Q01 = "";
+    private String queryUS01Q01 = "select name from categories where slug=?";
     private String queryUS02Q01 = "INSERT INTO cities (id, name, state_id, status, created_at) VALUES(?, ?, ?, ?, ?)";
     private String queryUS02Q01ID = "SELECT id FROM cities";
     private String queryUS03Q01 = "";
@@ -10,14 +10,14 @@ public class Manage {
     private String queryUS05Q01 = "";
     private String queryUS06Q01 = "";
     private String queryUS07Q01 = "";
-    private String queryUS08Q01 = "";
+    private String queryUS08Q01 = "SELECT name FROM delivery_processes ORDER BY id DESC LIMIT ?";
     private String queryUS09Q01 = "SELECT COUNT(id) AS total_amount FROM log_activity WHERE ip = ? AND method = ?";
     private String queryUS10Q01 = "";
     private String queryUS11Q01 = "";
     private String queryUS12Q01 = "";
     private String queryUS13Q01 = "";
     private String queryUS14Q01 = "";
-    private String queryUS15Q01 = "";
+    private String queryUS15Q01 = "select * from customer_coupon_stores limit ?";
     private String queryUS16Q01 = "";
     private String queryUS17Q01 = "";
     private String queryUS18Q01 = "";

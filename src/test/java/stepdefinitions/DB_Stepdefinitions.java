@@ -7,6 +7,8 @@ import utilities.DB_Utilities.DBUtils;
 import utilities.DB_Utilities.DB_InsertInto_Methods;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static utilities.DB_Utilities.DBUtils.getStatement;
@@ -57,16 +59,36 @@ public class DB_Stepdefinitions extends Base {
 
     @Given("Query08 Prepare and execute the query.")
     public void query08_prepare_and_execute_the_query() throws SQLException {
-        query = queryManage.getQueryUS01Q01();
+        query = queryManage.getQueryUS08Q01();
         preparedStatement = DBUtils.getConnection().prepareStatement(query);
     }
 
     @Given("Process the results for verify.")
-    public void process_the_results_for_verify() {
+    public void process_the_results_for_verify() throws SQLException {
 
+        List<String> expectedDelivery_Process = new ArrayList<>(5);
+        preparedStatement.setInt(1,5);
+        resultSet= preparedStatement.executeQuery();
+
+        expectedDelivery_Process.add("Delivered");
+        expectedDelivery_Process.add("Recieved");
+        expectedDelivery_Process.add("Shipped");
+        expectedDelivery_Process.add("Processing");
+        expectedDelivery_Process.add("Pending");
+
+        for (int i = 0; i < 5; i++) {
+            resultSet.next();
+            assertEquals(expectedDelivery_Process.get(i),resultSet.getString("name"));
+        }
 
     }
-
+    @Given("Query015 Prepare and execute the query.")
+    public void query015_prepare_and_execute_the_query() throws SQLException {
+        query = queryManage.getQueryUS15Q01();
+        preparedStatement = DBUtils.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1,3);
+        resultSet= preparedStatement.executeQuery();
+    }
 
     // ======================================================================================
 }
