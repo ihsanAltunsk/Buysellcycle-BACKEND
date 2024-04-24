@@ -12,6 +12,8 @@ import java.util.Random;
 
 public abstract class Base {
     public static String fullPath, query, name, description;
+    public static String customer_email;
+    public static double sub_total;
     public static int rowCount, state_id, status;
     public static long id;
     public static Date date;
