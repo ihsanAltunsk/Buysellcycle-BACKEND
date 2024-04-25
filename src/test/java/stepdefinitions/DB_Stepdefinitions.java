@@ -5,11 +5,10 @@ import hooks.Base;
 import io.cucumber.java.en.Given;
 import utilities.DB_Utilities.DBUtils;
 import utilities.DB_Utilities.DB_InsertInto_Methods;
-
 import java.sql.SQLException;
-import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.*;
 
 public class DB_Stepdefinitions extends Base {
@@ -95,22 +94,11 @@ public class DB_Stepdefinitions extends Base {
     public void update_shipping_name_based_on_order_number() throws SQLException {
         query = queryManage.getQueryUS21Q02();
         preparedStatement = DBUtils.getConnection().prepareStatement(query);
-        preparedStatement.setString(1, "Reyyan");
-        preparedStatement.setInt(2, 118);
-        preparedStatement.executeUpdate();
-    }
-    @Given("Prepare the query containing {string} in Query28, execute it and print it to the console.")
-    public void prepare_the_query_containing_in_query28_execute_it_and_print_it_to_the_console(String string) throws SQLException {
-
-        DBUtils.PreparingUS2801ExecutingPrinting();
-    }
-    @Given("Prepare the query that does not contain {string} in Query28, execute it and print it to the console.")
-    public void prepare_the_query_that_does_not_contain_in_query28_execute_it_and_print_it_to_the_console(String string) {
-        DBUtils.PreparingUS2802ExecutingPrinting();
+        preparedStatement.setInt(1, 118);
+        preparedStatement.setString(2, "Reyyan");
     }
 
-
-    //================================================================================================================================================
+//================================================================================================================================================
     // senayda
     @Given("Query01 Prepare and execute the query.")
     public void query01_prepare_and_execute_the_query() throws SQLException {
@@ -150,7 +138,7 @@ public class DB_Stepdefinitions extends Base {
             assertEquals(expectedDelivery_Process.get(i),resultSet.getString("name"));
         }
     }
-  
+
     @Given("Query015 Prepare and execute the query.")
     public void query015_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getQueryUS15Q01();
@@ -158,30 +146,14 @@ public class DB_Stepdefinitions extends Base {
         preparedStatement.setInt(1,3);
         resultSet= preparedStatement.executeQuery();
     }
-    @Given("Query22 Prepare and execute the query.")
-    public void query22_prepare_and_execute_the_query() throws SQLException {
-        query=queryManage.getQueryUS22Q01();
-        preparedStatement = DBUtils.getConnection().prepareStatement(query);
-        preparedStatement.setString(1,"merak");
-        preparedStatement.setString(2,"at");
-        preparedStatement.executeUpdate();
 
-    }
-    @Given("delete data inserted query15.")
-    public void delete_data_inserted_query15() throws SQLException {
-        query=queryManage.getQueryUS22Q02();
-        preparedStatement=DBUtils.getConnection().prepareStatement(query);
-        preparedStatement.setInt(1,9047166);
-
-
-    }
     // ======================================================================================
     //Azim Kaya US-05
     @Given("Query05 Prepare and execute the query.")
     public void query05_prepare_and_execute_the_query() throws SQLException {
         query=queryManage.getQueryUS05Q01();
         preparedStatement=DBUtils.getConnection().prepareStatement(query);
-        preparedStatement.setInt(1,44);
+        preparedStatement.setInt(1,43);
         preparedStatement.setString(2,"Ömer");
         preparedStatement.setString(3,"azimli@buysellcycle.com");
         preparedStatement.setInt(4,1);
@@ -203,31 +175,6 @@ public class DB_Stepdefinitions extends Base {
         preparedStatement=DBUtils.getConnection().prepareStatement(query);
         preparedStatement.setInt(1,-1);
         preparedStatement.setString(2,"Weissnat-Stanton");
-    }
-    @Given("Query26 Prepare and execute the query.")
-    public void query26_prepare_and_execute_the_query() throws SQLException {
-        query=queryManage.getQueryUS26Q01();
-        preparedStatement=DBUtils.getConnection().prepareStatement(query);
-        preparedStatement.setInt(1,7000);
-        resultSet=preparedStatement.executeQuery();
-    }
-    @Given("Query26 Process the results for .")
-    public void query26_process_the_results_for() throws SQLException {
-        double expected=19039967.55;
-        resultSet.next();
-       int actualAmount1=resultSet.getInt("total_amount");
-        resultSet.next();
-       double actualAmount2=resultSet.getInt("total_amount");
-        assertEquals(9164,actualAmount1);
-
-    }
-    @Given("list the unique {string} in the attendances table.")
-    public void list_the_unique_in_the_attendances_table(String string) throws SQLException {
-    query=queryManage.getQueryUS12Q01();
-    DBUtils.getStatement().executeQuery(query);
-    List<Object> note = DBUtils.getColumnData(query,"note");
-        System.out.println(note+"note");
-
     }
 
     // ======================================================================================

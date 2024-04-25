@@ -1,7 +1,5 @@
 package stepdefinitions;
 
-import config_Requirements.ConfigReader;
-
 import hooks.Base;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
@@ -16,7 +14,8 @@ import static org.junit.Assert.*;
 
 public class API_Stepdefinitions extends Base {
 
-    //Reyyan US08-TC01
+    // Reyyan
+    // US08/TC01
     @Given("The api user verifies the content of the data {int}, {string}, {string}, {int}, {string},{string},{string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(int id, String year, String name, int type, String date, String created_at , String updated_at ) {
         jsonPath = API_Methods.response.jsonPath();
@@ -28,6 +27,7 @@ public class API_Stepdefinitions extends Base {
         assertEquals(created_at, jsonPath.getString("holidayDetails[0].created_at"));
         assertEquals(updated_at, jsonPath.getString("holidayDetails[0].updated_at"));
     }
+    // US18/TC01
     @Given("The api user verifies the content of the data {int}, {string},{string},{string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(int id, String reason, String created_at, String updated_at) {
         jsonPath = API_Methods.response.jsonPath();
@@ -36,13 +36,14 @@ public class API_Stepdefinitions extends Base {
         assertEquals(created_at,jsonPath.getString("refundReasonDetails[0].created_at"));
         assertEquals(updated_at,jsonPath.getString("refundReasonDetails[0].updated_at"));
     }
+    // US22/TC01
     @Given("The api user verifies the content of the data {string},{string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(String name, String details) {
         jsonPath = API_Methods.response.jsonPath();
         assertEquals(name,jsonPath.getString("departments[0].name"));
         assertEquals(details,jsonPath.getString("departments[0].details"));
     }
-    //Reyyan US29-TC01
+    // US29/TC01
     @Given("The api user prepares a POST request containing the {string}, {string}, {int}, {string}, {string}, {int}, {int}, {int}, null, {int}, {int} information to send to the api couponAdd endpoint.")
     public void the_api_user_prepares_a_post_request_containing_the_null_information_to_send_to_the_api_coupon_add_endpoint(String title, String coupon_code, int coupon_type, String start_date, String end_date, int discount, int discount_type, int minimum_shopping, int is_expire, int is_multiple_buy) {
         requestBody.put("title",title);
@@ -57,7 +58,7 @@ public class API_Stepdefinitions extends Base {
         requestBody.put("is_expire",is_expire);
         requestBody.put("is_multiple_buy",is_multiple_buy);
     }
-    //Reyyan US43-TC01
+    // US43/TC01
     @Given("The api user prepares a PATCH request containing the {int}, {string}, {string}, {string}, {string}, {string},{string}, {string}, {string}, {string} data to send to the api address Update endpoint.")
     public void the_api_user_prepares_a_patch_request_containing_the_data_to_send_to_the_api_address_update_endpoint(int customer_id, String name, String email, String address, String phone, String city, String state, String country, String postal_code, String address_type) {
         requestBody.put("customer_id",customer_id);
@@ -72,6 +73,7 @@ public class API_Stepdefinitions extends Base {
         requestBody.put("address_type",address_type);
         System.out.println(requestBody);
     }
+    // US43/TC04
     @Given("The api user verifies that the reason information in the response body is {int}, {string}, {string}, {string}, {string}, {string},{string}, {string}, {string}, {string}.")
     public void the_api_user_verifies_that_the_reason_information_in_the_response_body_is(int customer_id, String name, String email, String address, String phone, String city, String state, String country, String postal_code, String address_type) {
         jsonPath = API_Methods.response.jsonPath();
@@ -85,52 +87,35 @@ public class API_Stepdefinitions extends Base {
         assertEquals(country,jsonPath.getString("addresses[0].country"));
         assertEquals(postal_code,jsonPath.getString("addresses[0].postal_code"));
     }
-    //Reyyan US44-TC01-04-02-03-
-    @Given("The API user records the response from the api deleteAddress endpoint, confirming that the status code is '404' and the reason phrase is Not Found.")
-    public void the_apı_user_records_the_response_from_the_api_delete_address_endpoint_confirming_that_the_status_code_is_and_the_reason_phrase_is_not_found() {
-        assertTrue(API_Methods.tryCatchDelete(requestBody.toString()).equals(ConfigReader.getProperty("api","notFoundExceptionMessage")));
-    }
-    @Given("The API user saves the response from the api deleteAddress endpoint, verifying that the status code is '401' and the reason phrase is Unauthorized.")
-    public void the_apı_user_saves_the_response_from_the_api_delete_address_endpoint_verifying_that_the_status_code_is_and_the_reason_phrase_is_unauthorized() {
-        assertTrue(API_Methods.tryCatchDelete(requestBody.toString()).equals(ConfigReader.getProperty("api","unauthorizedExceptionMessage")));
-    }
 
-    // ===============================================================================================================================================================================
-    //Humeyra Tayfun
+    //======================================================================================================================================================================================
+    // Hümeyra
+    // US17/TC02
     @Given("The api user validates the {string} of the response body with index {int}.")
     public void the_api_user_validates_the_of_the_response_body_with_index(String reason, Integer dataIndex) {
        API_Methods.response.then()
                .assertThat()
                .body("refundReason["+ dataIndex+ "].reason",equalTo(reason));
     }
-    @Given("The api user prepares a PATCH request containing the {string} data to send to the api refundReasonUpdate endpoint.")
+    // US20/TC01-02-03
+    @Given("The api user prepares a request containing the {string} data to send to the api refundReasonUpdate endpoint.")
     public void the_api_user_prepares_a_patch_request_containing_the_data_to_send_to_the_api_refund_reason_update_endpoint(String reason) {
         requestBody.put("reason",reason);
     }
-    @Given("The API user records the response from the api refundReasonUpdate endpoint, confirming that the status code is '404'and the reason phrase is Not Found.")
-    public void the_apı_user_records_the_response_from_the_api_refund_reason_update_endpoint_confirming_that_the_status_code_is_and_the_reason_phrase_is_not_found() {
-        assertTrue(API_Methods.tryCatchPatch(requestBody.toString()).equals(ConfigReader.getProperty("api","notFoundExceptionMessage")));
-    }
-    @Given("The API user records the response from the api refundReasonUpdate endpoint, confirming that the status code is '401' and the reason phrase is Unauthorized.")
-    public void the_apı_user_records_the_response_from_the_api_refund_reason_update_endpoint_confirming_that_the_status_code_is_and_the_reason_phrase_is_unauthorized() {
-        assertTrue(API_Methods.tryCatchPatch(requestBody.toString()).equals(ConfigReader.getProperty("api","unauthorizedExceptionMessage")));
-    }
+    // US20/TC04
     @Given("The api user verifies that the reason information in the response body is {string}.")
     public void the_api_user_verifies_that_the_reason_information_in_the_response_body_is(String reasonValue) {
         jsonPath = API_Methods.response.jsonPath();
         Assert.assertEquals(reasonValue, jsonPath.getString("refundReasonDetails[0].reason"));
     }
+    // US09/TC01-03-04
     @Given("The api user prepares a POST request body for holiday add {string} {string} {string}.")
     public void the_api_user_prepares_a_post_request_body_for_holiday_add(String year, String name, String date) {
        requestBody.put("year",year);
        requestBody.put("name",name);
        requestBody.put("date",date);
     }
-    @Given("The api user verifies that the Deleted id information in the response body is the same as the id information in the request body.")
-    public void the_api_user_verifies_that_the_deleted_id_information_in_the_response_body_is_the_same_as_the_id_information_in_the_request_body() {
-        jsonPath = API_Methods.response.jsonPath();
-        Assert.assertEquals(requestBody.get("id"), jsonPath.getInt("Deleted_Id"));
-    }
+    // US07/TC02 - US32/TC02
     @Given("The api user validates the {string} {string} of the response body with index {int}.")
     public void the_api_user_validates_the_of_the_response_body_with_index(String year, String name, int dataIndex) {
         jsonPath = API_Methods.response.jsonPath();
@@ -138,11 +123,11 @@ public class API_Stepdefinitions extends Base {
         assertEquals(name, jsonPath.getString("holiday["+dataIndex+"].name"));
     }
 
-    //===================================================================================================================
+    //======================================================================================================================================================================================
     // Senayda US05-TC02
     @Given("The api user verifies the content of the data {int}, {string}, {string}, {string}, {string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(Integer id, String first_name, String username, String email, String name) {
-    
+
     }
     @Given("The api user verifies the content of the data {int} {string}, {string}, {string} {int},{string},{string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(int id, String user_id , String title , String description , int status, String created_at, String updated_at) {
@@ -182,8 +167,9 @@ public class API_Stepdefinitions extends Base {
        assertEquals(apiId,jsonPath.getInt("user["+ (apiId-1)+"].id"));
     }
 
-    //======================================================================================================================================================================
-    // Doruk US23 - TC01
+    //======================================================================================================================================================================================
+    // Doruk
+    // US23/TC01
     @Given("The api user prepares a POST request containing the department information to send to the api departmanAdd endpoint.")
     public void the_api_user_prepares_a_post_request_containing_the_department_information_to_send_to_the_api_departman_add_endpoint(DataTable table) {
         List<List<String>> rows = table.asLists(String.class);
@@ -192,7 +178,7 @@ public class API_Stepdefinitions extends Base {
         requestBody.put(rows.get(0).get(1), rows.get(1).get(1));
         requestBody.put(rows.get(0).get(2), rows.get(1).get(2));
     }
-    // Doruk US28 - TC01
+    // US28/TC01
     @Given("The api user verifies the content of the data {int}, {string}, {string}, {int}, {string}, {string}, {int}, {int}, {int}, {int}, {int}, {int}, {int}, {int}, {string}, {string}, {string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(int id, String title, String coupon_code, int coupon_type, String start_date, String end_date, int discount, int discount_type, int minimum_shopping, int maximum_discount, int created_by, int updated_by, int is_expire, int is_multiple_buy, String multiple_buy_limit, String created_at, String updated_at) {
         jsonPath = API_Methods.response.jsonPath();
@@ -214,7 +200,7 @@ public class API_Stepdefinitions extends Base {
         assertEquals(created_at, jsonPath.getString("couponDetails[0].created_at"));
         assertEquals(updated_at, jsonPath.getString("couponDetails[0].updated_at"));
     }
-    // Doruk US35 - TC01
+    // US35/TC01
     @Given("The api user prepares a PATCH request containing the address information to send to the api customerAddressUpdate endpoint.")
     public void the_api_user_prepares_a_patch_request_containing_the_address_information_to_send_to_the_api_customer_address_update_endpoint() {
         requestBody.put("name", faker.name().firstName());
@@ -227,7 +213,7 @@ public class API_Stepdefinitions extends Base {
         requestBody.put("postal_code", faker.address().zipCode());
         requestBody.put("address_type", "home");
     }
-    // Doruk US35 - TC04
+    // US35/TC04
     @Given("The api user prepares a PATCH request containing the address information with incorrect email format to send to the api customerAddressUpdate endpoint.")
     public void the_api_user_prepares_a_patch_request_containing_the_address_information_with_incorrect_email_format_to_send_to_the_api_customer_address_update_endpoint() {
         requestBody.put("name", faker.name().firstName());
@@ -240,17 +226,10 @@ public class API_Stepdefinitions extends Base {
         requestBody.put("postal_code", faker.address().zipCode());
         requestBody.put("address_type", "home");
     }
-  
-  //======================================================================================================================================================================
-    // Azim Kaya
-    @Given("The api user prepares a POST request containing the {string} information to send to the api refundReasonAdd endpoint.")
-    public void the_api_user_prepares_a_post_request_containing_the_information_to_send_to_the_api_refund_reason_add_endpoint(String reason) {
-    reqBodyMap.put("reason",reason);
-    }
-    @Given("The api user sends the POST request and saves the response returned from the api refundReasonAdd endpoint.")
-    public void the_api_user_sends_the_post_request_and_saves_the_response_returned_from_the_api_refund_reason_add_endpoint() {
-     API_Methods.postResponse(reqBodyMap);
-    }
+
+    //======================================================================================================================================================================================
+    // Azim
+    // US30/TC01-02-03-04
     @Given("The api user prepares a PATCH request body for couponUpdate.")
     public void the_api_user_sends_the_post_request_and_sav() {
         requestBody.put("title","can");
@@ -265,11 +244,7 @@ public class API_Stepdefinitions extends Base {
         requestBody.put("is_expire",0);
         requestBody.put("is_multiple_buy",1);
     }
-    //US31 -TC01
-    @Given("The API user saves the response from the api couponDelete endpoint, verifying that the status code is {string} and the reason phrase is Unauthorized.")
-    public void the_apı_user_saves_the_response_from_the_api_coupon_delete_endpoint_verifying_that_the_status_code_is_and_the_reason_phrase_is_unauthorized(String string) {
-        assertTrue(API_Methods.tryCatchDelete(requestBody.toString()).equals(ConfigReader.getProperty("api","unauthorizedExceptionMessage")));
-    }
+    // US40/TC02
     @And("The api user validates the {int} {int} {string},{string},{string},{string},{string},{string},{string},{string} of the response body.")
     public void theApiUserValidatesTheOfTheResponseBody(int customer_id,int dataIndex,  String name, String email, String phone, String address, String city, String state, String country, String postal_code) {
         jsonPath=API_Methods.response.jsonPath();
@@ -283,6 +258,7 @@ public class API_Stepdefinitions extends Base {
         assertEquals(country, jsonPath.getString("addresses["+dataIndex+"].country"));
         assertEquals(postal_code, jsonPath.getString("addresses["+dataIndex+"].postal_code"));
     }
+    // US41/TC02
     @Given("The api user verifies the content of the data {int} {int},{string},{string},{string},{string},{string},{string},{string},{string}, {int} , {int} ,{string},{string},in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_in_the_response_body( int id, int customer_id, String name, String email, String phone, String address, String city, String state, String country, String postal_code, int is_shipping_default , int is_billing_default, String created_at ,String updated_at) {
         jsonPath=API_Methods.response.jsonPath();
@@ -302,8 +278,9 @@ public class API_Stepdefinitions extends Base {
         assertEquals(updated_at,jsonPath.getString("addresses[0].updated_at"));
     }
 
-//======================================================================================================================================================================================
-//ihsan
+    //======================================================================================================================================================================================
+    // İhsan
+    // US06/TC01
     @Given("The api user verifies the content of the data {int}, {string}, {string}, {int}, {string}, {int}, {int}, {string}, {int}, {string}, {string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_id_in_the_response_body(int id , String first_name, String last_name, int role_id, String email, int is_verified, int is_active, String lang_code, int currency_id, String currency_code, String name) {
         jsonPath = API_Methods.response.jsonPath();
@@ -319,11 +296,13 @@ public class API_Stepdefinitions extends Base {
         assertEquals(currency_code, jsonPath.getString("user.currency_code"));
         assertEquals(name, jsonPath.getString("user.name"));
     }
+    // US12/TC01
     @Given("In the response body for the FAQ with id = {int} should be validated, including the {string} information.")
     public void in_the_response_body_for_the_faq_with_id_should_be_validated_including_the_information(Integer int1, String title) {
        jsonPath = API_Methods.response.jsonPath();
        assertEquals(title, jsonPath.getString("Faqs[0].title"));
     }
+    // US34/TC01
     @Given("The api user prepares a POST request body for address-store.")
     public void the_api_user_prepares_a_post_request_body_for_address_store() {
         requestBody.put("name", faker.name());
@@ -336,6 +315,7 @@ public class API_Stepdefinitions extends Base {
         requestBody.put("postal_code", "55555");
         requestBody.put("address_type", "home");
     }
+    // US34/TC02
     @And("The api user prepares a invalid POST request body for address-store.")
     public void theApiUserPreparesAInvalidPOSTRequestBodyForAddressStore() {
         requestBody.put("name", faker.name());
@@ -348,6 +328,7 @@ public class API_Stepdefinitions extends Base {
         requestBody.put("postal_code", "55555");
         requestBody.put("address_type", "home");
     }
+    // US42/TC01
     @Given("The api user prepares a POST request body {int}{string}{string}{string}{string}{string}{string}{string}{string}{string} for addressAdd.")
     public void the_api_user_prepares_a_post_request_body_for_address_add(int customer_id, String name, String email, String address, String phone, String city, String state, String country, String postal_code, String address_type) {
         requestBody.put("customer_id", customer_id);
@@ -361,30 +342,35 @@ public class API_Stepdefinitions extends Base {
         requestBody.put("postal_code", postal_code);
         requestBody.put("address_type", address_type);
     }
+    // US15/TC01-02
     @Given("The api user prepares a PATCH request body for faq.")
     public void the_api_user_prepares_a_patch_request_body_for_faq() {
         requestBody.put("title", "UPDATE");
         requestBody.put("description", "UPDATE2");
     }
+    // US15/TC01
     @Given("The api user verifies that updated id is same as the GET response body {int} {string}")
     public void the_api_user_verifies_that_updated_id_is_same_as_the_get_response_body(int id, String endpoint) {
         jsonPath = API_Methods.response.jsonPath();
         assertEquals(id, jsonPath.getInt(endpoint + "[0].id"));
     }
-    //==============================================================================================================
 
-    //Murat
+    //======================================================================================================================================================================================
+    // Murat
+    // US14/TC01-02
     @Given("The api user prepares a POST request body for faq.")
     public void the_api_user_prepares_a_post_request_body_for_faq() {
         requestBody.put("title", faker.lorem().character());
         requestBody.put("description",faker.lorem());
     }
+    // US25/TC01-02
     @Given("The api user prepares a PATCH request body for department.")
     public void the_api_user_prepares_a_patch_request_body_for_department() {
         requestBody.put("name", "UPDATE");
         requestBody.put("details", "UPDATE2");
         requestBody.put("status", "UPDATE2");
     }
+    // US37/TC01
     @Given("The api user verifies id={int} && code={string} && name={string}")
     public void the_api_user_verifies_id_code_name(int int1, String string, String string2) {
         jsonPath = API_Methods.response.jsonPath();
@@ -392,6 +378,7 @@ public class API_Stepdefinitions extends Base {
         assertEquals(string, jsonPath.getString("addresses[" + (int1-1) +"].code"));
         assertEquals(string2, jsonPath.getString("addresses[" + (int1-1) +"].name"));
     }
+    // US38/TC01
     @Given("The api user verifies the content of the data {string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_in_the_response_body(String string) {
         jsonPath = API_Methods.response.jsonPath();

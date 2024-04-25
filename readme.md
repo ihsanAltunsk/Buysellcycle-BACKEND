@@ -57,7 +57,3 @@
 > Close the database connection.
 > 
 > Process the results for update 1.
-> 
->
-> 
->

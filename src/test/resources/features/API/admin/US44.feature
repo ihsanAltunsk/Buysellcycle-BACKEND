@@ -27,7 +27,7 @@ body should confirm that it is "address deleted successfully".
     * The api user constructs the base url with the "admin" token.
     * The api user sets "api/profile/deleteAddress" path parameters
     * The api user prepares a DELETEBODY request containing the id = <id> and records the response.
-    * The API user records the response from the api deleteAddress endpoint, confirming that the status code is '404' and the reason phrase is Not Found.
+    * The API user confirms the "notFoundExceptionMessage".
 
     Examples:
       |id |
@@ -40,7 +40,7 @@ body should confirm that it is "address deleted successfully".
       * The api user constructs the base url with the "invalid" token.
       * The api user sets "api/profile/deleteAddress" path parameters
       * The api user prepares a DELETEBODY request containing the id = <id> and records the response.
-      * The API user saves the response from the api deleteAddress endpoint, verifying that the status code is '401' and the reason phrase is Unauthorized.
+      * The API user confirms the "unauthorizedExceptionMessage".
 
       Examples:
         |id |

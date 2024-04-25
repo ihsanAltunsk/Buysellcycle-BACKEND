@@ -3,7 +3,6 @@ package stepdefinitions;
 import hooks.Base;
 import io.cucumber.java.en.Given;
 import utilities.DB_Utilities.DBUtils;
-
 import java.sql.SQLException;
 
 import static org.junit.Assert.assertEquals;

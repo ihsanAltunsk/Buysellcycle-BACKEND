@@ -40,7 +40,7 @@
       * The API user sends a "DELETE" request and records the response.
       * The api user verifies that the status code is 202
       * The api user verifies that the message information in the response body is "refundReason deleted successfully"
-      * The api user verifies that the Deleted id information in the response body is the same as the id information in the request body.
+      * The api user verifies that Deleted_Id is same as the request body 98
 
     Scenario: TC_05 The deletion of the desired Refund&Reason record via the API should be validated from the API.
     (The deletion of the record can be confirmed by sending a GET request to

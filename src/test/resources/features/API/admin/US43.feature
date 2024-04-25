@@ -29,8 +29,7 @@
       * The api user constructs the base url with the "admin" token.
       * The api user sets "api/profile/addressUpdate/<id>" path parameters
       * The api user prepares a PATCH request containing the <customer_id>, "<name>", "<email>", "<address>", "<phone>", "<city>","<state>", "<country>", "<postal_code>", "<address_type>" data to send to the api address Update endpoint.
-      * The API user records the response from the api refundReasonUpdate endpoint, confirming that the status code is '404'and the reason phrase is Not Found.
-
+      * The API user confirms the "notFoundExceptionMessage".
       Examples:
         |id  |customer_id| name   |  email                 |address|phone     |city | state|country|postal_code|address_type|
         |1023|    7      |Mert    |reyyan@buysellcycle.com |aut    |1236547892|6007 |52    |  1    |28000      |14          |
@@ -43,7 +42,7 @@
         * The api user constructs the base url with the "admin" token.
         * The api user sets "api/profile/addressUpdate/<id>" path parameters
         * The api user prepares a PATCH request containing the <customer_id>, "<name>", "<email>", "<address>", "<phone>", "<city>","<state>", "<country>", "<postal_code>", "<address_type>" data to send to the api address Update endpoint.
-        * The API user records the response from the api refundReasonUpdate endpoint, confirming that the status code is '404'and the reason phrase is Not Found.
+        * The API user confirms the "notFoundExceptionMessage".
 
         Examples:
           |id  |customer_id| name   |  email                 |address|phone     |city | state|country|postal_code|address_type|
