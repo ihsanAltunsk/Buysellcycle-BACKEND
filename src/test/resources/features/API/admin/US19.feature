@@ -4,8 +4,8 @@ Feature: As an administrator, I want to be able to add a new Refund&Reason recor
 Scenario Outline:TC-01 When a POST body containing valid authorization information and necessary data
   * The api user constructs the base url with the "admin" token.
   * The api user sets "api/refundReasonAdd" path parameters
-  * The api user prepares a POST request containing the "<reason>" information to send to the api refundReasonAdd endpoint.
-  * The api user sends the POST request and saves the response returned from the api refundReasonAdd endpoint.
+  * The api user prepares a request containing the "<reason>" data to send to the api refundReasonUpdate endpoint.
+  * The API user sends a "POST" request and records the response.
   * The api user verifies that the status code is 201
   * The api user verifies that the message information in the response body is "refundReason added successfully"
   Examples:
@@ -21,8 +21,8 @@ Scenario:TC-02 The creation of the new Refund&Reason record via the API should b
 Scenario Outline:TC-03 When a POST body containing invalid authorization information and necessary
     * The api user constructs the base url with the "invalid" token.
     * The api user sets "api/refundReasonAdd" path parameters
-    * The api user prepares a POST request containing the "<reason>" information to send to the api refundReasonAdd endpoint.
-    * The api user sends the POST request and saves the response returned from the api refundReasonAdd endpoint.
+    * The api user prepares a request containing the "<reason>" data to send to the api refundReasonUpdate endpoint.
+    * The API user sends a "POST" request and records the response.
     * The api user verifies that the status code is 401
     * The api user verifies that the message information in the response body is "Unauthenticated."
 

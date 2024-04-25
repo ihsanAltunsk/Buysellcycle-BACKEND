@@ -34,5 +34,4 @@ public class ConfigReader {
             throw new IllegalArgumentException("Invalid file name: " + file);
         }
     }
-
 }

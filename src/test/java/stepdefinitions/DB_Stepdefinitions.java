@@ -150,7 +150,7 @@ public class DB_Stepdefinitions extends Base {
             assertEquals(expectedDelivery_Process.get(i),resultSet.getString("name"));
         }
     }
-  
+
     @Given("Query015 Prepare and execute the query.")
     public void query015_prepare_and_execute_the_query() throws SQLException {
         query = queryManage.getQueryUS15Q01();

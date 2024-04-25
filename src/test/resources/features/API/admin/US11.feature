@@ -41,7 +41,7 @@ Feature: As an administrator, I want to be able to delete holiday information fo
     * The API user sends a "DELETE" request and records the response.
     * The api user verifies that the status code is 202
     * The api user verifies that the message information in the response body is "holiday deleted successfully"
-    * The api user verifies that the Deleted id information in the response body is the same as the id information in the request body.
+    * The api user verifies that Deleted_Id is same as the request body 102
 
   Scenario: TC05 User confirm if the requested holiday record from the API has been deleted by sending a GET request
   to the /api/holidayDetails endpoint with the Deleted_Id returned.

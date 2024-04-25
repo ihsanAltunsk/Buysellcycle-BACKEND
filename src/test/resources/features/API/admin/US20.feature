@@ -10,7 +10,7 @@
 
       * The api user constructs the base url with the "admin" token.
       * The api user sets "api/refundReasonUpdate/<id>" path parameters
-      * The api user prepares a PATCH request containing the "<reason>" data to send to the api refundReasonUpdate endpoint.
+      * The api user prepares a request containing the "<reason>" data to send to the api refundReasonUpdate endpoint.
       * The API user sends a "PATCH" request and records the response.
       * The api user verifies that the status code is 202
       * The api user verifies that the message information in the response body is "refundReason updated successfully"
@@ -27,7 +27,7 @@
 
       * The api user constructs the base url with the "admin" token.
       * The api user sets "api/refundReasonUpdate/<id>" path parameters
-      * The api user prepares a PATCH request containing the "<reason>" data to send to the api refundReasonUpdate endpoint.
+      * The api user prepares a request containing the "<reason>" data to send to the api refundReasonUpdate endpoint.
       * The API user confirms the "unauthorizedExceptionMessage".
 
       Examples:
@@ -41,9 +41,8 @@
 
       * The api user constructs the base url with the "invalid" token.
       * The api user sets "api/refundReasonUpdate/<id>" path parameters
-      * The api user prepares a PATCH request containing the "<reason>" data to send to the api refundReasonUpdate endpoint.
-      * The API user records the response from the api refundReasonUpdate endpoint, confirming that the status code is '401' and the reason phrase is Unauthorized.
-
+      * The api user prepares a request containing the "<reason>" data to send to the api refundReasonUpdate endpoint.
+      * The API user confirms the "unauthorizedExceptionMessage".
 
       Examples:
         | id | reason                 |
