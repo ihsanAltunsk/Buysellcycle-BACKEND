@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 public abstract class Base {
-    public static String fullPath, query, name, phone, customer_email;
+    public static String fullPath, query, name, phone, customer_email,email,message,bank_name, branch_name, account_name;
     public static int id, apiId,rowCount, state_id, status;
     public static double sub_total;
     public static Date date;
