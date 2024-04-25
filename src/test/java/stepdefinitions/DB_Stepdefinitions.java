@@ -68,11 +68,22 @@ public class DB_Stepdefinitions extends Base {
     public void update_shipping_name_based_on_order_number() throws SQLException {
         query = queryManage.getQueryUS21Q02();
         preparedStatement = DBUtils.getConnection().prepareStatement(query);
-        preparedStatement.setInt(1, 118);
-        preparedStatement.setString(2, "Reyyan");
+        preparedStatement.setString(1, "Reyyan");
+        preparedStatement.setInt(2, 118);
+        preparedStatement.executeUpdate();
+    }
+    @Given("Prepare the query containing {string} in Query28, execute it and print it to the console.")
+    public void prepare_the_query_containing_in_query28_execute_it_and_print_it_to_the_console(String string) throws SQLException {
+
+        DBUtils.PreparingUS2801ExecutingPrinting();
+    }
+    @Given("Prepare the query that does not contain {string} in Query28, execute it and print it to the console.")
+    public void prepare_the_query_that_does_not_contain_in_query28_execute_it_and_print_it_to_the_console(String string) {
+        DBUtils.PreparingUS2802ExecutingPrinting();
     }
 
-//================================================================================================================================================
+
+    //================================================================================================================================================
     // senayda
     @Given("Query01 Prepare and execute the query.")
     public void query01_prepare_and_execute_the_query() throws SQLException {

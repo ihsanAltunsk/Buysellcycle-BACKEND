@@ -350,27 +350,50 @@ public class DBUtils extends Base {
         System.out.println(sum);
         return sum;
     }
-/*
-    public static void updateShippingName() throws SQLException {
-        query = queryManage.getQueryUS21Q03();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, "Reyyan"); // Güncellenecek yeni shipping adını buraya yazın
-            preparedStatement.setInt(2, 115); // Güncellenecek siparişin order_id'sini buraya yazın
-            resultSet = preparedStatement.executeQuery();
-            int rowsAffected = preparedStatement.executeUpdate();
-            if (rowsAffected >0) {
-                System.out.println("Güncelleme başarılı!");
-            } else {
-                System.out.println("Güncelleme yapılamadı.");
+    public static void PreparingUS2801ExecutingPrinting() {
+
+        try {
+            query = queryManage.getQueryUS28Q01();
+            DBUtils.getStatement().executeQuery(query);
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                String userId = resultSet.getString("user_id");
+                System.out.println("userId: " + userId);
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-
-
     }
+    public static void PreparingUS2802ExecutingPrinting() {
 
- */
+        try {
+            query = queryManage.getQueryUS28Q02();
+            DBUtils.getStatement().executeQuery(query);
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                String userId = resultSet.getString("user_id");
+                System.out.println("userId: " + userId);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }
 
 

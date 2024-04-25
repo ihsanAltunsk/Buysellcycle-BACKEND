@@ -25,14 +25,15 @@ public class Manage {
     private String queryUS19Q01 = "UPDATE bank_accounts  SET opening_balance=? WHERE bank_name=?";
     private String queryUS20Q01 = "";
     private String queryUS21Q01 = "select * from guest_order_details";
-    private String queryUS21Q02 = "UPDATE guest_order_details SET shipping_name = 'Reyyan' WHERE order_id = 118";
+    private String queryUS21Q02 = "UPDATE guest_order_details SET shipping_name = ? WHERE order_id = ?";
     private String queryUS22Q01 = "";
     private String queryUS23Q01 = "";
     private String queryUS24Q01 = "select order_number from orders where not customer_email=? and sub_total<? order by order_number desc";
     private String queryUS25Q01 = "";
     private String queryUS26Q01 = "";
     private String queryUS27Q01 = "";
-    private String queryUS28Q01 = "";
+    private String queryUS28Q01 = "SELECT DISTINCT user_id FROM support_tickets WHERE reference_no LIKE ''-''";
+    private String queryUS28Q02 = "SELECT DISTINCT user_id FROM support_tickets WHERE reference_no NOT LIKE ''-''";
     private String queryUS29Q01 = "";
     private String queryUS30Q01 = "";
 
@@ -129,6 +130,9 @@ public class Manage {
     }
     public String getQueryUS28Q01() {
         return queryUS28Q01;
+    }
+    public String getQueryUS28Q02() {
+        return queryUS28Q02;
     }
     public String getQueryUS29Q01() {
         return queryUS29Q01;
