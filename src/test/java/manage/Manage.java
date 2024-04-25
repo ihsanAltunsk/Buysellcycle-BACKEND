@@ -15,7 +15,7 @@ public class Manage {
     private String queryUS09Q01 = "SELECT COUNT(id) AS total_amount FROM log_activity WHERE ip = ? AND method = ?";
     private String queryUS10Q01 = "select customer_id from order_address_details where shipping_address != billing_address";
     private String queryUS11Q01 = "";
-    private String queryUS12Q01 = "";
+    private String queryUS12Q01 = "SELECT DISTINCT note FROM attendances";
     private String queryUS13Q01 = "";
     private String queryUS14Q01 = "SELECT * FROM refund_reasons WHERE reason IS NULL";
     private String queryUS15Q01 = "select * from customer_coupon_stores limit ?";
@@ -30,7 +30,7 @@ public class Manage {
     private String queryUS23Q01 = "";
     private String queryUS24Q01 = "select order_number from orders where not customer_email=? and sub_total<? order by order_number desc";
     private String queryUS25Q01 = "";
-    private String queryUS26Q01 = "";
+    private String queryUS26Q01 = "SELECT payment_method, sum(amount) AS total_amount FROM transactions GROUP BY payment_method HAVING total_amount > ? ORDER BY payment_method DESC";
     private String queryUS27Q01 = "";
     private String queryUS28Q01 = "";
     private String queryUS29Q01 = "";
