@@ -12,7 +12,7 @@ Feature:As an administrator, I want to be able to update the information of the 
     * The api user constructs the base url with the "admin" token.
     * The api user sets "api/faqsDetails" path parameters
     * The api user prepares a GETBODY request containing the id = <id> and records the response.
-    * The api user verifies that updated id is same as the GET response body <id>
+    * The api user verifies that updated id is same as the GET response body <id> "faqsDetails"
     Examples:
       |id|
       |4 |

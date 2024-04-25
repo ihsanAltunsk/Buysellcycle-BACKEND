@@ -6,5 +6,5 @@
       * Establish a database connection.
       * Query03 insert Prepare and execute the query.
       * delete  inserted query03
-      * Process the results for update.
+      * Process the results for update 1.
       * Close the database connection.
