@@ -40,7 +40,40 @@ public class DB_InsertInto_Methods extends Base {
         preparedStatement.setInt(4, status);
         preparedStatement.setDate(5, date);
 
-        System.out.println("NEW DATA: |" + id + "| |" + name + "| |" + state_id + "|" + status + "| |" + date);
+        System.out.println("NEW DATA: |" + id + "| |" + name + "| |" + state_id + "|" + status + "| |" + date + "|");
     }
 
+    public static void contactsInsert() throws SQLException {
+        query = queryManage.getQueryUS04Q01();
+        preparedStatement = DBUtils.getConnection().prepareStatement(query);
+
+        id = idGenerator(queryManage.getQueryUS04Q02());
+        name = faker.name().fullName();
+        email = faker.internet().emailAddress();
+        message = faker.lorem().characters(3);
+
+        preparedStatement.setInt(1, id);
+        preparedStatement.setString(2, name);
+        preparedStatement.setString(3, email);
+        preparedStatement.setString(4, "1");
+        preparedStatement.setString(5, message);
+        System.out.println("NEW DATA: |" + id + "| |" + name + "| |" + email + "| |1| " + "|" + message + "|");
+    }
+
+    public static void bank_accountsInsert() throws SQLException {
+        query = queryManage.getQueryUS18Q01();
+        preparedStatement = DBUtils.getConnection().prepareStatement(query);
+
+        id = idGenerator(queryManage.getQueryUS18Q02());
+        bank_name = faker.company().name();
+        branch_name = faker.company().profession();
+        account_name = faker.name().fullName();
+
+        preparedStatement.setInt(1, id);
+        preparedStatement.setString(2, bank_name);
+        preparedStatement.setString(3, branch_name);
+        preparedStatement.setString(4, account_name);
+        preparedStatement.setString(5, "652745234");
+        System.out.println("NEW DATA: |" + id + "| |" + bank_name + "| |" + branch_name + "|" + account_name + "| |652745234|");
+    }
 }

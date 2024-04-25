@@ -4,12 +4,7 @@ import config_Requirements.ConfigReader;
 import hooks.Base;
 import hooks.HooksAPI;
 import io.cucumber.java.en.Given;
-import org.apiguardian.api.API;
-import org.junit.Assert;
 import utilities.API_Utilities.API_Methods;
-
-import static org.hamcrest.Matchers.notNullValue;
-import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static utilities.API_Utilities.API_Methods.response;
@@ -26,8 +21,8 @@ public class API_Common_Stepdefinitions extends Base {
                 jsonPath = response.jsonPath();
                 if (jsonPath.getString("message").contains("success")) {
                     apiId = jsonPath.get("added_item_id");
-                }else {
-                    break;}
+                }
+                break;
             case "PATCH":
                 API_Methods.patchResponse(requestBody.toString());
                 break;
@@ -38,14 +33,14 @@ public class API_Common_Stepdefinitions extends Base {
                 System.out.println("Invalid Method Value");
         }
     }
+    @Given("The API user confirms the {string}.")
+    public void the_apı_user_confirms_the(String properties) {
+        assertTrue(API_Methods.tryCatchPatch(requestBody.toString()).equals(ConfigReader.getProperty("api", properties)));
+    }
     @Given("The api user constructs the base url with the {string} token.")
     public void the_api_user_constructs_the_base_url_with_the_token(String token) {
         Base.initialize();
         HooksAPI.setUpApi(token);
-    }
-    @Given("The API user confirms the {string}.")
-    public void the_apı_user_confirms_the(String properties) {
-        assertTrue(API_Methods.tryCatchPatch(requestBody.toString()).equals(ConfigReader.getProperty("api", properties)));
     }
     @Given("The api user prepares a GETBODY request containing the id = {int} and records the response.")
     public void the_api_user_prepares_a_get_request_containing_the_refund_reason_id_for_which_details_are_to_be_accessed_to_send_to_the_api_endpoint(int id) {
