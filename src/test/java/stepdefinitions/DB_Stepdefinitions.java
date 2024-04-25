@@ -35,6 +35,33 @@ public class DB_Stepdefinitions extends Base {
         System.out.println("Total amount: " + resultSet.getLong("total_amount"));
     }
 
+    @Given("Query16 Prepare and execute the query.")
+    public void query16_prepare_and_execute_the_query() throws SQLException {
+        query = queryManage.getQueryUS16Q01();
+        preparedStatement = DBUtils.getConnection().prepareStatement(query);
+        preparedStatement.setString(1,"Switzerland");
+        resultSet = preparedStatement.executeQuery();
+        System.out.println("ids: " + DBUtils.getColumnData(query,"id"));
+    }
+    @Given("Query23 Prepare and execute the query.")
+    public void query23_prepare_and_execute_the_query() throws SQLException {
+        query = queryManage.getQueryUS23Q01();
+        resultSet = DBUtils.getStatement().executeQuery(query);
+        resultSet.next();
+        System.out.println("module: " + resultSet.getString("module") +
+                "\ntype_count: " + resultSet.getInt("type_count"));
+    }
+    @Given("Query30 Prepare and execute the query.")
+    public void query30_prepare_and_execute_the_query() throws SQLException {
+        query = queryManage.getQueryUS30Q01();
+        preparedStatement = DBUtils.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1,1);
+        preparedStatement.setString(2,"2024-03-30");
+        resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+        System.out.println("Total Price: " + resultSet.getInt("total_price"));
+    }
+
 // ====================================================================================================================================================================
     //reyyan
     @Given("Query07 Prepare and execute the query.")
@@ -243,4 +270,52 @@ public class DB_Stepdefinitions extends Base {
         preparedStatement.setString(2,name);
     }
 //=================================================================================================
+    //murat
+    @Given("Query11 Prepare and execute the query.")
+    public void query11_prepare_and_execute_the_query() throws SQLException {
+       query=queryManage.getQueryUS11Q01();
+       preparedStatement = DBUtils.getConnection().prepareStatement(query);
+       preparedStatement.setString(1,"Referral");
+       preparedStatement.setInt(2,10);
+       preparedStatement.setInt(3,20);
+       resultSet=preparedStatement.executeQuery();
+       System.out.println("Total amount: " + DBUtils.getColumnData(query,"total_amount"));
+    }
+
+    @Given("Query25 Prepare and execute the query.")
+    public void query25_prepare_and_execute_the_query() throws SQLException {
+        query=queryManage.getQueryUS25Q01();
+        preparedStatement = DBUtils.getConnection().prepareStatement(query);
+        preparedStatement.setString(1,"none");
+        preparedStatement.setInt(2,9000);
+        resultSet=preparedStatement.executeQuery();
+        for (int i = 0; i < 4; i++) {
+            resultSet.next();
+            System.out.println("\ntxn_id: " + resultSet.getString(1) +
+                                " ---- max_amount: " + resultSet.getInt(2));
+        }
+    }
+
+    @Given("Query04 Prepare and execute the query.")
+    public void query04_prepare_and_execute_the_query() throws SQLException {
+        DB_InsertInto_Methods.contactsInsert();
+    }
+
+    @Given("Query04 Process the results")
+    public void query04_process_the_results() throws SQLException {
+        query = queryManage.getQueryUS04Q03();
+        preparedStatement = DBUtils.getConnection().prepareStatement(query);
+        preparedStatement.setString(1, "UPDATE");
+        preparedStatement.setInt(2, id);
+    }
+
+    @Given("Query18 Prepare and execute the query.")
+    public void query18_prepare_and_execute_the_query() throws SQLException {
+        for (int i = 0; i < 5; i++) {
+            DB_InsertInto_Methods.bank_accountsInsert();
+            if (preparedStatement.executeUpdate() == 1)
+                rowCount++;
+        }
+        assertEquals(5,rowCount);
+    }
 }
