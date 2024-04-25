@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {
-                //"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "pretty",
                 "html:target/default-cucumber-reports.html",
                 "json:target/json-reports/cucumber.json",
@@ -16,8 +16,8 @@ import org.junit.runner.RunWith;
         },
         features = {"src/test/resources/features/API", "src/test/resources/features/DB"},
         glue = {"stepdefinitions", "hooks"},
-        tags = "@reyyan",
-        dryRun = false
+        tags = "@API",
+        dryRun = true
 )
 public class Runner {
 }
