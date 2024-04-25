@@ -154,7 +154,7 @@ public class DB_Stepdefinitions extends Base {
     public void query05_prepare_and_execute_the_query() throws SQLException {
         query=queryManage.getQueryUS05Q01();
         preparedStatement=DBUtils.getConnection().prepareStatement(query);
-        preparedStatement.setInt(1,43);
+        preparedStatement.setInt(1,44);
         preparedStatement.setString(2,"Ömer");
         preparedStatement.setString(3,"azimli@buysellcycle.com");
         preparedStatement.setInt(4,1);
@@ -176,6 +176,31 @@ public class DB_Stepdefinitions extends Base {
         preparedStatement=DBUtils.getConnection().prepareStatement(query);
         preparedStatement.setInt(1,-1);
         preparedStatement.setString(2,"Weissnat-Stanton");
+    }
+    @Given("Query26 Prepare and execute the query.")
+    public void query26_prepare_and_execute_the_query() throws SQLException {
+        query=queryManage.getQueryUS26Q01();
+        preparedStatement=DBUtils.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1,7000);
+        resultSet=preparedStatement.executeQuery();
+    }
+    @Given("Query26 Process the results for .")
+    public void query26_process_the_results_for() throws SQLException {
+        double expected=19039967.55;
+        resultSet.next();
+       int actualAmount1=resultSet.getInt("total_amount");
+        resultSet.next();
+       double actualAmount2=resultSet.getInt("total_amount");
+        assertEquals(9164,actualAmount1);
+
+    }
+    @Given("list the unique {string} in the attendances table.")
+    public void list_the_unique_in_the_attendances_table(String string) throws SQLException {
+    query=queryManage.getQueryUS12Q01();
+    DBUtils.getStatement().executeQuery(query);
+    List<Object> note = DBUtils.getColumnData(query,"note");
+        System.out.println(note+"note");
+
     }
 
     // ======================================================================================
