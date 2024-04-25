@@ -26,7 +26,8 @@ public class Manage {
     private String queryUS20Q01 = "";
     private String queryUS21Q01 = "select * from guest_order_details";
     private String queryUS21Q02 = "UPDATE guest_order_details SET shipping_name = 'Reyyan' WHERE order_id = 118";
-    private String queryUS22Q01 = "";
+    private String queryUS22Q01 = "insert into digital_gift_cards (gift_name,descriptionOne) value (?,?)";
+    private String queryUS22Q02= "delete from digital_gift_cards where id=?";
     private String queryUS23Q01 = "";
     private String queryUS24Q01 = "select order_number from orders where not customer_email=? and sub_total<? order by order_number desc";
     private String queryUS25Q01 = "";
@@ -137,4 +138,7 @@ public class Manage {
         return queryUS30Q01;
     }
 
+    public String getQueryUS22Q02() {
+        return queryUS22Q02;
+    }
 }
