@@ -29,7 +29,7 @@ public class Manage {
     private String queryUS19Q01 = "UPDATE bank_accounts  SET opening_balance=? WHERE bank_name=?";
     private String queryUS20Q01 = "";
     private String queryUS21Q01 = "select * from guest_order_details";
-    private String queryUS21Q02 = "UPDATE guest_order_details SET shipping_name = 'Reyyan' WHERE order_id = 118";
+    private String queryUS21Q02 = "UPDATE guest_order_details SET shipping_name = ? WHERE order_id = ?";
     private String queryUS22Q01 = "insert into digital_gift_cards (gift_name,descriptionOne) value (?,?)";
     private String queryUS22Q02= "delete from digital_gift_cards where id=?";
     private String queryUS23Q01 = "SELECT module, COUNT(*) AS type_count FROM email_template_types WHERE module IS NOT NULL GROUP BY module";
@@ -37,7 +37,8 @@ public class Manage {
     private String queryUS25Q01 = "SELECT txn_id, MAX(amount) AS max_amount FROM order_payments WHERE txn_id != ? GROUP BY txn_id HAVING MAX(amount) > ? ORDER BY max_amount DESC";
     private String queryUS26Q01 = "SELECT payment_method, sum(amount) AS total_amount FROM transactions GROUP BY payment_method HAVING total_amount > ? ORDER BY payment_method DESC";
     private String queryUS27Q01 = "";
-    private String queryUS28Q01 = "";
+    private String queryUS28Q01 = "SELECT DISTINCT user_id FROM support_tickets WHERE reference_no LIKE ''-''";
+    private String queryUS28Q02 = "SELECT DISTINCT user_id FROM support_tickets WHERE reference_no NOT LIKE ''-''";
     private String queryUS29Q01 = "";
     private String queryUS30Q01 = "SELECT SUM(total_price) AS total_price FROM carts WHERE is_buy_now = ? AND created_at < ?";
 }
