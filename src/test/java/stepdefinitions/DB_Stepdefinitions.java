@@ -147,7 +147,23 @@ public class DB_Stepdefinitions extends Base {
         preparedStatement.setInt(1,3);
         resultSet= preparedStatement.executeQuery();
     }
+    @Given("Query22 Prepare and execute the query.")
+    public void query22_prepare_and_execute_the_query() throws SQLException {
+        query=queryManage.getQueryUS22Q01();
+        preparedStatement = DBUtils.getConnection().prepareStatement(query);
+        preparedStatement.setString(1,"merak");
+        preparedStatement.setString(2,"at");
+        preparedStatement.executeUpdate();
 
+    }
+    @Given("delete data inserted query15.")
+    public void delete_data_inserted_query15() throws SQLException {
+        query=queryManage.getQueryUS22Q02();
+        preparedStatement=DBUtils.getConnection().prepareStatement(query);
+        preparedStatement.setInt(1,9047166);
+
+
+    }
     // ======================================================================================
     //Azim Kaya US-05
     @Given("Query05 Prepare and execute the query.")
