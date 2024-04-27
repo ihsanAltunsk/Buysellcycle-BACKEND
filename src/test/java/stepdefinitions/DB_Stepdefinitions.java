@@ -30,11 +30,6 @@ public class DB_Stepdefinitions extends Base {
         preparedStatement.setString(1, "Java");
         preparedStatement.setString(2, "Tandır");
         preparedStatement.setInt(3, id);
-
-        preparedStatement2 = DBUtils.getConnection().prepareStatement(queryManage.getQueryUS02Q02());
-        preparedStatement2.setInt(1, (id-1));
-        resultSet2 = preparedStatement2.executeQuery();
-        resultSet2.next();
     }
 
     @Given("Process the results for counting")

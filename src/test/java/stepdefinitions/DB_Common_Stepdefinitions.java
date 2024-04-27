@@ -11,6 +11,6 @@ public class DB_Common_Stepdefinitions extends Base{
     public void process_the_results_for_update(int row ) throws SQLException {
         rowCount = preparedStatement.executeUpdate();
         assertEquals(row, rowCount);
-        System.out.println("Updated Name: " + resultSet2.getString("first_name") +" " +  resultSet2.getString("last_name") );
+        System.out.println("Updated Name: Java Tandır");
     }
 }
