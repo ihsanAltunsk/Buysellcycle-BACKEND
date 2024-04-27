@@ -25,8 +25,8 @@ public abstract class Base {
     public static HashMap<String, Object> reqBodyMap;
     public static Connection connection;
     public static Statement statement;
-    public static PreparedStatement preparedStatement;
-    public static ResultSet resultSet;
+    public static PreparedStatement preparedStatement, preparedStatement2;
+    public static ResultSet resultSet,resultSet2;
     public static Manage queryManage;
 
     public static void initialize(){

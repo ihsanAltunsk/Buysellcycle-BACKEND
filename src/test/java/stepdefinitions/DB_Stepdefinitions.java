@@ -16,17 +16,24 @@ public class DB_Stepdefinitions extends Base {
     //ihsan
     @Given("Query02 Prepare and execute the query.")
     public void query02_prepare_and_execute_the_query() throws SQLException {
-        DB_InsertInto_Methods.citiesInsert();
+        preparedStatement = DBUtils.getConnection().prepareStatement(queryManage.getQueryUS02Q02());
+        preparedStatement.setInt(1, id);
+        resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+        System.out.println("Database Name Result: " + resultSet.getString("first_name") +
+                           "\nDatabase Last Name Result: " + resultSet.getString("last_name"));
     }
 
     @Given("Query09 Prepare and execute the query.")
     public void query09_prepare_and_execute_the_query() throws SQLException {
-        query = queryManage.getQueryUS09Q01();
-        preparedStatement = DBUtils.getConnection().prepareStatement(query);
+        preparedStatement = DBUtils.getConnection().prepareStatement(queryManage.getQueryUS09Q01());
+        preparedStatement.setString(1, "Java-Tandır");
+        preparedStatement.setInt(2, id);
 
-        preparedStatement.setString(1,"46.2.239.35");
-        preparedStatement.setString(2,"Delete");
-        resultSet = preparedStatement.executeQuery();
+        preparedStatement2 = DBUtils.getConnection().prepareStatement(queryManage.getQueryUS02Q02());
+        preparedStatement2.setInt(1, (id-1));
+        resultSet2 = preparedStatement2.executeQuery();
+        resultSet2.next();
     }
 
     @Given("Process the results for counting")
@@ -37,6 +44,7 @@ public class DB_Stepdefinitions extends Base {
 
     @Given("Query16 Prepare and execute the query.")
     public void query16_prepare_and_execute_the_query() throws SQLException {
+        DB_InsertInto_Methods.citiesInsert();
         query = queryManage.getQueryUS16Q01();
         preparedStatement = DBUtils.getConnection().prepareStatement(query);
         preparedStatement.setString(1,"Switzerland");
