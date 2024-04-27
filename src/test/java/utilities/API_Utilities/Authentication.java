@@ -31,7 +31,7 @@ public class Authentication extends Base {
                 reqBody.put("email", ConfigReader.getProperty("api","customerEmail"));
                 reqBody.put("password", ConfigReader.getProperty("api","Password"));
                 break;
-            case "ihsan":
+            case "newCustomer":
                 spec.pathParams("pp1", "api", "pp2", "login");
                 reqBody = new JSONObject();
                 reqBody.put("email", customer_email);
