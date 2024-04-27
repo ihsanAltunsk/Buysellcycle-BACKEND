@@ -6,6 +6,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
 import utilities.API_Utilities.API_Methods;
+import utilities.DB_Utilities.DBUtils;
+
 import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -160,12 +162,9 @@ public class API_Stepdefinitions extends Base {
     }
     @Given("The API user saves the information.")
     public void the_api_user_saves_the_information() {
-        System.out.println("Email: " + customer_email + "\nPassword: " + password);
-    }
-    @Given("The API user saves the response body id")
-    public void the_api_user_saves_the_response_body_id() {
-        jsonPath = API_Methods.response.jsonPath();
+        jsonPath= API_Methods.response.jsonPath();
         id = jsonPath.getInt("user.id");
+        System.out.println("Email: " + customer_email + "\nPassword: " + password + "\nID: " + id);
     }
 
     //======================================================================================================================================================================================
