@@ -19,10 +19,6 @@ public class API_Common_Stepdefinitions extends Base {
                 break;
             case "POST":
                 API_Methods.postResponse(requestBody.toString());
-                jsonPath = response.jsonPath();
-                if (jsonPath.getString("message").contains("success")) {
-                    apiId = jsonPath.get("added_item_id");
-                }
                 break;
             case "PATCH":
                 API_Methods.patchResponse(requestBody.toString());

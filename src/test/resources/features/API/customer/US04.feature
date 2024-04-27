@@ -1,21 +1,12 @@
 #Reporter : İhsan Altunışık
 #US Priority : HIGH
-  Feature: As a user, I should be able to access the financial information of the customer via API connection.
-    Scenario: Detailed information of the customer data with valid authorization credentials should be accessible via the API connection.
-      * The api user constructs the base url with the "admin" token.
-      * The api user sets "api/get-user" path parameters
-      * The api user prepares a GETBODY request containing the id = 2 and records the response.
+  Feature: As a user, I should be able to edit my user information via API connection.
+    @API
+    Scenario: User verifies that he/she have successfully sent a POST body containing valid authorization information for changing password..
+      * The api user constructs the base url with the "newCustomer" token.
+      * The api user sets "api/change-password" path parameters
+      * The api user prepares a POST request body.
+      * The API user sends a "POST" request and records the response.
       * The api user verifies that the status code is 200
-      * The api user verifies that the message information in the response body is "success"
-      * The api user verifies the content of the data 2, "Customerr", "Due", 4, "customer@gmail.com", 1, 1, "en", 2, "USD", "Customerr Due" in the response body.
-
-    Scenario Outline: The response of the customer data with invalid id  should indicate that there is no such customer.
-      * The api user constructs the base url with the "<api>" token.
-      * The api user sets "api/get-user" path parameters
-      * The api user prepares a GETBODY request containing the id = <id> and records the response.
-      * The api user verifies that the status code is <code>
-      * The api user verifies that the message information in the response body is "<message>"
-      Examples:
-        |api    |id    |code|message         |
-        |admin  |324235|404 |user not found  |
-        |invalid|2     |401 |Unauthenticated.|
+      * The api user verifies that the message information in the response body is "password change successfully"
+      * The user saves the password.

@@ -2,6 +2,4 @@
 #US Priority : HIGH
   Feature: order_address_details  &  orders
     Scenario: List ids with shipping_address = 'Switzerland' in the order_address_details table according to the orders table.
-      * Establish a database connection.
       * Query16 Prepare and execute the query.
-      * Close the database connection.

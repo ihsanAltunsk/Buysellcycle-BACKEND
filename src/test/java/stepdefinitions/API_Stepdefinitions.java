@@ -146,25 +146,26 @@ public class API_Stepdefinitions extends Base {
         requestBody.put("name",name);
         requestBody.put("date",date);
     }
-    @Given("The api user prepares a POST request body for register {string}, {string}, {string}, {string}, {string}, {string}, {string}.")
-    public void the_api_user_prepares_a_post_request_body_for_register(String firstname, String lastname, String email, String password, String password_confirmation, String user_type, String referral_code) {
-        requestBody.put("first_name", firstname);
-        requestBody.put("last_name", lastname);
-        requestBody.put("email", email);
-        requestBody.put("password",password);
-        requestBody.put("password_confirmation", password_confirmation);
-        requestBody.put("user_type",user_type);
-        requestBody.put("referral_code",referral_code);
-
+    @Given("The api user prepares a POST request body for register.")
+    public void the_api_user_prepares_a_post_request_body_for_register() {
+        customer_email=faker.internet().emailAddress();
+        password= faker.internet().password();
+        requestBody.put("first_name", faker.name().firstName());
+        requestBody.put("last_name", faker.name().lastName());
+        requestBody.put("email", customer_email);
+        requestBody.put("password", password);
+        requestBody.put("password_confirmation", password);
+        requestBody.put("user_type", "customer");
+        requestBody.put("referral_code", "java candır");
+    }
+    @Given("The API user saves the information.")
+    public void the_api_user_saves_the_information() {
+        System.out.println("Email: " + customer_email + "\nPassword: " + password);
     }
     @Given("The API user saves the response body id")
     public void the_api_user_saves_the_response_body_id() {
         jsonPath = API_Methods.response.jsonPath();
         id = jsonPath.getInt("user.id");
-    }
-    @Given("The API users checks customer added's id")
-    public void the_api_users_checks_customer_added_s_id() {
-       assertEquals(apiId,jsonPath.getInt("user["+ (apiId-1)+"].id"));
     }
 
     //======================================================================================================================================================================================
@@ -280,6 +281,18 @@ public class API_Stepdefinitions extends Base {
 
     //======================================================================================================================================================================================
     // İhsan
+    // US04/TC01
+    @Given("The api user prepares a POST request body.")
+    public void the_api_user_prepares_a_post_request_body() {
+        requestBody.put("old_password", password);
+        password = faker.internet().password();
+        requestBody.put("password", password);
+        requestBody.put("password_confirmation", password);
+    }
+    @Given("The user saves the password.")
+    public void the_user_saves_the_password() {
+        System.out.println("Your new password is: " + password);
+    }
     // US06/TC01
     @Given("The api user verifies the content of the data {int}, {string}, {string}, {int}, {string}, {int}, {int}, {string}, {int}, {string}, {string} in the response body.")
     public void the_api_user_verifies_the_content_of_the_data_id_in_the_response_body(int id , String first_name, String last_name, int role_id, String email, int is_verified, int is_active, String lang_code, int currency_id, String currency_code, String name) {

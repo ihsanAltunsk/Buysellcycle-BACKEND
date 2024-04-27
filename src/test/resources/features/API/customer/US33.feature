@@ -1,7 +1,7 @@
 #Reporter : Murat Koparan
 #US Priority : MEDIUM
   Feature: As an customer, I should be able to access detailed information of the user with the specified id number via API connection.
-    @API
+
     Scenario: Detailed information of the customer data with valid authorization credentials should be accessible via the API connection.
       * The api user constructs the base url with the "customer" token.
       * The api user sets "api/get-user" path parameters

@@ -14,6 +14,8 @@ public class HooksAPI {
             token = Authentication.generateToken(userType);
         } else if (userType.equals("customer")) {
             token = Authentication.generateToken(userType);
+        } else if (userType.equals("newCustomer")) {
+            token = Authentication.generateToken(userType);
         } else {
             token = ConfigReader.getProperty( "api","invalidToken");
         }
