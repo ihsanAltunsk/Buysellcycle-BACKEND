@@ -2,7 +2,7 @@ package manage;
 
 import lombok.Getter;
 @Getter
-public class Manage {
+public class Manae {
     private String queryUS01Q01 = "SELECT name FROM categories WHERE slug=?";
     private String queryUS02Q01 = "INSERT INTO cities (id, name, state_id, status, created_at) VALUES(?, ?, ?, ?, ?)";
     private String queryUS02Q02 = "SELECT * FROM users WHERE id = ?";
