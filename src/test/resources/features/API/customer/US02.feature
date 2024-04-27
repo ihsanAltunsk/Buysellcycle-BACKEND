@@ -11,6 +11,6 @@
       * The api user verifies that the status code is 200
       * The api user verifies that the message information in the response body is "success"
 
-      Scenario: TC02 When the user sends the given information, it should be verified that the data
-                (first_name, last_name, email) in the response body returned is the same as the user information
-                that entered the system.
+    Scenario: TC02 When the user sends the given information, it should be verified that the data
+    (first_name, last_name, email) in the response body returned is the same as the user information
+    that entered the system.
