@@ -27,8 +27,9 @@ public class DB_Stepdefinitions extends Base {
     @Given("Query09 Prepare and execute the query.")
     public void query09_prepare_and_execute_the_query() throws SQLException {
         preparedStatement = DBUtils.getConnection().prepareStatement(queryManage.getQueryUS09Q01());
-        preparedStatement.setString(1, "Java-Tandır");
-        preparedStatement.setInt(2, id);
+        preparedStatement.setString(1, "Java");
+        preparedStatement.setString(2, "Tandır");
+        preparedStatement.setInt(3, id);
 
         preparedStatement2 = DBUtils.getConnection().prepareStatement(queryManage.getQueryUS02Q02());
         preparedStatement2.setInt(1, (id-1));

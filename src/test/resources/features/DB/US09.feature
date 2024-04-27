@@ -1,7 +1,7 @@
 #Reporter : İhsan Altunışık
 #US Priority : LOW
-  Feature: log_activity
+  Feature: DB - users
     @API
-    Scenario: In the log_activity table, calculate and verify the number of topics with ip='46.2.239.35' and method='Delete'.
+    Scenario: In the users table, update the latest created user's first_name = "Java-Tandır" .
       * Query09 Prepare and execute the query.
       * Process the results for update 1.

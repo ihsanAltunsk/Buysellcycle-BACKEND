@@ -1,6 +1,6 @@
 #Reporter : İhsan Altunışık
 #US Priority : HIGH
-  Feature: users
+  Feature: DB - users
     @API
-    Scenario: Check the name information of the recent registered person in users table
+    Scenario: Check the first_name and last_name information of the recent registered person in users table
       * Query02 Prepare and execute the query.

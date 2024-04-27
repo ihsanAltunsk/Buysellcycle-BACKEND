@@ -1,6 +1,6 @@
 #Reporter : İhsan Altunışık
 #US Priority : HIGH
-  Feature: As a user, I should be able to edit my user information via API connection.
+  Feature: API - As a user, I should be able to edit my password information via API connection.
     @API
     Scenario: User verifies that he/she have successfully sent a POST body containing valid authorization information for changing password..
       * The api user constructs the base url with the "newCustomer" token.
