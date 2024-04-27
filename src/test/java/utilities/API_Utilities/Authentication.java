@@ -1,6 +1,7 @@
 package utilities.API_Utilities;
 
 import config_Requirements.ConfigReader;
+import hooks.Base;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
@@ -10,7 +11,7 @@ import org.json.JSONObject;
 import static hooks.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
 
-public class Authentication {
+public class Authentication extends Base {
     public static String generateToken(String user) {
 
         JSONObject reqBody = null;
@@ -30,7 +31,12 @@ public class Authentication {
                 reqBody.put("email", ConfigReader.getProperty("api","customerEmail"));
                 reqBody.put("password", ConfigReader.getProperty("api","Password"));
                 break;
-
+            case "ihsan":
+                spec.pathParams("pp1", "api", "pp2", "login");
+                reqBody = new JSONObject();
+                reqBody.put("email", customer_email);
+                reqBody.put("password", password);
+                break;
         }
 
         Response response = given()
