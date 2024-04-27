@@ -16,6 +16,12 @@
         <aspectj.version>1.9.7</aspectj.version>
     </properties>
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.2.3</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
@@ -48,12 +54,6 @@
             <artifactId>lombok</artifactId>
             <version>1.18.30</version>
             <scope>provided</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>7.2.3</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
         <dependency>
