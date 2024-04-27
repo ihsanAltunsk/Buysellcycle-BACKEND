@@ -15,7 +15,7 @@ public class Manage {
     private String queryUS06Q01 = "INSERT INTO bank_accounts (id, bank_name, branch_name, account_name, account_number) VALUES(?, ?, ?, ?, ?)";
     private String queryUS07Q01 = "SELECT phone FROM customer_addresses LIMIT ?";
     private String queryUS08Q01 = "SELECT name FROM delivery_processes ORDER BY id DESC LIMIT ?";
-    private String queryUS09Q01 = "UPDATE users SET first_name = ? WHERE id = ?";
+    private String queryUS09Q01 = "UPDATE users SET first_name = ?, last_name = ? WHERE id = ?";
     private String queryUS10Q01 = "SELECT customer_id from order_address_details WHERE shipping_address != billing_address";
     private String queryUS11Q01 = "SELECT SUM(amount) AS total_amount FROM wallet_balances WHERE type = ? AND id BETWEEN ? AND ?";
     private String queryUS12Q01 = "SELECT DISTINCT note FROM attendances";
