@@ -1,20 +1,17 @@
 package hooks;
 
 import com.github.javafaker.Faker;
-import io.cucumber.java.en.Given;
 import io.restassured.path.json.JsonPath;
 import manage.Manage;
 import org.json.JSONObject;
-import org.junit.After;
-import org.junit.Before;
-import utilities.DB_Utilities.DBUtils;
 
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Random;
 
 public abstract class Base {
-    public static String fullPath, query, name, phone, customer_email,email,message,bank_name, branch_name, account_name, password;
+    public static String fullPath, query, name, phone, customer_email,email,
+                        message,bank_name, branch_name, account_name, password;
     public static int id, apiId,rowCount, state_id, status;
     public static double sub_total;
     public static Date date;

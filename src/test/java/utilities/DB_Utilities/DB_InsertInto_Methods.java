@@ -10,20 +10,6 @@ import java.util.List;
 
 public class DB_InsertInto_Methods extends Base {
 
-    public static int idGenerator(String givenQuery) throws SQLException {
-        resultSet = DBUtils.getStatement().executeQuery(givenQuery);
-
-        List<Integer> ids = new ArrayList<>();
-        while (resultSet.next()){
-            ids.add(resultSet.getInt("id"));
-        }
-
-        do {
-            id = random.nextInt(10001) + 50000;
-        } while (ids.contains(id));
-        return id;
-    }
-
     public static void citiesInsert() throws SQLException {
         query = queryManage.getQueryUS02Q01();
         preparedStatement = DBUtils.getConnection().prepareStatement(query);
@@ -75,5 +61,18 @@ public class DB_InsertInto_Methods extends Base {
         preparedStatement.setString(4, account_name);
         preparedStatement.setString(5, "652745234");
         System.out.println("NEW DATA: |" + id + "| |" + bank_name + "| |" + branch_name + "|" + account_name + "| |652745234|");
+    }
+    public static int idGenerator(String givenQuery) throws SQLException {
+        resultSet = DBUtils.getStatement().executeQuery(givenQuery);
+
+        List<Integer> ids = new ArrayList<>();
+        while (resultSet.next()){
+            ids.add(resultSet.getInt("id"));
+        }
+
+        do {
+            id = random.nextInt(10001) + 50000;
+        } while (ids.contains(id));
+        return id;
     }
 }
