@@ -7,12 +7,12 @@ import utilities.DB_Utilities.DBUtils;
 import java.sql.SQLException;
 
 public class HooksDB extends DBUtils{
-    @Before
+    @Before("@DB")
     public void establish_a_database_connection() {
         Base.initialize();
         DBUtils.createConnection();
     }
-    @After
+    @After("@DB")
     public void close_the_database_connection() throws SQLException {
         DBUtils.closeConnection();
     }
