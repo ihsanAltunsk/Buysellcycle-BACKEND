@@ -396,5 +396,4 @@ public class API_Stepdefinitions extends Base {
         jsonPath = API_Methods.response.jsonPath();
         assertEquals(string, jsonPath.getString("addresses[6].name"));
     }
-
 }
